@@ -20,8 +20,6 @@
   --ff-aqua:          ${COLOR_AQUA};
 }
 
-/* Main background */
-
 #navigator-toolbox,
 #TabsToolbar,
 #nav-bar,
@@ -30,8 +28,6 @@
   color: var(--ff-fg) !important;
   border-color: var(--ff-border) !important;
 }
-
-/* Active tab */
 
 .tab-background[selected="true"] {
   background-color: var(--ff-accent) !important;
@@ -43,8 +39,6 @@
   color: var(--ff-bg) !important;
 }
 
-/* Non-active tabs */
-
 .tab-background:not([selected="true"]) {
   background-color: var(--ff-surface) !important;
 }
@@ -54,8 +48,6 @@
   color: var(--ff-fg-dim) !important;
 }
 
-/* Search line */
-
 #urlbar,
 #urlbar-background,
 #searchbar {
@@ -64,8 +56,6 @@
   border-radius: 6px !important;
   border: 1px solid var(--ff-border) !important;
 }
-
-/* Icons, text */
 
 toolbarbutton,
 toolbarbutton > * {

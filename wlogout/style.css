@@ -27,6 +27,7 @@ button:focus, button:active, button:hover {
 	outline-style: none;
 }
 
+/* Set your images or change username */
 #lock {
     background-image: image(url("/home/mreblan/.config/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
 }

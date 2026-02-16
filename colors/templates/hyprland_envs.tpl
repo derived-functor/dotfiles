@@ -1,4 +1,3 @@
-# For autogen, don't change by hand
 env = XCURSOR_SIZE,35
 env = XCURSOR_THEME,${CURSOR_THEME}
 env = HYPRCURSOR_SIZE,35

@@ -17,10 +17,8 @@ require("conform").setup({
   },
     formatters = {
         injected = {
-            -- Опции для форматирования вложенного кода
             options = {
                 ignore_errors = true,
-                -- Можно переопределить форматировщики для конкретных языков внутри MD
                 lang_to_formatters = {
                     json = { "jq" },
                 },
@@ -51,16 +49,16 @@ require("mypy").setup()
 
 -- Debug
 local dap = require('dap')
-vim.keymap.set("n", "<leader>Db", dap.toggle_breakpoint, { desc = "Поставить/убрать точку останова" })
-vim.keymap.set("n", "<leader>Dc", dap.continue, { desc = "Запустить/продолжить отладку" })
+vim.keymap.set("n", "<leader>Db", dap.toggle_breakpoint, { desc = "Add/remove breakpoing" })
+vim.keymap.set("n", "<leader>Dc", dap.continue, { desc = "Launch/continue debugging" })
 vim.keymap.set('n', '<leader>Dr', function() dap.repl.open() end)
-vim.keymap.set("n", "<leader>Ds", dap.step_over, { desc = "Шаг через (step over)" })
-vim.keymap.set("n", "<leader>Di", dap.step_into, { desc = "Шаг внутрь (step into)" })
-vim.keymap.set("n", "<leader>Do", dap.step_out, { desc = "Шаг наружу (step out)" })
+vim.keymap.set("n", "<leader>Ds", dap.step_over, { desc = "Step over" })
+vim.keymap.set("n", "<leader>Di", dap.step_into, { desc = "Step into" })
+vim.keymap.set("n", "<leader>Do", dap.step_out, { desc = "Step out" })
 
 vim.keymap.set("n", "K", function()
     require("dap.ui.widgets").hover()
-end, { desc = "Показать значение переменной" }
+end, { desc = "Show variable value" }
 )
 
 dap.configurations.python = {

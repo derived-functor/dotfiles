@@ -23,7 +23,7 @@ window#waybar {
 
 #custom-theme,
 #custom-appmenu {
-    color: @yellow;
+    color: @accent;
     padding: 0 10px;
     margin: 0 4px;
 }

@@ -1,4 +1,3 @@
-# For Autogen, don't change by hand
 set -gx COLOR_BG          "${COLOR_BG}"
 set -gx COLOR_BG_HARD     "${COLOR_BG_HARD}"
 set -gx COLOR_BG_SOFT     "${COLOR_BG_SOFT}"

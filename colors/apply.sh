@@ -5,11 +5,11 @@ COLORS_DIR="$HOME/.config/colors"
 THEME="${1:-$(basename "$(readlink "$COLORS_DIR/current")" .sh)}"
 THEME_FILE="$COLORS_DIR/themes/$THEME.sh"
 
-# ─── Проверка ────────────────────────────────────────────────────────────────
+# ─── Check ────────────────────────────────────────────────────────────────
 
 if [[ ! -f "$THEME_FILE" ]]; then
-    echo "✗ Тема '$THEME' не найдена"
-    echo "  Доступные темы:"
+    echo "Theme '$THEME' not found"
+    echo "  Available themes"
     for f in "$COLORS_DIR/themes/"*.sh; do
         echo "    - $(basename "$f" .sh)"
     done

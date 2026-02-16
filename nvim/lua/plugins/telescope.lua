@@ -1,9 +1,6 @@
--- ~/.config/nvim/lua/plugins.lua
-
 return {
     {
         'nvim-telescope/telescope.nvim',
-        -- tag = '0.1.8', -- вы можете использовать tag или branch
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             require('telescope').setup {
@@ -27,7 +24,6 @@ return {
 				}
             }
 
-            -- привязка клавиш для вызова telescope
             local function map(mode, lhs, rhs, opts)
                 opts = opts or {}
                 vim.keymap.set(mode, lhs, rhs, opts)

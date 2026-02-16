@@ -1,5 +1,5 @@
 if status is-interactive
-    fastfetch --logo $HOME/.config/fastfetch/logo.png --logo-type kitty
+    fastfetch
 end
 
 alias nv=nvim
@@ -31,5 +31,3 @@ set -gx QS_NO_RELOAD_POPUP 1
 # pyenv config for fish
 set -x PYENV_ROOT $HOME/.pyenv
 set -x PATH $PYENV_ROOT/bin $PATH
-
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/mreblan/.ghcup/bin $PATH # ghcup-env

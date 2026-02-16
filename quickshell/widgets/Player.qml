@@ -1,3 +1,4 @@
+// widgets/Player.qml
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
@@ -206,7 +207,7 @@ ColumnLayout {
                             font.pixelSize: 10
                         }
 
-                        Item { Layout.fillWidth: true }
+                        Item { Layout.fillWidth: true }  // спейсер
 
                         Text {
                             text: formatTime(length)

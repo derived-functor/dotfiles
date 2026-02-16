@@ -1,7 +1,9 @@
 import Quickshell
+import Quickshell.Services.Notifications
 import Quickshell.Wayland
 
 ShellRoot {
+
     Variants {
         model: Quickshell.screens
 

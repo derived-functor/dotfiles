@@ -1,4 +1,3 @@
-# For autogen, don't change by hand
 background             ${COLOR_BG}
 foreground             ${COLOR_FG}
 selection_background   ${COLOR_OVERLAY}

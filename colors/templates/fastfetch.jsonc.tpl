@@ -2,7 +2,7 @@
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
         "logo": {
             "type": "kitty",
-            "source": "/home/mreblan/.config/fastfetch/logo.png",
+            "source": "$HOME/.config/fastfetch/logo.png",
             "width": 30,
             "padding": {
                 "top": 5,

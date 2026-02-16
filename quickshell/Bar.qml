@@ -46,5 +46,6 @@ PanelWindow {
         Player {}
 
         Item { Layout.fillHeight: true }
+
     }
 }

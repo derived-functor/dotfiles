@@ -7,14 +7,14 @@ SETUVAR _fisher_plugins:jorgebucaran/hydro\x1ejomik/fish\x2dgruvbox
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR _hydro_git_10961:main\u2022\x20
 SETUVAR _hydro_git_12003:main\u2022\x20
-SETUVAR _hydro_git_1774:\x1d
 SETUVAR _hydro_git_2310:main\u2022\x20
 SETUVAR _hydro_git_3315:\x1d
+SETUVAR _hydro_git_35436:\x1d
 SETUVAR _hydro_git_4062:master\u2022\x20
 SETUVAR _hydro_git_4821:\x1d
 SETUVAR _hydro_git_5039:tests/REN\x2d5460\u2022\x20
+SETUVAR _hydro_git_6377:\x1d
 SETUVAR fish_color_autosuggestion:\x2381a1c1
-SETUVAR fish_user_paths:/home/mreblan/\x2eopencode/bin
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_check_for_new_release:false
 SETUVAR pure_color_at_sign:pure_color_mute

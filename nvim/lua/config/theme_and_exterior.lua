@@ -20,6 +20,25 @@ local nvim_colorscheme = system_to_nvim[system_theme] or "gruvbox"
 vim.o.background = "dark"
 pcall(vim.cmd, "colorscheme " .. nvim_colorscheme)
 
+-- VS Code theme
+local c = require('vscode.colors').get_colors()
+require('vscode').setup({
+    italic_comments = true,
+    italic_inlayhints = true,
+    underline_links = true,
+    disable_nvimtree_bg = true,
+    terminal_colors = true,
+    color_overrides = {
+        vscLineNumber = '#FFFFFF',
+    },
+    group_overrides = {
+        -- this supports the same val table as vim.api.nvim_set_hl
+        -- use colors from this colorscheme by requiring vscode.colors!
+        Cursor = { fg=c.vscDarkBlue, bg=c.vscLightGreen, bold=true },
+    }
+})
+-- require('vscode').load()
+
 -- Other
 
 require("lualine").setup()

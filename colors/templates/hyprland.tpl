@@ -1,4 +1,3 @@
-# For autogen, don't change by hand
 $bg       = rgb(${COLOR_BG_RAW})
 $bg1      = rgb(${COLOR_SURFACE_RAW})
 $bg2      = rgb(${COLOR_OVERLAY_RAW})
