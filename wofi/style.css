@@ -1,0 +1,50 @@
+*:selected {
+    background: transparent;
+}
+
+window {
+  background-color: #2e3440;
+}
+
+* {
+  font-family: "Jetbrains Mono";
+  color: #e5e9f0;
+}
+
+#scroll {
+  padding: 0.5rem;
+}
+
+#input {
+  background-color: #434c5e;
+  color: #e5e9f0;
+  outline: none;
+  box-shadow: none;
+  border: 0.5px solid #8fbcbb;
+  border-radius: 0rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+#inner-box {
+  margin: 0.5rem;
+  font-size: 1rem;
+}
+
+#img {
+  margin: 10px 10px;
+}
+
+#entry {
+  border-radius: 0rem;
+}
+
+#entry:selected {
+  background-color: #81a1c1;
+  outline: none;
+}
+
+#text:selected {
+  color: #2e3440;
+}
+
