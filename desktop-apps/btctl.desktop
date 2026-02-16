@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=btctl
+Comment=Connect to paired devices
+Exec=/usr/bin/btctl connect
+Icon=bluetooth
+Terminal=false
+Categories=Settings;Utility;

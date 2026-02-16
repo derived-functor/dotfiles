@@ -76,10 +76,10 @@ sudo pacman -S hyprland hyprlock hyprpaper hypridle waybar wofi swaync libnotify
 AUR packages (e.g. with `yay`). Core + fonts + all three themes:
 
 ```bash
-yay -S hyprshot wlogout quickshell zen-browser obsidian ttf-jetbrains-mono-nerd \
+yay -S hyprshot wlogout quickshell zen-browser-bin obsidian ttf-jetbrains-mono-nerd \
   nordic-theme nordzy-icon-theme nordzy-cursors \
-  gruvbox-dark-gtk gruvbox-plus-icon-theme simp1e-cursors \
-  catppuccin-gtk-theme-mocha catppuccin-papirus-folders-git catppuccin-cursors-git
+  gruvbox-dark-gtk gruvbox-plus-icon-theme xcursor-simp1e-gruvbox-dark \
+  catppuccin-gtk-theme-mocha papirus-folders-catppuccin catppuccin-cursors-mocha
 ```
 
 For Catppuccin icons (Papirus) install from official repos:
@@ -92,4 +92,4 @@ To install only one theme, use the packages from the table above. Adjust `~/scri
 
 ## AI Alert
 
-I used vibe coding for some things I don't wanted to do by myself, so be careful with it.
+I've used vibe coding for some things I don't wanted to do by myself, so be careful with it.
