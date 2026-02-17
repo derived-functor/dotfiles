@@ -79,7 +79,7 @@ AUR packages (e.g. with `yay`). Core + fonts + all three themes:
 yay -S hyprshot wlogout quickshell zen-browser-bin obsidian ttf-jetbrains-mono-nerd \
   nordic-theme nordzy-icon-theme nordzy-cursors \
   gruvbox-dark-gtk gruvbox-plus-icon-theme xcursor-simp1e-gruvbox-dark \
-  catppuccin-gtk-theme-mocha papirus-folders-catppuccin catppuccin-cursors-mocha
+  catppuccin-gtk-theme-mocha papirus-folders-catppuccin-git catppuccin-cursors-mocha
 ```
 
 For Catppuccin icons (Papirus) install from official repos:

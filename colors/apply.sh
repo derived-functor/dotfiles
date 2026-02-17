@@ -109,20 +109,17 @@ export ICON_THEME=$(strip $ICON_THEME)
 export CURSOR_THEME=$(strip $CURSOR_THEME)
 export GTK_FONT=$(strip $GTK_FONT)
 
-envsubst < ~/.config/colors/templates/gtk-3.0.ini.tpl \
-    > ~/.config/gtk-3.0/settings.ini
+envsubst < $HOME/.config/colors/templates/gtk-3.0.ini.tpl \
+    > $HOME/.config/gtk-3.0/settings.ini || true
 envsubst < ~/.config/colors/templates/gtkrc-2.0.tpl \
-    > ~/.gtkrc-2.0
+    > $HOME/.gtkrc-2.0 || true
 
-gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME"
-gsettings set org.gnome.desktop.interface icon-theme "$ICON_THEME"
-gsettings set org.gnome.desktop.interface cursor-theme "$CURSOR_THEME"
-
-pkill thunar 2>/dev/null
+gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME" || true
+gsettings set org.gnome.desktop.interface icon-theme "$ICON_THEME" || true
+gsettings set org.gnome.desktop.interface cursor-theme "$CURSOR_THEME" || true
 
 # ─── btop ─────────────────────────────────────────────────────────────────────
 
-export BTOP_THEME=$(strip $BTOP_THEME)
 envsubst < $COLORS_DIR/templates/btop.conf.tpl \
     > $HOME/.config/btop/btop.conf
 
