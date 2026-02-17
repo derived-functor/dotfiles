@@ -1,29 +1,36 @@
+-- ~/.config/nvim/lua/plugins.lua
+
 return {
     {
         'nvim-telescope/telescope.nvim',
+        -- tag = '0.1.8', -- вы можете использовать tag или branch
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             require('telescope').setup {
                 defaults = {
-					hidden=true,
-					file_ignore_patterns = {
-						"__init__%.py$",
-					}
+                    hidden = false,
+                    file_ignore_patterns = {
+                        "__init__%.py$",
+                        ".git",
+                        ".mypy-cache",
+                        "..*cache"
+                    }
                 },
-				pickers = {
-					find_files = {
-						hidden = true,
-						-- no_ignore = true,
-						-- no_ignore_parent = true
-					},
-					live_grep = {
-						additional_args = function()
-							return {"--hidden"}
-						end
-					},
-				}
+                pickers = {
+                    find_files = {
+                        hidden = true,
+                        no_ignore = true,
+                        -- no_ignore_parent = true
+                    },
+                    live_grep = {
+                        additional_args = function()
+                            return {"--hidden"}
+                        end
+                    },
+                }
             }
 
+            -- привязка клавиш для вызова telescope
             local function map(mode, lhs, rhs, opts)
                 opts = opts or {}
                 vim.keymap.set(mode, lhs, rhs, opts)

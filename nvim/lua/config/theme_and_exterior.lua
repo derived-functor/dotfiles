@@ -8,6 +8,19 @@ local function get_system_theme()
     return name or "gruvbox"
 end
 
+local float_bg = "#434c5e"
+local float_fg = "#d8dee9"
+
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = float_bg, fg = float_fg})
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = float_bg, fg = float_fg})
+
+vim.diagnostic.config({
+    float = {
+        border = "single"
+    }
+})
+vim.opt.winborder = "single"
+
 local system_to_nvim = {
     gruvbox = "gruvbox",
     ["catppuccin-mocha"] = "catppuccin-mocha",
@@ -20,24 +33,25 @@ local nvim_colorscheme = system_to_nvim[system_theme] or "gruvbox"
 vim.o.background = "dark"
 pcall(vim.cmd, "colorscheme " .. nvim_colorscheme)
 
--- VS Code theme
-local c = require('vscode.colors').get_colors()
-require('vscode').setup({
-    italic_comments = true,
-    italic_inlayhints = true,
-    underline_links = true,
-    disable_nvimtree_bg = true,
-    terminal_colors = true,
-    color_overrides = {
-        vscLineNumber = '#FFFFFF',
-    },
-    group_overrides = {
-        -- this supports the same val table as vim.api.nvim_set_hl
-        -- use colors from this colorscheme by requiring vscode.colors!
-        Cursor = { fg=c.vscDarkBlue, bg=c.vscLightGreen, bold=true },
+require("telescope").setup({
+    defaults = {
+        border = true,
+        borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
     }
 })
--- require('vscode').load()
+
+require("cmp").setup({
+      window = {
+      completion = {
+          winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
+          border = "single",
+      },
+      documentation = {
+          winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+          border = "single",
+      }
+  }
+})
 
 -- Other
 

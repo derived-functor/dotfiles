@@ -1,3 +1,8 @@
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  { border = "single" }
+)
+
 vim.opt.signcolumn = 'yes'
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -6,8 +11,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function(event)
     local opts = {buffer = event.buf}
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if not client then return end
 
     vim.lsp.inlay_hint.enable(true, {bufnr = event.buf})
+
+    client.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+        vim.lsp.handlers.signature_help,
+        { border = 'single' }
+    )  
 
     vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
@@ -38,6 +50,7 @@ vim.lsp.enable("lua-ls")
 
 vim.lsp.config("qmlls", {})
 vim.lsp.enable("qmlls")
+
 
 vim.lsp.config("pyright", {
     capabilities = capabilities,
