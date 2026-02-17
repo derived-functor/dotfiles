@@ -45,3 +45,9 @@ export GTK_THEME="Nordic"
 export ICON_THEME="Nordzy"
 export CURSOR_THEME="Nordzy-cursors"
 export GTK_FONT="Adwaita Sans Light 11"
+
+# btop
+export BTOP_THEME="nord"
+
+# cmatrix
+export CMATRIX_COLOR="blue"

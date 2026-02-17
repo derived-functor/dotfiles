@@ -12,6 +12,7 @@ alias icat="kitten icat"
 alias last_n="ls -lAth | head -n"
 alias ll="lsd -lA"
 alias ls="lsd"
+alias cmatrix="cmatrix -u 3 -C $CMATRIX_COLOR"
 
 alias "init_std"="uvx copier copy ~/code/templates/standard_template"
 alias "init_lib"="uvx copier copy ~/code/templates/lib_template"

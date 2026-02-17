@@ -120,6 +120,12 @@ gsettings set org.gnome.desktop.interface cursor-theme "$CURSOR_THEME"
 
 pkill thunar 2>/dev/null
 
+# ─── btop ─────────────────────────────────────────────────────────────────────
+
+export BTOP_THEME=$(strip $BTOP_THEME)
+envsubst < $COLORS_DIR/templates/btop.conf.tpl \
+    > $HOME/.config/btop/btop.conf
+
 # ─── Firefox (userChrome / userContent) ──────────────────────────────────────
 
 FF_DIR="$HOME/.config/.mozilla/firefox"

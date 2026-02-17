@@ -33,3 +33,9 @@ export GTK_THEME="gruvbox-dark-gtk"
 export ICON_THEME="Gruvbox-Plus-Dark"
 export CURSOR_THEME="Simp1e-Gruvbox-Dark"
 export GTK_FONT="Adwaita Sans Light 11"
+
+# btop
+export BTOP_THEME="gruvbox_dark"
+
+# cmatrix
+export CMATRIX_COLOR="red"

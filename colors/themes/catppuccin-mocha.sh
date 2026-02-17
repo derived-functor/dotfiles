@@ -46,3 +46,9 @@ export GTK_THEME="catppuccin-mocha-blue-standard+default"
 export ICON_THEME="Papirus-Dark"
 export CURSOR_THEME="Catppuccin Mocha Mauve"
 export GTK_FONT="Adwaita Sans Light 11"
+
+# btop
+export BTOP_THEME="catppuccin_mocha"
+
+# cmatrix
+export CMATRIX_COLOR="magenta"
