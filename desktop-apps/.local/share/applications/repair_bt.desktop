@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Repair Headphones
+Comment=Repair BT Headphones
+Exec=/home/mreblan/.local/bin/repair_bt.sh $headphones_mac
+Icon=bluetooth
+Terminal=false
+Categories=Settings;Utility;

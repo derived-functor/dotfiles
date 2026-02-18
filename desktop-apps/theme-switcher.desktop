@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Theme
-Comment=Switch system theme
-Exec=~/.config/colors/menu_theme.sh
-Icon=preferences-desktop-theme
-Terminal=false
-Categories=Settings;Utility;
