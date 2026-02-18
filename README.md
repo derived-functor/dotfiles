@@ -101,7 +101,7 @@ For Catppuccin icons (Papirus) install from official repos:
 sudo pacman -S papirus-icon-theme
 ```
 
-To install only one theme, use the packages from the table above. Adjust `~/scripts/togglefloat.sh` and `~/scripts/random_wallpaper.fish` (or your own wrapper script) if you use those keybinds/autostart.
+To install only one theme, use the packages from the table above. Adjust `~/.local/bin/togglefloat.sh` and `~/.local/bin/random_wallpaper.fish` (or your own wrapper script) if you use those keybinds/autostart.
 
 ## AI Alert
 
