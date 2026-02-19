@@ -103,6 +103,14 @@ sudo pacman -S papirus-icon-theme
 
 To install only one theme, use the packages from the table above. Adjust `~/.local/bin/togglefloat.sh` and `~/.local/bin/random_wallpaper.fish` (or your own wrapper script) if you use those keybinds/autostart.
 
+## How to apply
+
+You can just use `stow` to make symlinks:
+
+```bash
+stow btop colors desktop-apps fastfetch fish gtk-3.0 hypr kitty nvim quickshell scripts swaync waybar wlogout wofi
+```
+
 ## AI Alert
 
 Some parts were made by vibe coding, so be careful and understand what you're doing

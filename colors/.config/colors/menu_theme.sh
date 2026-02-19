@@ -7,7 +7,7 @@ COLORS_DIR="$HOME/.config/colors"
 mapfile -t THEMES < <(printf '%s\n' "$COLORS_DIR"/themes/*.sh | xargs -n1 basename | sed 's/\.sh$//' | sort)
 
 if ((${#THEMES[@]} == 0)); then
-    notify-send "Theme switcher" "Не найдены темы в $COLORS_DIR/themes"
+    notify-send "Theme switcher" "Themes not found in $COLORS_DIR/themes"
     exit 1
 fi
 

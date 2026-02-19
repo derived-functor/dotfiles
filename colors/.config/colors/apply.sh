@@ -98,40 +98,8 @@ fi
 # ─── Wofi ─────────────────────────────────────────────────────────────────────
 
 if [[ -d "$HOME/.config/wofi" ]]; then
-    envsubst < "$COLORS_DIR/templates/wofi.css.tpl" \
-        > "$HOME/.config/wofi/style.css"
-fi
-
-# ─── Walker ────────────────────────────────────────────────────────────────────
-
-if [[ -d "$HOME/.config/walker" ]]; then
-    WALKER_CONFIG="$HOME/.config/walker/config.toml"
-    WALKER_THEMES_DIR="$HOME/.config/walker/themes/$THEME"
-
-    mkdir -p "$WALKER_THEMES_DIR"
-
-    if [[ -f "$COLORS_DIR/templates/walker-style.css.tpl" ]]; then
-        envsubst < "$COLORS_DIR/templates/walker-style.css.tpl" \
-            > "$WALKER_THEMES_DIR/style.css"
-    fi
-
-    # Copy default layout files if they don't exist yet
-    if [[ -d "/etc/xdg/walker/themes/default" ]]; then
-        for f in layout.xml item.xml item_archlinuxpkgs.xml item_calc.xml \
-                 item_clipboard.xml item_dmenu.xml item_dnfpackages.xml \
-                 item_files.xml item_providerlist.xml item_symbols.xml \
-                 item_symbols_grid.xml item_todo.xml item_unicode.xml \
-                 keybind.xml preview.xml; do
-            if [[ ! -f "$WALKER_THEMES_DIR/$f" && -f "/etc/xdg/walker/themes/default/$f" ]]; then
-                cp "/etc/xdg/walker/themes/default/$f" "$WALKER_THEMES_DIR/$f"
-            fi
-        done
-    fi
-
-    # Keep walker theme in sync with selected colors theme
-    if [[ -f "$WALKER_CONFIG" ]]; then
-        sed -i "s/^theme = \".*\"/theme = \"$THEME\"/" "$WALKER_CONFIG" || true
-    fi
+    envsubst < "$COLORS_DIR/templates/colors.css.tpl" \
+        > "$HOME/.config/wofi/colors.css"
 fi
 
 # ─── GTK ──────────────────────────────────────────────────────────────────────
