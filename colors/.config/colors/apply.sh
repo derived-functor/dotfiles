@@ -98,8 +98,8 @@ fi
 # ─── Wofi ─────────────────────────────────────────────────────────────────────
 
 if [[ -d "$HOME/.config/wofi" ]]; then
-    envsubst < "$COLORS_DIR/templates/colors.css.tpl" \
-        > "$HOME/.config/wofi/colors.css"
+    envsubst < "$COLORS_DIR/templates/wofi-style.css.tpl" \
+        > "$HOME/.config/wofi/style.css"
 fi
 
 # ─── GTK ──────────────────────────────────────────────────────────────────────

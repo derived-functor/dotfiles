@@ -42,7 +42,8 @@ calc_loop() {
         local input
         input=$(echo "$menu" | wofi \
             --show dmenu \
-            --prompt "$prompt"
+            --prompt "$prompt" \
+            --style ~/.config/wofi/style.css
         )
 
         [[ -z "$input" ]]   && break

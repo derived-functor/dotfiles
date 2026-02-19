@@ -1,20 +1,20 @@
 /* For autogen, don't change by hand */
-@define-color base    #2e3440;
-@define-color text    #e5e9f0;
-@define-color surface0 #434c5e;
-@define-color surface1 #4c566a;
-@define-color surface2 #4c566a;
+@define-color base    ${COLOR_BG};
+@define-color text    ${COLOR_FG};
+@define-color surface0 ${COLOR_SURFACE};
+@define-color surface1 ${COLOR_OVERLAY};
+@define-color surface2 ${COLOR_MUTED};
 
-@define-color red     #bf616a;
-@define-color orange  #d08770;
-@define-color yellow  #ebcb8b;
-@define-color green   #a3be8c;
-@define-color blue    #81a1c1;
-@define-color purple  #b48ead;
-@define-color aqua    #8fbcbb;
+@define-color red     ${COLOR_RED_BRIGHT};
+@define-color orange  ${COLOR_ORANGE_BRIGHT};
+@define-color yellow  ${COLOR_YELLOW_BRIGHT};
+@define-color green   ${COLOR_GREEN_BRIGHT};
+@define-color blue    ${COLOR_BLUE_BRIGHT};
+@define-color purple  ${COLOR_PURPLE_BRIGHT};
+@define-color aqua    ${COLOR_AQUA_BRIGHT};
 
-@define-color accent  #81a1c1;
-@define-color border  #8fbcbb;
+@define-color accent  ${COLOR_ACCENT};
+@define-color border  ${COLOR_BORDER};
 
 @define-color critical @red;
 @define-color warning  @orange;
