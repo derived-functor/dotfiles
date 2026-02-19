@@ -8,6 +8,10 @@ import "widgets"
 PanelWindow {
     id: root
 
+    WlrLayershell.layer: WlrLayer.Overlay
+    WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
+    exclusionMode: ExclusionMode.Ignore
+
     anchors {
         right: true
         top: true

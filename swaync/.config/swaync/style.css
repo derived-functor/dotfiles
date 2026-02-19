@@ -25,7 +25,7 @@ slider {
 .floating-notifications.background .notification-row .notification-background {
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px @surface0;
   border: 1px solid @accent;
-  border-radius: 5px;
+  border-radius: 1px;
   margin: 18px;
   background-color: @base;
   color: @text;
@@ -34,7 +34,7 @@ slider {
 
 .floating-notifications.background .notification-row .notification-background .notification {
   padding: 7px;
-  border-radius: 12.6px;
+  border-radius: 1px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification.critical {
@@ -63,7 +63,7 @@ slider {
 }
 
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
-  border-radius: 7px;
+  border-radius: 1px;
   color: @text;
   background-color: @surface0;
   box-shadow: inset 0 0 0 1px @surface1;
@@ -85,7 +85,7 @@ slider {
 .floating-notifications.background .notification-row .notification-background .close-button {
   margin: 7px;
   padding: 2px;
-  border-radius: 6.3px;
+  border-radius: 1px;
   color: @base;
   background-color: @red;
 }
@@ -103,7 +103,7 @@ slider {
 .control-center {
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px @surface0 !important;
   border: 2px solid @accent !important;
-  border-radius: 5px;
+  border-radius: 1px;
   margin: 18px;
   background-color: @base !important;
   color: @text !important;
@@ -116,7 +116,7 @@ slider {
 }
 
 .control-center .widget-title button {
-  border-radius: 7px;
+  border-radius: 1px;
   color: @text !important;
   background-color: @surface0 !important;
   box-shadow: inset 0 0 0 1px @surface1 !important;
@@ -136,7 +136,7 @@ slider {
 }
 
 .control-center .notification-row .notification-background {
-  border-radius: 7px;
+  border-radius: 1px;
   color: @text !important;
   background-color: @surface0 !important;
   box-shadow: inset 0 0 0 1px @surface1 !important;
@@ -145,7 +145,7 @@ slider {
 
 .control-center .notification-row .notification-background .notification {
   padding: 7px;
-  border-radius: 7px;
+  border-radius: 1px;
 }
 
 .control-center .notification-row .notification-background .notification.critical {
@@ -173,7 +173,7 @@ slider {
 }
 
 .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
-  border-radius: 7px;
+  border-radius: 1px;
   color: @text !important;
   background-color: @base !important;
   box-shadow: inset 0 0 0 1px @surface1 !important;
@@ -195,14 +195,14 @@ slider {
 .control-center .notification-row .notification-background .close-button {
   margin: 7px;
   padding: 2px;
-  border-radius: 6.3px;
+  border-radius: 1px;
   color: @base !important;
   background-color: @orange !important;
 }
 
 .close-button {
   border: 1px solid @purple;
-  border-radius: 6.3px;
+  border-radius: 1px;
 }
 
 .control-center .notification-row .notification-background .close-button:hover {
@@ -238,7 +238,7 @@ slider {
 
 .control-center-dnd {
   margin-top: 5px;
-  border-radius: 8px;
+  border-radius: 1px;
   background: @surface0 !important;
   border: 1px solid @surface1 !important;
   box-shadow: none;
@@ -250,7 +250,7 @@ slider {
 
 .control-center-dnd slider {
   background: @surface1 !important;
-  border-radius: 8px;
+  border-radius: 1px;
 }
 
 .widget-dnd {
@@ -260,7 +260,7 @@ slider {
 
 .widget-dnd > switch {
   font-size: initial;
-  border-radius: 8px;
+  border-radius: 1px;
   background: @surface0 !important;
   border: 1px solid @surface1 !important;
   box-shadow: none;
@@ -272,7 +272,7 @@ slider {
 
 .widget-dnd > switch slider {
   background: @surface1 !important;
-  border-radius: 8px;
+  border-radius: 1px;
   border: 1px solid @surface2 !important;
 }
 
