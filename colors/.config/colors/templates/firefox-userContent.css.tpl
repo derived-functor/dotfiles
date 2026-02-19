@@ -1,8 +1,3 @@
-/*
- * userContent.css — можно слегка подтонить фон страниц под системную тему.
- * Делается мягко, чтобы не ломать сайты.
- */
-
 @-moz-document url-prefix(http), url-prefix(https) {
   :root {
     color-scheme: dark;

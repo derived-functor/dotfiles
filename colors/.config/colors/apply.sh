@@ -23,17 +23,27 @@ set -a; source "$THEME_FILE"; set +a
 
 # ─── Fish ─────────────────────────────────────────────────────────────────────
 
+echo "[1] fish"
+
 envsubst < "$COLORS_DIR/templates/fish.tpl" \
     > "$HOME/.config/fish/conf.d/colors.fish"
 
+echo "[1] fish END"
+
 # ─── Kitty ────────────────────────────────────────────────────────────────────
+
+echo "[2] kitty"
 
 envsubst < "$COLORS_DIR/templates/kitty.tpl" \
     > "$HOME/.config/kitty/colors.conf"
 
 pkill -USR1 kitty 2>/dev/null || true
 
+echo "[2] kitty END"
+
 # ─── Waybar ───────────────────────────────────────────────────────────────────
+
+echo "[3] waybar"
 
 envsubst < "$COLORS_DIR/templates/colors.css.tpl" \
     > "$HOME/.config/waybar/colors.css"
@@ -41,7 +51,11 @@ envsubst < "$COLORS_DIR/templates/colors.css.tpl" \
 pkill waybar 2>/dev/null; sleep 0.3
 waybar & disown
 
+echo "[3] waybar END"
+
 # ─── SwayNC ──────────────────────────────────────────────────────────────────
+
+echo "[4] swaync"
 
 if [[ -d "$HOME/.config/swaync" ]]; then
     envsubst < "$COLORS_DIR/templates/colors.css.tpl" \
@@ -51,12 +65,20 @@ if [[ -d "$HOME/.config/swaync" ]]; then
     swaync & disown
 fi
 
+echo "[4] swaync END"
+
 # ─── WLogout ─────────────────────────────────────────────────────────────────
+
+echo "[5] wlogout"
 
 envsubst < "$COLORS_DIR/templates/colors.css.tpl" \
     > "$HOME/.config/wlogout/colors.css"
 
+echo "[5] wlogout END"
+
 # ─── Hyprland ─────────────────────────────────────────────────────────────────
+
+echo "[6] hyprland"
 
 strip() { echo "${1//#/}"; }
 
@@ -83,26 +105,42 @@ envsubst < "$COLORS_DIR/templates/hyprland_envs.tpl" \
     > "$HOME/.config/hypr/config/env_vars.conf" && hyprctl reload 2>/dev/null || true
 hyprctl setcursor $CURSOR_THEME 35 2>/dev/null || true
 
+echo "[6] hyprland END"
+
 # ─── Quickshell ───────────────────────────────────────────────────────────────
+
+echo "[7] quickshell"
+
 envsubst "$SUBST_VARS" < "$COLORS_DIR/templates/quickshell.qml.tpl" \
     > "$HOME/.config/quickshell/options/Colors.qml" && \
-    qs ipc call Quickshell reload true 2>/dev/null || true
+
+echo "[7] quickshell END"
 
 # ─── Fastfetch ────────────────────────────────────────────────────────────────
+
+echo "[8] fastfetch"
 
 if [[ -d "$HOME/.config/fastfetch" ]]; then
     envsubst < "$COLORS_DIR/templates/fastfetch.jsonc.tpl" \
         > "$HOME/.config/fastfetch/config.jsonc"
 fi
 
+echo "[8] fastfetch END"
+
 # ─── Wofi ─────────────────────────────────────────────────────────────────────
 
+echo "[9] wofi"
+
 if [[ -d "$HOME/.config/wofi" ]]; then
-    envsubst < "$COLORS_DIR/templates/wofi-style.css.tpl" \
+    envsubst < "$COLORS_DIR/templates/wofi.css.tpl" \
         > "$HOME/.config/wofi/style.css"
 fi
 
+echo "[9] wofi END"
+
 # ─── GTK ──────────────────────────────────────────────────────────────────────
+
+echo "[10] GTK"
 
 export GTK_THEME=$(strip $GTK_THEME)
 export ICON_THEME=$(strip $ICON_THEME)
@@ -111,19 +149,29 @@ export GTK_FONT=$(strip $GTK_FONT)
 
 envsubst < $HOME/.config/colors/templates/gtk-3.0.ini.tpl \
     > $HOME/.config/gtk-3.0/settings.ini || true
-envsubst < ~/.config/colors/templates/gtkrc-2.0.tpl \
+envsubst < $HOME/.config/colors/templates/gtkrc-2.0.tpl \
     > $HOME/.gtkrc-2.0 || true
 
 gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME" || true
 gsettings set org.gnome.desktop.interface icon-theme "$ICON_THEME" || true
 gsettings set org.gnome.desktop.interface cursor-theme "$CURSOR_THEME" || true
 
+echo "[10] GTK END"
+
 # ─── btop ─────────────────────────────────────────────────────────────────────
 
+echo "[11] btop"
+
+echo "Applying btop"
+echo "Theme: $BTOP_THEME"
 envsubst < $COLORS_DIR/templates/btop.conf.tpl \
     > $HOME/.config/btop/btop.conf
 
+echo "[11] btop END"
+
 # ─── Firefox (userChrome / userContent) ──────────────────────────────────────
+
+echo "[12] firefox"
 
 FF_DIR="$HOME/.config/.mozilla/firefox"
 if [[ -d "$FF_DIR" ]]; then
@@ -136,3 +184,5 @@ if [[ -d "$FF_DIR" ]]; then
             > "$prof/chrome/userContent.css"
     done
 fi
+
+echo "[12] firefox END"

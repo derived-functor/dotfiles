@@ -1,5 +1,4 @@
 if status is-interactive
-    source $HOME/.config/fish/additional_vars.fish
     fastfetch
 end
 
@@ -27,12 +26,9 @@ set -gx OLLAMA_KEEP_ALIVE 5m
 set -gx HYPRSHOT_DIR $HOME/screenshots
 set -gx PATH $HOME/.local/bin $PATH
 set -gx DOCKER_HOST unix:///home/$USER/.docker/desktop/docker.sock
-set -gx headphones_mac 48:05:E2:F0:DD:58 
 set -gx GIT_EDITOR vim
 set -gx QS_NO_RELOAD_POPUP 1
 
 # pyenv config for fish
 set -x PYENV_ROOT $HOME/.pyenv
 set -x PATH $PYENV_ROOT/bin $PATH
-
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/mreblan/.ghcup/bin $PATH # ghcup-env

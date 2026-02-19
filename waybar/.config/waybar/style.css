@@ -14,8 +14,8 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-    background-color: alpha(@base, 0.85);
-    border: 0.5px solid @border;
+    background-color: rgba(40, 40, 40, 0.85);
+    border: 1px solid @surface1;
     border-radius: 0;
     margin: 0px 5px;
     padding: 0px 8px;

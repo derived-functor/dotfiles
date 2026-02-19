@@ -47,7 +47,6 @@ ColumnLayout {
         trackList.append(entry)
     }
 
-    // Получаем метаданные
     Process {
         id: metaProc
         command: [

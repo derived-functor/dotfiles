@@ -2,7 +2,6 @@
 vim.cmd("source ~/.config/nvim/google.vim")
 
 -- TreeSitter
-require("nvim-treesitter").install({"python", "markdown", "lua", "xml"})
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "python" },
     callback = function() vim.treesitter.start() end,
@@ -45,7 +44,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     end,
 })
 
-require("mypy").setup()
+-- require("mypy").setup()
 
 -- Debug
 local dap = require('dap')

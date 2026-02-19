@@ -27,7 +27,7 @@ PanelWindow {
     color: colors.bg
 
     Behavior on width {
-        NumberAnimation { duration: 125; easing.type: Easing.InOutCubic }
+        NumberAnimation { duration: 100; easing.type: Easing.InOutCubic }
     }
 
     HoverHandler {
@@ -46,10 +46,6 @@ PanelWindow {
         Player {}
 
         Item { Layout.fillHeight: true }
-
-        Weather {
-            Layout.fillWidth: true
-        }
 
     }
 }

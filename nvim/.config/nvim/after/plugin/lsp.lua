@@ -35,12 +35,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-vim.lsp.config("bashls", {
-  cmd = { 'bash-language-server', 'start' },
-  filetypes = { 'bash', 'sh' }
-})
-vim.lsp.enable("bashls")
-
 vim.lsp.config("lua-ls", {
     cmd = { 'lua-language-server' },
     filetypes = { 'lua' },

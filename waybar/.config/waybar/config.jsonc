@@ -19,7 +19,6 @@
         "battery",
         "cpu",
         "temperature",
-        "custom/gpu",
         "memory",
         "network",
         "custom/exit"
@@ -58,10 +57,6 @@
         "format": "  {usage}% | ",
         "tooltip": false
     },
-    "custom/gpu": {
-        "exec": "~/.config/waybar/scripts/gpu_mem.sh",
-        "interval": 5
-    },
     "memory": {
         "format": "  {}% | "
     },
@@ -73,7 +68,7 @@
     },
     "network": {
         "format-wifi": "  {signalStrength}% | ",
-        "format-ethernet": "{cidr} 󰈀 | ",
+        "format-ethernet": " 󰈀 {cidr} | ",
         "format-linked": "{ifname} (No IP) 󰖪 | ",
         "format-disconnected": " ⚠ | ",
         "format-alt": "{ifname}: {ipaddr}/{cidr} | "
@@ -94,7 +89,22 @@
         },
         "on-click": "pavucontrol"
     },
-
+    "battery": {
+        "bat": "BAT0",
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "events": {
+            "on-discharging-warning": "notify-send -u normal 'Low Battery'",
+            "on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
+            "on-charging-100": "notify-send -u normal 'Battery Full!'"
+        },
+        "format": "{icon}  {capacity}% | ",
+        "format-icons": ["", "", "", "", ""],
+        "max-length": 25
+    },
     "custom/theme": {
         "format": "",
         "on-click": "~/.config/colors/menu_theme.sh",
