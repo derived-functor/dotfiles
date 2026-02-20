@@ -27,7 +27,7 @@ PanelWindow {
         id: colors
     }
 
-    implicitWidth: hoverHandler.hovered ? 400 : 10
+    implicitWidth: hoverHandler.hovered ? 400 : 4
     color: colors.bg
 
     Behavior on width {
