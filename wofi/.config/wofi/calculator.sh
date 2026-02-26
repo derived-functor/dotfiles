@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/run/current-system/sw/bin/bash
+
 
 PYTHON_EVAL='
 import math, cmath, operator, sys

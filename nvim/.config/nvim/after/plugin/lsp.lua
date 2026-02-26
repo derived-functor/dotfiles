@@ -35,6 +35,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+vim.lsp.config("nil", {
+    cmd = { "nil" },
+    filetypes = { "nix" },
+})
+vim.lsp.enable("nil")
+
 vim.lsp.config("lua-ls", {
     cmd = { 'lua-language-server' },
     filetypes = { 'lua' },

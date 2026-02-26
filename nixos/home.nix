@@ -1,0 +1,158 @@
+{ config, pkgs, unstable, ... }:
+
+let
+dotfiles = "${config.home.homeDirectory}/dotfiles";
+link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
+in
+{
+    home.username = "mreblan";
+    home.homeDirectory = "/home/mreblan";
+    home.stateVersion = "25.11";
+
+    home.packages = with pkgs; [
+        tree
+        vim
+        wget
+        curl
+        git
+
+        nil
+        nixpkgs-fmt
+        nodejs
+
+        lua5_1
+        python314
+        luarocks
+        imagemagick
+        gettext
+        wl-clipboard-rs
+
+        ripgrep
+        fzf
+        jq
+
+        btop
+        unzip
+        zip
+        lm_sensors
+
+        fish
+        oh-my-fish
+
+        gh
+
+        hyprlock
+        hypridle
+        hyprshot
+        hyprsunset
+
+        waybar
+        wofi
+        wlogout
+
+        swaynotificationcenter
+        libnotify
+        quickshell
+        fastfetch
+
+        neovim
+        bat
+        lsd
+
+        pavucontrol
+        playerctl
+        wireplumber
+
+        brightnessctl
+
+        telegram-desktop
+        obsidian
+
+        nordic
+        nordzy-icon-theme
+        nordzy-cursor-theme
+
+        gruvbox-dark-gtk
+        gruvbox-plus-icons
+        simp1e-cursors
+        ] ++ (with unstable; [
+                hyprpaper
+        ]);
+
+    programs.git = {
+        enable = true;
+        settings = {
+            user = {
+                name = "Boyarov Danil";
+                email = "boy4rov.da@gmail.com";
+            };
+        };
+        lfs.enable = true;
+    };
+
+    home.sessionVariables = {
+        GIT_EDITOR = "vim";
+
+        HYPRSHOT_DIR = "$HOME/screenshots";
+        QS_NO_RELOAD_POPUP = "1";
+        NIXOS_OZONE_WL = "1";
+    };
+
+    home.sessionPath = [
+        "$HOME/.local/bin"
+    ];
+
+    xdg.configFile = {
+        "fish/additional_vars.fish".text = ''
+            set -gx LATITUDE "55.75"
+            set -gx LONGITUDE "37.62"
+            '';
+    };
+
+    home.file = {
+        ".config/hypr".source = link "hypr/.config/hypr";
+        ".config/nvim".source = link "nvim/.config/nvim";
+        ".config/btop".source = link "btop/.config/btop";
+        ".config/colors".source = link "colors/.config/colors";
+        ".config/fastfetch".source = link "fastfetch/.config/fastfetch";
+        ".config/gtk-3.0".source = link "gtk-3.0/.config/gtk-3.0";
+        ".config/kitty".source = link "kitty/.config/kitty";
+        ".config/quickshell".source = link "quickshell/.config/quickshell";
+        ".config/swaync".source = link "swaync/.config/swaync";
+        ".config/waybar".source = link "waybar/.config/waybar";
+        ".config/wlogout".source = link "wlogout/.config/wlogout";
+        ".config/wofi".source = link "wofi/.config/wofi";
+
+        ".local/bin".source = link "scripts/.local/bin";
+        "wallpapers".source = link "wallpapers/wallpapers";
+
+        ".local/share/applications" = {
+            source = link "desktop-apps/.local/share/applications";
+            recursive = true;
+        };
+    };
+
+    programs.fish = {
+        enable = true;
+
+        shellAliases = {
+            nv = "nvim";
+            py = "python";
+            cat = "bat";
+            c = "clearf";
+            icat = "kitten icat";
+            last_n = "ls -lAth | head -n";
+            ll = "lsd -lA";
+            ls = "lsd";
+            cmatrix = "cmatrix -u 3 -C $CMATRIX_COLOR";
+            rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/nixos#thickpad";
+        };
+        interactiveShellInit = ''
+            fastfetch
+            source $HOME/.config/fish/additional_vars.fish
+            '';
+        shellInit = ''
+            set -g fish_greeting ""
+            '';
+    };
+}

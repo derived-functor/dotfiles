@@ -1,14 +1,36 @@
+/* For autogen, don't change by hand */
+@define-color base    #2e3440;
+@define-color text    #e5e9f0;
+@define-color surface0 #434c5e;
+@define-color surface1 #4c566a;
+@define-color surface2 #4c566a;
+
+@define-color red     #bf616a;
+@define-color orange  #d08770;
+@define-color yellow  #ebcb8b;
+@define-color green   #a3be8c;
+@define-color blue    #81a1c1;
+@define-color purple  #b48ead;
+@define-color aqua    #8fbcbb;
+
+@define-color accent  #81a1c1;
+@define-color border  #8fbcbb;
+
+@define-color critical @red;
+@define-color warning  @orange;
+
 *:selected {
-    background: transparent;
+    background: alpha(@accent, 0.9);
 }
 
 window {
-  background-color: #2e3440;
+  background-color: @base;
+  border: 1px solid @border;
 }
 
 * {
   font-family: "Jetbrains Mono";
-  color: #e5e9f0;
+  color: @text;
 }
 
 #scroll {
@@ -16,11 +38,11 @@ window {
 }
 
 #input {
-  background-color: #434c5e;
-  color: #e5e9f0;
+  background-color: @surface0;
+  color: @text;
   outline: none;
   box-shadow: none;
-  border: 0.5px solid #8fbcbb;
+  border: 1px solid @border;
   border-radius: 0rem;
   font-size: 1rem;
   padding: 0.5rem;
@@ -37,14 +59,18 @@ window {
 
 #entry {
   border-radius: 0rem;
+  border: 1px solid transparent;
+}
+
+#entry:hover {
+  border: 1px solid @border;
 }
 
 #entry:selected {
-  background-color: #81a1c1;
+  background-color: @accent;
   outline: none;
 }
 
 #text:selected {
-  color: #2e3440;
+  color: @base;
 }
-

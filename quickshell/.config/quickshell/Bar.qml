@@ -8,6 +8,10 @@ import "widgets"
 PanelWindow {
     id: root
 
+    WlrLayershell.layer: WlrLayer.Overlay
+    WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
+    exclusionMode: ExclusionMode.Ignore
+
     anchors {
         right: true
         top: true
@@ -23,7 +27,7 @@ PanelWindow {
         id: colors
     }
 
-    implicitWidth: hoverHandler.hovered ? 400 : 10
+    implicitWidth: hoverHandler.hovered ? 400 : 4
     color: colors.bg
 
     Behavior on width {
