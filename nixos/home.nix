@@ -111,6 +111,7 @@ in
         "fish/additional_vars.fish".text = ''
             set -gx LATITUDE "55.75"
             set -gx LONGITUDE "37.62"
+            set -gx headphones_mac "48:05:E2:F0:DD:58"
             '';
     };
 

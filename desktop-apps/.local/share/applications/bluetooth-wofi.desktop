@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Bluetooth Wofi
+Comment=Connect to paired devices
+Exec=/home/mreblan/.config/wofi/wofi-bluetooth
+Icon=bluetooth
+Terminal=false
+Categories=Settings;Utility;
