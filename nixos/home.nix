@@ -20,6 +20,8 @@ in
         nixpkgs-fmt
         nodejs
 
+        cmatrix
+
         lua5_1
         python314
         luarocks
@@ -79,6 +81,8 @@ in
                 hyprpaper
         ]);
 
+    programs.zen-browser.enable = true;
+
     programs.git = {
         enable = true;
         settings = {
@@ -86,6 +90,7 @@ in
                 name = "Boyarov Danil";
                 email = "boy4rov.da@gmail.com";
             };
+            credential.helper = "store";
         };
         lfs.enable = true;
     };
