@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=NixOS Package Search
+Comment=Switch system theme
+Exec=/home/mreblan/.config/wofi/wofi-nixos-search
+Icon=system-search
+Terminal=false
+Categories=Settings;Utility;

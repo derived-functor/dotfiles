@@ -1,0 +1,34 @@
+#!/run/current-system/sw/bin/bash
+
+BROWSER=${BROWSER:-"zen-twilight"}
+STABLE=${NIX_CHANNEL:-"25.11"}
+UNSTABLE="unstable"
+
+option1="Stable ($STABLE)"
+option2="Unstable"
+
+choices="$option1\n$option2"
+
+BASE_URL="https://search.nixos.org/packages"
+
+channel=$(echo -e "$choices" | wofi --style $HOME/.config/wofi/style.css --dmenu --prompt "Select channel")
+package_name=$(wofi --style $HOME/.config/wofi/style.css --dmenu --prompt "Enter a package to search")
+
+case "$channel" in
+    "$option1")
+        echo "Stable is used"
+        channel=$STABLE
+        ;;
+    "$option2")
+        echo "Unstable is used"
+        channel=$UNSTABLE
+        ;;
+    *)
+        echo "Unknown channel. Defaulting to stable"
+        channel=$STABLE
+        ;;
+esac
+
+url="$BASE_URL?channel=$channel&q=$package_name"
+
+$BROWSER $url

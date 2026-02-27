@@ -29,6 +29,8 @@
         };
   };
 
+    gtk.enable = true;
+
     networking.hostName = "x13";
 
     networking.networkmanager.enable = true;
