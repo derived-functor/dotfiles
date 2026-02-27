@@ -26,6 +26,9 @@ ColumnLayout {
     }
 
     function updateTrack(data) {
+        if (data === "No players found") {
+            trackList.clear()
+        }
         var parts = data.split("|||")
         var entry = {
             playerName: parts[0].trim(),
