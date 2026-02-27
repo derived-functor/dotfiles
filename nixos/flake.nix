@@ -24,7 +24,7 @@
 			config.allowUnfree = true;
 		};
 		in {
-			nixosConfigurations.thickpad = nixpkgs.lib.nixosSystem {
+			nixosConfigurations.x13 = nixpkgs.lib.nixosSystem {
 				inherit system;
 				specialArgs = { inherit unstable; };
 				modules = [
@@ -37,7 +37,7 @@
 								users.mreblan = import ./home.nix;
 								backupFileExtension = "bak";
 								extraSpecialArgs = { inherit unstable; };
-                                sharedModules = [ zen-browser.homeModules.twilight ];
+                                sharedModules = [ zen-browser.homeModules.twilight-official ];
 							};
 						}
 						{ _module.args = { unstable = unstable; }; }

@@ -13,7 +13,7 @@ fi
 
 CURRENT="$(basename "$(readlink "$COLORS_DIR/current" 2>/dev/null)" .sh 2>/dev/null || true)"
 
-CHOICE=$(printf '%s\n' "${THEMES[@]}" | wofi --dmenu --prompt "Theme" --insensitive)
+CHOICE=$(printf '%s\n' "${THEMES[@]}" | wofi --dmenu --prompt "Theme" --insensitive --style $HOME/.config/wofi/style.css)
 
 if [[ -z "$CHOICE" ]]; then
     exit 0

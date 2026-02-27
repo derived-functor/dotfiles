@@ -11,75 +11,75 @@ in
 
     home.packages = with pkgs; [
         tree
-        vim
-        wget
-        curl
-        git
+            vim
+            wget
+            curl
+            git
 
-        nil
-        nixpkgs-fmt
-        nodejs
+            nil
+            nixpkgs-fmt
+            nodejs
 
-        cmatrix
+            cmatrix
 
-        lua5_1
-        python314
-        luarocks
-        imagemagick
-        gettext
-        wl-clipboard-rs
+            lua5_1
+            python314
+            luarocks
+            imagemagick
+            gettext
+            wl-clipboard-rs
 
-        ripgrep
-        fzf
-        jq
+            ripgrep
+            fzf
+            jq
 
-        btop
-        unzip
-        zip
-        lm_sensors
+            btop
+            unzip
+            zip
+            lm_sensors
 
-        fish
-        oh-my-fish
+            fish
+            oh-my-fish
 
-        gh
+            gh
 
-        hyprlock
-        hypridle
-        hyprshot
-        hyprsunset
+            hyprlock
+            hypridle
+            hyprshot
+            hyprsunset
 
-        waybar
-        wofi
-        wlogout
+            waybar
+            wofi
+            wlogout
 
-        swaynotificationcenter
-        libnotify
-        quickshell
-        fastfetch
+            swaynotificationcenter
+            libnotify
+            quickshell
+            fastfetch
 
-        neovim
-        bat
-        lsd
+            neovim
+            bat
+            lsd
 
-        pavucontrol
-        playerctl
-        wireplumber
+            pavucontrol
+            playerctl
+            wireplumber
 
-        brightnessctl
+            brightnessctl
 
-        telegram-desktop
-        obsidian
+            telegram-desktop
+            obsidian
 
-        nordic
-        nordzy-icon-theme
-        nordzy-cursor-theme
+            nordic
+            nordzy-icon-theme
+            nordzy-cursor-theme
 
-        gruvbox-dark-gtk
-        gruvbox-plus-icons
-        simp1e-cursors
-        ] ++ (with unstable; [
-                hyprpaper
-        ]);
+            gruvbox-dark-gtk
+            gruvbox-plus-icons
+            simp1e-cursors
+            ] ++ (with unstable; [
+                    hyprpaper
+            ]);
 
     programs.zen-browser.enable = true;
 
@@ -140,6 +140,18 @@ in
     programs.fish = {
         enable = true;
 
+        plugins = [
+        {
+            name = "agnoster";
+            src = pkgs.fetchFromGitHub {
+                owner = "oh-my-fish";
+                repo = "theme-bobthefish";
+                rev = "e3b4d4eafc23516e35f162686f08a42edf844e40";
+                sha256 = "cXOYvdn74H4rkMWSC7G6bT4wa9d3/3vRnKed2ixRnuA=";
+            };
+        }
+        ];
+
         shellAliases = {
             nv = "nvim";
             py = "python";
@@ -150,11 +162,13 @@ in
             ll = "lsd -lA";
             ls = "lsd";
             cmatrix = "cmatrix -u 3 -C $CMATRIX_COLOR";
-            rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/nixos#thickpad";
+            rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/nixos#x13";
         };
         interactiveShellInit = ''
+            set -g theme_display_nix_shell no
             fastfetch
             source $HOME/.config/fish/additional_vars.fish
+            source $HOME/.config/fish/conf.d/colors.fish
             '';
         shellInit = ''
             set -g fish_greeting ""

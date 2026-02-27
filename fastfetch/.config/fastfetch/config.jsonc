@@ -15,8 +15,8 @@
         "display": {
             "separator": " || ",
             "color": {
-                "title": "#81a1c1",
-                "keys": "#8fbcbb"
+                "title": "#d79921",
+                "keys": "#d65d0e"
             }
         },
         "modules": [
@@ -31,52 +31,58 @@
         {
             "type": "os",
             "key": "󰣇 OS ",
-            "keyColor": "#8fbcbb"
+            "keyColor": "#d65d0e"
         },
         {
             "type": "host",
             "key": "󰌢 HT ",
-            "keyColor": "#8fbcbb"
+            "keyColor": "#d65d0e"
         },
         {
             "type": "kernel",
             "key": " KR ",
-            "keyColor": "#8fbcbb"
+            "keyColor": "#d65d0e"
         },
         {
             "type": "shell",
             "key": " SH ",
-            "keyColor": "#8fbcbb"
+            "keyColor": "#d65d0e"
         },
         {
             "type": "wm",
             "key": " WM ",
-            "keyColor": "#8fbcbb"
+            "keyColor": "#d65d0e"
         },
         {
             "type": "terminal",
             "key": " TR ",
-            "keyColor": "#8fbcbb"
+            "keyColor": "#d65d0e"
         },
         {
             "type": "cpu",
             "key": " CP ",
-            "keyColor": "#8fbcbb"
+            "keyColor": "#689d6a"
         },
         {
             "type": "gpu",
             "key": "󰢮 GP ",
-            "keyColor": "#8fbcbb"
+            "keyColor": "#689d6a"
         },
         {
             "type": "memory",
             "key": " RAM",
-            "keyColor": "#8fbcbb"
+            "keyColor": "#689d6a"
         },
         {
             "type": "disk",
-            "key": "  / ",
+            "key": "  /     ",
             "folders": "/",
+            "format": "{size-used} / {size-total} ({size-percentage})"
+        },
+        {
+            "type": "disk",
+            "key": "  /home ",
+            "folders": "/home",
             "format": "{size-used} / {size-total} ({size-percentage})"
         },
         "break",

@@ -75,8 +75,14 @@
         },
         {
             "type": "disk",
-            "key": "  / ",
+            "key": "  /     ",
             "folders": "/",
+            "format": "{size-used} / {size-total} ({size-percentage})"
+        },
+        {
+            "type": "disk",
+            "key": "  /home ",
+            "folders": "/home",
             "format": "{size-used} / {size-total} ({size-percentage})"
         },
         "break",
