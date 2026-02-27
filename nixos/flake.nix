@@ -16,7 +16,7 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, zen-browser, ...}:
+	outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, zen-browser, disko, ...}:
 		let
 			system = "x86_64-linux";
 			unstable = import nixpkgs-unstable {
@@ -28,7 +28,9 @@
 				inherit system;
 				specialArgs = { inherit unstable; };
 				modules = [
-					./configuration.nix
+            ./configuration.nix
+            ./disko.nix
+            disko.nixosModules.disko
 						home-manager.nixosModules.home-manager
 						{
 							home-manager = {
