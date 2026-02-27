@@ -2,19 +2,19 @@ import QtQuick
 
 QtObject {
     property color text: "#e0e0e0"
-    property color bg: "#282828"
-    property color bg1: "#3c3836"
-    property color bg2: "#504945"
-    property color fg: "#ebdbb2"
+    property color bg: "#2e3440"
+    property color bg1: "#434c5e"
+    property color bg2: "#4c566a"
+    property color fg: "#e5e9f0"
 
-    property color red: "#fb4934"
-    property color orange: "#fe8019"
-    property color yellow: "#fabd2f"
-    property color green: "#b8bb26"
-    property color blue: "#83a598"
-    property color purple: "#d3869b"
-    property color aqua: "#8ec07c"
+    property color red: "#bf616a"
+    property color orange: "#d08770"
+    property color yellow: "#ebcb8b"
+    property color green: "#a3be8c"
+    property color blue: "#81a1c1"
+    property color purple: "#b48ead"
+    property color aqua: "#8fbcbb"
 
-    property color accent: "#d79921"
-    property color border: "#d65d0e"
+    property color accent: "#81a1c1"
+    property color border: "#8fbcbb"
 }

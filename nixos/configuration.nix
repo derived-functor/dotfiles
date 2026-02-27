@@ -15,6 +15,19 @@
         enable = true;
         enable32Bit = true;
     };
+    hardware.bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+        settings = {
+            General = {
+              Experimental = true;
+              FastConnectable = true;
+            };
+            Policy = {
+              AutoEnable = true;
+            };
+        };
+  };
 
     networking.hostName = "x13";
 
@@ -67,6 +80,7 @@
             kitty
             # sddm-astronaut
             # kdePackages.qtmultimedia
+            bluez
     ];
     environment.pathsToLink = [ "/share/wayland-sessions" ];
 
