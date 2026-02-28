@@ -217,7 +217,7 @@
       exec-once = [
         "fish ~/scripts/random_wallpaper.sh >> ~/.hyprpaper.log"
         "wlsunset -l 55.75 -L 37.61"
-        "hyprpaper"
+        "hyprpaper -c ~/.config/hyprpaper.conf"
         "waybar"
         "hypridle"
         "qs -p ~/.config/quickshell"

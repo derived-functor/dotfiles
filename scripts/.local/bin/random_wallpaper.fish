@@ -1,4 +1,4 @@
-set CONFIG_PATH $HOME/.config/hypr/hyprpaper.conf
+set CONFIG_PATH $HOME/.config/hyprpaper.conf
 set wallpapers $HOME/wallpapers/*
 set i $(random 1 $(count $wallpapers))
 

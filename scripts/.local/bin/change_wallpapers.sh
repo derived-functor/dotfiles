@@ -1,4 +1,4 @@
-CONFIG_PATH=$HOME/.config/hypr/hyprpaper.conf
+CONFIG_PATH=$HOME/.config/hyprpaper.conf
 
 path="${1:-$HOME/wallpapers/wallpaper6}"
 
@@ -11,4 +11,4 @@ wallpaper {
 splash = false
 EOF
 
-pkill hyprpaper 2>/dev/null && hyprpaper & disown
+pkill hyprpaper 2>/dev/null && hyprpaper -c $HOME/.config/hyprpaper.conf & disown

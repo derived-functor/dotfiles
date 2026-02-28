@@ -170,6 +170,7 @@ in
             set -gx LONGITUDE "37.62"
             set -gx headphones_mac "48:05:E2:F0:DD:58"
             '';
+        "hypr/colors.conf".source = ./modules/colors-hyprland.conf;
         "swaync/style.css".source = ./modules/style-swaync.css;
         "waybar/colors.css".source = ./modules/colors.css;
         "waybar/style.css".source = ./modules/style-waybar.css;
