@@ -105,9 +105,18 @@ in
     programs.zen-browser.enable = true;
     programs.zen-browser.suppressXdgMigrationWarning = true;
 
+    dconf = {
+        enable = true;
+        settings = {
+            "org/gnome/desktop/interface" = {
+                color-scheme = "prefer-dark";
+                gtk-theme = "catppuccin-mocha-mauve-standard+default";
+            };
+        };
+    };
+
     gtk = {
         enable = true;
-        colorScheme = "dark";
         theme = {
             name = "catppuccin-mocha-mauve-standard+default";
             package = pkgs.catppuccin-gtk.override {
@@ -126,6 +135,8 @@ in
             name = "catppuccin-mocha-mauve-cursors";
             package = pkgs.catppuccin-cursors.mochaMauve;
         };
+        gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+        gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
     };
 
     programs.git = {
@@ -159,6 +170,9 @@ in
             set -gx LONGITUDE "37.62"
             set -gx headphones_mac "48:05:E2:F0:DD:58"
             '';
+        "waybar/colors.css".source = ./modules/colors.css;
+        "wlogout/colors.css".source = ./modules/colors.css;
+        "kitty/colors/.conf".source = ./modules/colors-kitty.conf;
     };
 
     home.file = {
@@ -167,7 +181,6 @@ in
         ".config/colors".source = link "colors/.config/colors";
         ".config/fastfetch".source = link "fastfetch/.config/fastfetch";
         ".config/quickshell".source = link "quickshell/.config/quickshell";
-        ".config/swaync/style.css".source = link "swaync/.config/swaync/style.css";
 
         ".local/bin".source = link "scripts/.local/bin";
         "wallpapers".source = link "wallpapers/wallpapers";
