@@ -1,8 +1,9 @@
 { config, pkgs, unstable, ... }:
 
 let
-dotfiles = "${config.home.homeDirectory}/dotfiles";
-link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
+    homeDir = builtins.getEnv "HOME";
+    dotfiles = "${config.home.homeDirectory}/dotfiles";
+    link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
 in
 {
     home.username = "mreblan";
@@ -11,77 +12,114 @@ in
 
     home.packages = with pkgs; [
         tree
-            vim
-            wget
-            curl
-            git
+        vim
+        wget
+        curl
+        git
+        nwg-look
+        glib
 
-            nil
-            nixpkgs-fmt
-            nodejs
+        nil
+        nixpkgs-fmt
+        nodejs
 
-            cmatrix
+        cmatrix
 
-            lua5_1
-            python314
-            luarocks
-            imagemagick
-            gettext
-            wl-clipboard-rs
+        xfce.thunar
+        matugen
 
-            ripgrep
-            fzf
-            jq
+        lua5_1
+        python314
+        uv
+        luarocks
+        imagemagick
+        gettext
+        wl-clipboard-rs
 
-            btop
-            unzip
-            zip
-            lm_sensors
+        ripgrep
+        fzf
+        jq
 
-            fish
-            oh-my-fish
+        btop
+        unzip
+        zip
+        lm_sensors
 
-            gh
+        fish
+        oh-my-fish
 
-            hyprlock
-            hypridle
-            hyprshot
-            hyprsunset
+        gh
 
-            waybar
-            wofi
-            wlogout
+        hyprlock
+        hypridle
+        hyprshot
+        hyprsunset
 
-            swaynotificationcenter
-            libnotify
-            quickshell
-            fastfetch
+        waybar
+        wofi
+        wlogout
 
-            neovim
-            bat
-            lsd
+        swaynotificationcenter
+        libnotify
+        quickshell
+        fastfetch
 
-            pavucontrol
-            playerctl
-            wireplumber
+        neovim
+        bat
+        lsd
 
-            brightnessctl
+        pavucontrol
+        playerctl
+        wireplumber
 
-            telegram-desktop
-            obsidian
+        brightnessctl
 
-            nordic
-            nordzy-icon-theme
-            nordzy-cursor-theme
+        telegram-desktop
+        obsidian
 
-            gruvbox-dark-gtk
-            gruvbox-plus-icons
-            simp1e-cursors
-            ] ++ (with unstable; [
-                    hyprpaper
-            ]);
+        nordic
+        nordzy-icon-theme
+        nordzy-cursor-theme
+
+        gruvbox-dark-gtk
+        gruvbox-plus-icons
+        simp1e-cursors
+
+        # catppuccin-gtk
+        # catppuccin-papirus-folders
+        # catppuccin-cursors
+        ] ++ (with unstable; [
+                hyprpaper
+        ]);
+
+    wayland.windowManager.hyprland = {
+        enable = true;
+        settings = import "${dotfiles}/nixos/modules/hyprland.nix";
+    };
 
     programs.zen-browser.enable = true;
+
+    gtk = {
+        enable = true;
+        theme = {
+            name = "catppuccin-mocha-mauve-standard+default";
+            package = pkgs.catppuccin-gtk.override {
+                accents = [ "mauve" ];
+                variant = "mocha";
+            };
+        };
+        iconTheme = {
+            name = "Papirus-Dark";
+            package = pkgs.catppuccin-papirus-folders.override {
+                accent = "mauve";
+                flavor = "mocha";
+            };
+        };
+        cursorTheme = {
+            name = "catppuccin-mocha-mauve-cursors";
+            package = pkgs.catppuccin-cursors.mochaMauve;
+        };
+    };
 
     programs.git = {
         enable = true;
@@ -101,6 +139,7 @@ in
         HYPRSHOT_DIR = "$HOME/screenshots";
         QS_NO_RELOAD_POPUP = "1";
         NIXOS_OZONE_WL = "1";
+        XDG_DATA_DIRS = "/run/current-system/sw/share:$HOME/.local/share:$XDG_DATA_DIRS";
     };
 
     home.sessionPath = [
@@ -116,12 +155,12 @@ in
     };
 
     home.file = {
-        ".config/hypr".source = link "hypr/.config/hypr";
+        # ".config/hypr".source = link "hypr/.config/hypr";
         ".config/nvim".source = link "nvim/.config/nvim";
         ".config/btop".source = link "btop/.config/btop";
         ".config/colors".source = link "colors/.config/colors";
         ".config/fastfetch".source = link "fastfetch/.config/fastfetch";
-        ".config/gtk-3.0".source = link "gtk-3.0/.config/gtk-3.0";
+        # ".config/gtk-3.0".source = link "gtk-3.0/.config/gtk-3.0";
         ".config/kitty".source = link "kitty/.config/kitty";
         ".config/quickshell".source = link "quickshell/.config/quickshell";
         ".config/swaync".source = link "swaync/.config/swaync";

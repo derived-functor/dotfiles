@@ -29,8 +29,6 @@
         };
   };
 
-    gtk.enable = true;
-
     networking.hostName = "x13";
 
     networking.networkmanager.enable = true;
@@ -41,6 +39,10 @@
 
     services.displayManager.ly = {
         enable = true;
+        settings = {
+            animation = "colormix";
+            waylandsessions = "/run/current-system/sw/share/wayland-sessions";
+        };
     };
 
     services.pipewire = {
@@ -76,13 +78,13 @@
 
     environment.systemPackages = with pkgs; [
         vim
-            wget
-            curl
-            git
-            kitty
-            # sddm-astronaut
-            # kdePackages.qtmultimedia
-            bluez
+        wget
+        curl
+        git
+        kitty
+        # sddm-astronaut
+        # kdePackages.qtmultimedia
+        bluez
     ];
     environment.pathsToLink = [ "/share/wayland-sessions" ];
 

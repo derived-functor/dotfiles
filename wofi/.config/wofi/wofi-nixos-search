@@ -29,6 +29,6 @@ case "$channel" in
         ;;
 esac
 
-url="$BASE_URL?channel=$channel&q=$package_name"
+url="$BASE_URL?channel=$channel&query=$package_name"
 
 $BROWSER $url

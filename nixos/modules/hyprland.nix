@@ -1,0 +1,253 @@
+{
+    monitor = ",prefered,auto,1";
+    source = "~/.config/hypr/colors.conf";
+
+    "$mainMod" = "SUPER";
+    "$RESIZE" = 60;
+
+    # Window and workspaces
+    workspace = map (i: "${toString i}, monitor:eDP-1") (builtins.genList (i: i + 1) 10);
+
+    # Default hyprland things
+    # Fix some dragging issues with XWayland
+    windowrule = [
+        "match:class ^$, match:title ^$, match:xwayland true, match:float true, match:fullscreen true, match:pin false, no_focus on"
+    # Ignore maximize requests from apps. You'll probably like this.
+        "match:class .*, suppress_event maximize"
+    ];
+
+    # Programs
+    "$terminal" = "kitty";
+    "$fileManager" = "ranger";
+    "$menu" = "wofi --show drun --style ~/.config/wofi/style.css";
+    "$browser" = "zen-twilight";
+    "$telegram" = "Telegram";
+    "$obsidian" = "obsidian";
+
+    # Input
+    input = {
+        kb_layout = "us,ru";
+        kb_variant = "";
+        kb_model = "";
+        kb_options = "grp:caps_toggle, grp_led:caps";
+        kb_rules = "";
+
+        follow_mouse = 1;
+
+        sensitivity = 0;
+
+        touchpad = {
+            natural_scroll = false;
+        };
+    };
+
+    device = {
+        name = "epic-mouse-v1";
+        sensitivity = -0.5;
+    };
+
+    # Visual
+    
+    general = {
+        gaps_in = 4;
+        gaps_out = 4;
+        border_size = 3;
+
+        col.active_border   = "$accent $border 45deg";
+        col.inactive_border = "$bg2";
+        resize_on_border    = "false";
+        allow_tearing       = false;
+        layout              = "master";
+    };
+
+    decoration = {
+        rounding = 0;
+        rounding_power = 2;
+        active_opacity = 1.00;
+        inactive_opacity = 0.85;
+        shadow = {
+            enabled = true;
+            range = 4;
+            render_power = 3;
+            color = "rgba($shadowAlphaee)";
+        };
+    };
+
+    "$speed" = 5.5;
+
+    animations = {
+        enabled = "yes, please :)";
+
+        bezier = [
+          "easeOutQuint, 0.23, 1, 0.32, 1"
+          "easeInOutCubic, 0.65, 0.05, 0.36, 1"
+          "linear, 0, 0, 1, 1"
+          "almostLinear, 0.5, 0.5, 0.75, 1.0"
+          "quick, 0.15, 0, 0.1, 1"
+          "smoothIn, 0.36, 0, 0.66, -0.56"
+          "smoothOut, 0.34, 1.56, 0.64, 1"
+          "overshot, 0.4, 0.8, 0.2, 1.2"
+          "floaty, 0.1, 0.78, 0.3, 1.25"
+          "mine, 0.59, 0.00, 0.42, 1.20"
+          "mine2, 0.48, -0.55, 0.71, 0.94"
+          "wind, 0.05, 0.1, 1, 1.05"
+          "winIn, -1.0, 0.1, 0.3, 1.3"
+          "winOut, 0.3, -0.3, 1, 1"
+        ];
+
+        animation = [
+          "global, 1, 10, default"
+          "border, 1, 5.39, easeOutQuint"
+          "windows, 1, 7, floaty"
+          "windowsIn, 1, $speed, winIn"
+          "windowsOut, 1, $speed, winOut"
+          "windowsMove, 1, 3.7, quick"
+          "fadeIn, 1, 1.73, almostLinear"
+          "fadeOut, 1, 1.46, almostLinear"
+          "fade, 1, 5, smoothIn"
+          "layers, 1, 3.81, easeOutQuint"
+          "layersIn, 1, 4, easeOutQuint, fade"
+          "layersOut, 1, 1.5, linear, fade"
+          "fadeLayersIn, 1, 1.79, almostLinear"
+          "fadeLayersOut, 1, 1.39, almostLinear"
+          "workspaces, 1, 2, wind"
+        ];
+    };
+
+    dwindle = {
+        pseudotile = true;
+        preserve_split = true;
+    };
+
+    master = {
+        new_status = "slave";
+    };
+
+    misc = {
+        force_default_wallpaper = 1;
+        disable_hyprland_logo = true;
+    };
+
+    # Keybindings
+    bind = [
+        "$mainMod, Return, exec, $terminal"
+        "$mainMod, Q, killactive"
+        "$mainMod, M, exit"
+        "$mainMod, E, exec, kitty -e $fileManager"
+        "$mainMod, B, exec, $browser"
+        "$mainMod, R, exec, $menu"
+        "$mainMod Shift, L, exec, wlogout -b 2 -c 2"
+        "$mainMod, T, exec, $telegram"
+        "$mainMod, O, exec, $obsidian"
+        "$mainMod, C, exec, ~/.config/wofi/calculator.sh"
+        "$mainMod, W, exec, ~/.config/wofi/wallpaper_selector.sh"
+        
+        # Move to special workspace
+        "$mainMod Shift, S, movetoworkspacesilent, special"
+        "$mainMod, S, togglespecialworkspace"
+        
+        # Screenshot
+        ", PRINT, exec, hyprshot -m region"
+        "Shift, PRINT, exec, hyprshot -m output -m DP-1"
+        
+        # Move focus with mainMod + vim keys
+        "$mainMod, l, movefocus, r"
+        "$mainMod, h, movefocus, l"
+        "$mainMod, k, movefocus, u"
+        "$mainMod, j, movefocus, d"
+        
+        # Focus floating window
+        "$mainMod, F, focuswindow, floating"
+        
+        # Move Windows
+        "$mainMod Alt, h, movewindow, l"
+        "$mainMod Alt, l, movewindow, r"
+        "$mainMod Alt, k, movewindow, u"
+        "$mainMod Alt, j, movewindow, d"
+        
+        # Alt Tab
+        "$mainMod, TAB, workspace, previous"
+        
+        "$mainMod Ctrl, left, workspace, -1"
+        "$mainMod Ctrl, right, workspace, +1"
+        
+        # Floating Window
+        "$mainMod, SPACE, exec, ~/.local/bin/togglefloat.sh"
+        
+        # Switch workspaces with mainMod + [0-9]
+        "$mainMod, 1, workspace, 1"
+        "$mainMod, 2, workspace, 2"
+        "$mainMod, 3, workspace, 3"
+        "$mainMod, 4, workspace, 4"
+        "$mainMod, 5, workspace, 5"
+        "$mainMod, 6, workspace, 6"
+        "$mainMod, 7, workspace, 7"
+        "$mainMod, 8, workspace, 8"
+        "$mainMod, 9, workspace, 9"
+        "$mainMod, 0, workspace, 10"
+        
+        # Move active window to a workspace with mainMod + Shift + [0-9]
+        "$mainMod Shift, 1, movetoworkspace, 1"
+        "$mainMod Shift, 2, movetoworkspace, 2"
+        "$mainMod Shift, 3, movetoworkspace, 3"
+        "$mainMod Shift, 4, movetoworkspace, 4"
+        "$mainMod Shift, 5, movetoworkspace, 5"
+        "$mainMod Shift, 6, movetoworkspace, 6"
+        "$mainMod Shift, 7, movetoworkspace, 7"
+        "$mainMod Shift, 8, movetoworkspace, 8"
+        "$mainMod Shift, 9, movetoworkspace, 9"
+        "$mainMod Shift, 0, movetoworkspace, 10"
+
+        "$mainMod Shift, right, resizeactive, $RESIZE 0"
+        "$mainMod Shift, left, resizeactive, -$RESIZE 0"
+        "$mainMod Shift, up, resizeactive, 0 -$RESIZE"
+        "$mainMod Shift, down, resizeactive, 0 $RESIZE"
+
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
+      ];
+
+      # bindel для multimedia keys
+      bindel = [
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ", XF86MonBrightnessUp, exec, brightnessctl s 10%+"
+        ", XF86MonBrightnessDown, exec, brightnessctl s 10%-"
+      ];
+
+      # bindl
+      bindl = [
+        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioPause, exec, playerctl play-pause"
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioPrev, exec, playerctl previous"
+      ];
+
+      # bindm
+      bindm = [
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
+      ];
+
+      # Env vars
+      env = [
+        "XCURSOR_SIZE,35"
+        "XCURSOR_THEME,Catppuccin Mocha Mauve"
+        "HYPRCURSOR_SIZE,35"
+        "HYPRCURSOR_THEME,Catppuccin Mocha Mauve"
+      ];
+
+      # Autostart
+      exec-once = [
+        "fish ~/scripts/random_wallpaper.sh >> ~/.hyprpaper.log"
+        "wlsunset -l 55.75 -L 37.61"
+        "hyprpaper"
+        "waybar"
+        "hypridle"
+        "swaync"
+        # "syncthing serve --no-browser"
+        "qs -p ~/.config/quickshell"
+      ];
+}
