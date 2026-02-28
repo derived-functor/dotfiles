@@ -5,6 +5,9 @@ let
     link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
 in
 {
+    imports = [
+        ./modules/waybar.nix
+    ];
     home.username = "mreblan";
     home.homeDirectory = "/home/mreblan";
     home.stateVersion = "25.11";
@@ -172,7 +175,7 @@ in
         ".config/quickshell".source = link "quickshell/.config/quickshell";
         # ".config/swaync".source = link "swaync/.config/swaync";
         ".config/swaync/style.css".source = link "swaync/.config/swaync/style.css";
-        ".config/waybar".source = link "waybar/.config/waybar";
+        # ".config/waybar".source = link "waybar/.config/waybar";
         ".config/wlogout".source = link "wlogout/.config/wlogout";
         ".config/wofi".source = link "wofi/.config/wofi";
 
