@@ -104,8 +104,6 @@ in
     services.swaync = {
         enable = true;
         settings = import ./modules/swaync.nix;
-
-        style = ./swaync/style.css;
     };
 
     gtk = {
@@ -172,7 +170,8 @@ in
         # ".config/gtk-3.0".source = link "gtk-3.0/.config/gtk-3.0";
         # ".config/kitty".source = link "kitty/.config/kitty";
         ".config/quickshell".source = link "quickshell/.config/quickshell";
-        ".config/swaync".source = link "swaync/.config/swaync";
+        # ".config/swaync".source = link "swaync/.config/swaync";
+        ".config/swaync/style.css".source = link "swaync/.config/swaync/style.css";
         ".config/waybar".source = link "waybar/.config/waybar";
         ".config/wlogout".source = link "wlogout/.config/wlogout";
         ".config/wofi".source = link "wofi/.config/wofi";
