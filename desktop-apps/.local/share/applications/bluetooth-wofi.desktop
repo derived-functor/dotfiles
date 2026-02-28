@@ -2,7 +2,7 @@
 Type=Application
 Name=Bluetooth Wofi
 Comment=Connect to paired devices
-Exec=/home/mreblan/.config/wofi/wofi-bluetooth
+Exec=/home/mreblan/.local/bin/wofi-bluetooth
 Icon=bluetooth
 Terminal=false
 Categories=Settings;Utility;
