@@ -95,7 +95,7 @@
         };
         "battery" = {
           "bat" = "BAT0";
-          "interval" = 60;
+          "interval" = 2;
           "states" = {
             "warning" = 30;
             "critical" = 15;
@@ -105,7 +105,9 @@
             "on-discharging-critical" = "notify-send -u critical 'Very Low Battery'";
             "on-charging-100" = "notify-send -u normal 'Battery Full!'";
           };
-          "format" = "{icon}  {capacity}% | ";
+          "format" = "{capacity}% {icon} | ";
+          "format-charging" = "󰂄 {capacity}% | ";
+          "format-plugged" = "󰚥 {capacity}% | ";
           "format-icons" = [ "" "" "" "" "" ];
           "max-length" = 25;
         };

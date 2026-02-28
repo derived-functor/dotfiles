@@ -20,7 +20,7 @@
       ];
 
       "$terminal" = "kitty";
-      "$fileManager" = "ranger";
+      "$fileManager" = "thunar";
       "$menu" = "wofi --show drun --style ~/.config/wofi/style.css";
       "$browser" = "zen-twilight";
       "$telegram" = "Telegram";
@@ -131,8 +131,8 @@
         "$mainMod Shift, L, exec, wlogout -b 2 -c 2"
         "$mainMod, T, exec, $telegram"
         "$mainMod, O, exec, $obsidian"
-        "$mainMod, C, exec, ~/.config/wofi/calculator.sh"
-        "$mainMod, W, exec, ~/.config/wofi/wallpaper_selector.sh"
+        "$mainMod, C, exec, calculator.sh"
+        "$mainMod, W, exec, wallpaper_selector.sh"
         "$mainMod Shift, S, movetoworkspacesilent, special"
         "$mainMod, S, togglespecialworkspace"
         ", PRINT, exec, hyprshot -m region"

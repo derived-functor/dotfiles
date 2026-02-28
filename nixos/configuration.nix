@@ -40,7 +40,7 @@
     services.displayManager.ly = {
         enable = true;
         settings = {
-            animation = "colormix";
+            animation = "gameoflife";
             waylandsessions = "/run/current-system/sw/share/wayland-sessions";
         };
     };

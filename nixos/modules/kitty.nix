@@ -3,6 +3,9 @@
   programs.kitty = {
     enable = true;
     settings = {
+      allow_remote_control = "yes";
+      listen_on = "unix:/tmp/kitty";
+      shell_integration = "enabled";
       font_family = "JetBrains Mono Nerd";
       font_size = 15;
       disable_ligatures = "never";

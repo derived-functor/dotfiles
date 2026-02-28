@@ -1,10 +1,6 @@
-let
-    stylePath = ./style-swaync.css;
-in
 {
   services.swaync = {
     enable = true;
-    style = builtins.readFile stylePath;
     settings = {
       positionX = "right";
       positionY = "bottom";
