@@ -1,7 +1,6 @@
 { config, pkgs, unstable, ... }:
 
 let
-    homeDir = builtins.getEnv "HOME";
     dotfiles = "${config.home.homeDirectory}/dotfiles";
     link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
 in
@@ -94,7 +93,7 @@ in
 
     wayland.windowManager.hyprland = {
         enable = true;
-        settings = import "${dotfiles}/nixos/modules/hyprland.nix";
+        settings = import ./modules/hyprland.nix;
     };
 
     programs.zen-browser.enable = true;

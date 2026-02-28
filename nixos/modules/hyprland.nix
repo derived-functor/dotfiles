@@ -1,6 +1,6 @@
 {
     monitor = ",prefered,auto,1";
-    source = "~/.config/hypr/colors.conf";
+    source = "~/dotfiles/hypr/.config/hypr/colors.conf";
 
     "$mainMod" = "SUPER";
     "$RESIZE" = 60;
@@ -53,9 +53,9 @@
         gaps_out = 4;
         border_size = 3;
 
-        col.active_border   = "$accent $border 45deg";
-        col.inactive_border = "$bg2";
-        resize_on_border    = "false";
+        "col.active_border"   = "$accent $border 45deg";
+        "col.inactive_border" = "$bg2";
+        resize_on_border    = false;
         allow_tearing       = false;
         layout              = "master";
     };
