@@ -7,6 +7,7 @@ in
 {
     imports = [
         ./modules/waybar.nix
+        ./modules/wofi.nix
     ];
     home.username = "mreblan";
     home.homeDirectory = "/home/mreblan";
