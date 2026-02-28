@@ -97,6 +97,9 @@ in
     };
 
     programs.zen-browser.enable = true;
+    programs.kitty = {
+      enable = true;
+    } // (import ./modules/kitty.nix { inherit config; });
 
     gtk = {
         enable = true;
