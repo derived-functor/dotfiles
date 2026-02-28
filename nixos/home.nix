@@ -6,8 +6,11 @@ let
 in
 {
     imports = [
+        ./modules/hyprland.nix
+        ./modules/kitty.nix
         ./modules/waybar.nix
         ./modules/wofi.nix
+        ./modules/wlogout.nix
     ];
     home.username = "mreblan";
     home.homeDirectory = "/home/mreblan";
@@ -95,15 +98,7 @@ in
                 hyprpaper
         ]);
 
-    wayland.windowManager.hyprland = {
-        enable = true;
-        settings = import ./modules/hyprland.nix;
-    };
-
     programs.zen-browser.enable = true;
-    programs.kitty = {
-      enable = true;
-    } // (import ./modules/kitty.nix { inherit config; });
 
     services.swaync = {
         enable = true;
@@ -177,8 +172,8 @@ in
         # ".config/swaync".source = link "swaync/.config/swaync";
         ".config/swaync/style.css".source = link "swaync/.config/swaync/style.css";
         # ".config/waybar".source = link "waybar/.config/waybar";
-        ".config/wlogout".source = link "wlogout/.config/wlogout";
-        ".config/wofi".source = link "wofi/.config/wofi";
+        # ".config/wlogout".source = link "wlogout/.config/wlogout";
+        # ".config/wofi".source = link "wofi/.config/wofi";
 
         ".local/bin".source = link "scripts/.local/bin";
         "wallpapers".source = link "wallpapers/wallpapers";

@@ -1,83 +1,73 @@
 {
-    monitor = ",prefered,auto,1";
-    source = "~/dotfiles/hypr/.config/hypr/colors.conf";
+  wayland.windowManager.hyprland = {
+    enable = true;
+    settings = {
+      monitor = ",prefered,auto,1";
+      source = "~/.config/hypr/colors.conf";
 
-    "$mainMod" = "SUPER";
-    "$RESIZE" = 60;
+      "$mainMod" = "SUPER";
+      "$RESIZE" = 60;
 
-    # Window and workspaces
-    workspace = map (i: "${toString i}, monitor:eDP-1") (builtins.genList (i: i + 1) 10);
+      workspace = map (i: "${toString i}, monitor:eDP-1") (builtins.genList (i: i + 1) 10);
 
-    # Default hyprland things
-    # Fix some dragging issues with XWayland
-    windowrule = [
+      windowrule = [
         "match:class ^$, match:title ^$, match:xwayland true, match:float true, match:fullscreen true, match:pin false, no_focus on"
-    # Ignore maximize requests from apps. You'll probably like this.
         "match:class .*, suppress_event maximize"
-    ];
+      ];
 
-    # Programs
-    "$terminal" = "kitty";
-    "$fileManager" = "ranger";
-    "$menu" = "wofi --show drun --style ~/.config/wofi/style.css";
-    "$browser" = "zen-twilight";
-    "$telegram" = "Telegram";
-    "$obsidian" = "obsidian";
+      "$terminal" = "kitty";
+      "$fileManager" = "ranger";
+      "$menu" = "wofi --show drun --style ~/.config/wofi/style.css";
+      "$browser" = "zen-twilight";
+      "$telegram" = "Telegram";
+      "$obsidian" = "obsidian";
 
-    # Input
-    input = {
+      input = {
         kb_layout = "us,ru";
         kb_variant = "";
         kb_model = "";
         kb_options = "grp:caps_toggle, grp_led:caps";
         kb_rules = "";
-
         follow_mouse = 1;
-
         sensitivity = 0;
-
         touchpad = {
-            natural_scroll = false;
+          natural_scroll = false;
         };
-    };
+      };
 
-    device = {
+      device = {
         name = "epic-mouse-v1";
         sensitivity = -0.5;
-    };
+      };
 
-    # Visual
-    
-    general = {
+      general = {
         gaps_in = 4;
         gaps_out = 4;
         border_size = 3;
-
-        "col.active_border"   = "$accent $border 45deg";
+        "col.active_border" = "$accent $border 45deg";
         "col.inactive_border" = "$bg2";
-        resize_on_border    = false;
-        allow_tearing       = false;
-        layout              = "master";
-    };
+        resize_on_border = false;
+        allow_tearing = false;
+        layout = "master";
+      };
 
-    decoration = {
+      decoration = {
         rounding = 0;
         rounding_power = 2;
         active_opacity = 1.00;
         inactive_opacity = 0.85;
         shadow = {
-            enabled = true;
-            range = 4;
-            render_power = 3;
-            color = "rgba($shadowAlphaee)";
+          enabled = true;
+          range = 4;
+          render_power = 3;
+          color = "rgba($shadowAlphaee)";
         };
-    };
+      };
 
-    "$speed" = 5.5;
+      "$speed" = 5.5;
 
-    animations = {
+      animations = {
         enabled = "yes, please :)";
-
         bezier = [
           "easeOutQuint, 0.23, 1, 0.32, 1"
           "easeInOutCubic, 0.65, 0.05, 0.36, 1"
@@ -94,7 +84,6 @@
           "winIn, -1.0, 0.1, 0.3, 1.3"
           "winOut, 0.3, -0.3, 1, 1"
         ];
-
         animation = [
           "global, 1, 10, default"
           "border, 1, 5.39, easeOutQuint"
@@ -112,24 +101,23 @@
           "fadeLayersOut, 1, 1.39, almostLinear"
           "workspaces, 1, 2, wind"
         ];
-    };
+      };
 
-    dwindle = {
+      dwindle = {
         pseudotile = true;
         preserve_split = true;
-    };
+      };
 
-    master = {
+      master = {
         new_status = "slave";
-    };
+      };
 
-    misc = {
+      misc = {
         force_default_wallpaper = 1;
         disable_hyprland_logo = true;
-    };
+      };
 
-    # Keybindings
-    bind = [
+      bind = [
         "$mainMod, Return, exec, $terminal"
         "$mainMod, Q, killactive"
         "$mainMod, M, exit"
@@ -141,40 +129,23 @@
         "$mainMod, O, exec, $obsidian"
         "$mainMod, C, exec, ~/.config/wofi/calculator.sh"
         "$mainMod, W, exec, ~/.config/wofi/wallpaper_selector.sh"
-        
-        # Move to special workspace
         "$mainMod Shift, S, movetoworkspacesilent, special"
         "$mainMod, S, togglespecialworkspace"
-        
-        # Screenshot
         ", PRINT, exec, hyprshot -m region"
         "Shift, PRINT, exec, hyprshot -m output -m DP-1"
-        
-        # Move focus with mainMod + vim keys
         "$mainMod, l, movefocus, r"
         "$mainMod, h, movefocus, l"
         "$mainMod, k, movefocus, u"
         "$mainMod, j, movefocus, d"
-        
-        # Focus floating window
         "$mainMod, F, focuswindow, floating"
-        
-        # Move Windows
         "$mainMod Alt, h, movewindow, l"
         "$mainMod Alt, l, movewindow, r"
         "$mainMod Alt, k, movewindow, u"
         "$mainMod Alt, j, movewindow, d"
-        
-        # Alt Tab
         "$mainMod, TAB, workspace, previous"
-        
         "$mainMod Ctrl, left, workspace, -1"
         "$mainMod Ctrl, right, workspace, +1"
-        
-        # Floating Window
         "$mainMod, SPACE, exec, ~/.local/bin/togglefloat.sh"
-        
-        # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -185,8 +156,6 @@
         "$mainMod, 8, workspace, 8"
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
-        
-        # Move active window to a workspace with mainMod + Shift + [0-9]
         "$mainMod Shift, 1, movetoworkspace, 1"
         "$mainMod Shift, 2, movetoworkspace, 2"
         "$mainMod Shift, 3, movetoworkspace, 3"
@@ -197,17 +166,14 @@
         "$mainMod Shift, 8, movetoworkspace, 8"
         "$mainMod Shift, 9, movetoworkspace, 9"
         "$mainMod Shift, 0, movetoworkspace, 10"
-
         "$mainMod Shift, right, resizeactive, $RESIZE 0"
         "$mainMod Shift, left, resizeactive, -$RESIZE 0"
         "$mainMod Shift, up, resizeactive, 0 -$RESIZE"
         "$mainMod Shift, down, resizeactive, 0 $RESIZE"
-
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
       ];
 
-      # bindel для multimedia keys
       bindel = [
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
@@ -217,7 +183,6 @@
         ", XF86MonBrightnessDown, exec, brightnessctl s 10%-"
       ];
 
-      # bindl
       bindl = [
         ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPause, exec, playerctl play-pause"
@@ -225,13 +190,11 @@
         ", XF86AudioPrev, exec, playerctl previous"
       ];
 
-      # bindm
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
       ];
 
-      # Env vars
       env = [
         "XCURSOR_SIZE,35"
         "XCURSOR_THEME,Catppuccin Mocha Mauve"
@@ -239,15 +202,14 @@
         "HYPRCURSOR_THEME,Catppuccin Mocha Mauve"
       ];
 
-      # Autostart
       exec-once = [
         "fish ~/scripts/random_wallpaper.sh >> ~/.hyprpaper.log"
         "wlsunset -l 55.75 -L 37.61"
         "hyprpaper"
         "waybar"
         "hypridle"
-        # "swaync"
-        # "syncthing serve --no-browser"
         "qs -p ~/.config/quickshell"
       ];
+    };
+  };
 }
