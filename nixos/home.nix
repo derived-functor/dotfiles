@@ -1,8 +1,9 @@
-{ config, pkgs, unstable, ... }:
+{ config, lib, pkgs, unstable, ... }:
 
 let
     dotfiles = "${config.home.homeDirectory}/dotfiles";
     link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
+    cssPath = "${dotfiles}/swaync/.config/swaync/style.css";
 in
 {
     imports = [
@@ -10,6 +11,7 @@ in
         ./modules/hypridle.nix
         ./modules/hyprlock.nix
         ./modules/kitty.nix
+        ./modules/swaync.nix
         ./modules/waybar.nix
         ./modules/wofi.nix
         ./modules/wlogout.nix
@@ -103,11 +105,6 @@ in
     programs.zen-browser.enable = true;
     programs.zen-browser.suppressXdgMigrationWarning = true;
 
-    services.swaync = {
-        enable = true;
-        settings = import ./modules/swaync.nix;
-    };
-
     gtk = {
         enable = true;
         colorScheme = "dark";
@@ -165,19 +162,12 @@ in
     };
 
     home.file = {
-        # ".config/hypr".source = link "hypr/.config/hypr";
         ".config/nvim".source = link "nvim/.config/nvim";
         ".config/btop".source = link "btop/.config/btop";
         ".config/colors".source = link "colors/.config/colors";
         ".config/fastfetch".source = link "fastfetch/.config/fastfetch";
-        # ".config/gtk-3.0".source = link "gtk-3.0/.config/gtk-3.0";
-        # ".config/kitty".source = link "kitty/.config/kitty";
         ".config/quickshell".source = link "quickshell/.config/quickshell";
-        # ".config/swaync".source = link "swaync/.config/swaync";
         ".config/swaync/style.css".source = link "swaync/.config/swaync/style.css";
-        # ".config/waybar".source = link "waybar/.config/waybar";
-        # ".config/wlogout".source = link "wlogout/.config/wlogout";
-        # ".config/wofi".source = link "wofi/.config/wofi";
 
         ".local/bin".source = link "scripts/.local/bin";
         "wallpapers".source = link "wallpapers/wallpapers";

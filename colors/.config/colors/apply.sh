@@ -59,8 +59,8 @@ echo "[4] swaync"
 
 if [[ -d "$HOME/.config/swaync" ]]; then
     envsubst < "$COLORS_DIR/templates/colors.css.tpl" \
-        > "$HOME/.config/swaync/colors.css"
-    pkill swaync 2>/dev/null || true
+        > "$HOME/dotfiles/swaync/.config/swaync/colors.css"
+    pkill swaync-client --reload-config || true
     sleep 0.5
     swaync & disown
 fi
