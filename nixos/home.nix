@@ -101,6 +101,13 @@ in
       enable = true;
     } // (import ./modules/kitty.nix { inherit config; });
 
+    services.swaync = {
+        enable = true;
+        settings = import ./modules/swaync.nix;
+
+        style = ./swaync/style.css;
+    };
+
     gtk = {
         enable = true;
         theme = {
@@ -163,7 +170,7 @@ in
         ".config/colors".source = link "colors/.config/colors";
         ".config/fastfetch".source = link "fastfetch/.config/fastfetch";
         # ".config/gtk-3.0".source = link "gtk-3.0/.config/gtk-3.0";
-        ".config/kitty".source = link "kitty/.config/kitty";
+        # ".config/kitty".source = link "kitty/.config/kitty";
         ".config/quickshell".source = link "quickshell/.config/quickshell";
         ".config/swaync".source = link "swaync/.config/swaync";
         ".config/waybar".source = link "waybar/.config/waybar";

@@ -25,13 +25,11 @@
           "ctrl+shift+g" = "kitten ${config.home.homeDirectory}/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py --config ksb_builtin_last_cmd_output";
         };
 
-        mousebindings = {
-          "ctrl+shift+right" = "press ungrabbed combine : mouse_select_command_output : kitten ${config.home.homeDirectory}/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py --config ksb_builtin_last_visited_cmd_output";
-        };
-
         extraConfig = ''
-          # BEGIN_KITTY_THEME
-          include colors.conf
-          # END_KITTY_THEME
+        # mousebindings
+                    mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output : kitten ${config.home.homeDirectory}/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py --config ksb_builtin_last_visited_cmd_output
+        # BEGIN_KITTY_THEME
+                    include colors.conf
+        # END_KITTY_THEME
         '';
 }

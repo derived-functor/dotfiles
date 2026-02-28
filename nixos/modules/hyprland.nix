@@ -246,7 +246,7 @@
         "hyprpaper"
         "waybar"
         "hypridle"
-        "swaync"
+        # "swaync"
         # "syncthing serve --no-browser"
         "qs -p ~/.config/quickshell"
       ];
