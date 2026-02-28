@@ -7,6 +7,8 @@ in
 {
     imports = [
         ./modules/hyprland.nix
+        ./modules/hypridle.nix
+        ./modules/hyprlock.nix
         ./modules/kitty.nix
         ./modules/waybar.nix
         ./modules/wofi.nix
@@ -99,6 +101,7 @@ in
         ]);
 
     programs.zen-browser.enable = true;
+    programs.zen-browser.suppressXdgMigrationWarning = true;
 
     services.swaync = {
         enable = true;
@@ -107,6 +110,7 @@ in
 
     gtk = {
         enable = true;
+        colorScheme = "dark";
         theme = {
             name = "catppuccin-mocha-mauve-standard+default";
             package = pkgs.catppuccin-gtk.override {
@@ -212,13 +216,11 @@ in
             rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/nixos#x13";
         };
         interactiveShellInit = ''
+            set -gx fish_greeting
             set -g theme_display_nix_shell no
             fastfetch
             source $HOME/.config/fish/additional_vars.fish
             source $HOME/.config/fish/conf.d/colors.fish
-            '';
-        shellInit = ''
-            set -g fish_greeting ""
             '';
     };
 }

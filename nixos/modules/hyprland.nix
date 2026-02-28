@@ -1,6 +1,10 @@
+{unstable, ...}:
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    package = unstable.hyprland;
+    xwayland.enable = true;
+    portalPackage = unstable.xdg-desktop-portal-hyprland;
     settings = {
       monitor = ",prefered,auto,1";
       source = "~/.config/hypr/colors.conf";

@@ -71,6 +71,7 @@
     programs.firefox.enable = true;
     programs.hyprland = {
         enable = true;
+        withUWSM = true;
         package = unstable.hyprland;
         xwayland.enable = true;
         portalPackage = unstable.xdg-desktop-portal-hyprland;
@@ -86,7 +87,11 @@
         # kdePackages.qtmultimedia
         bluez
     ];
-    environment.pathsToLink = [ "/share/wayland-sessions" ];
+    environment.pathsToLink = [
+    "/share/wayland-sessions"
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+    ];
 
     fonts.packages = with pkgs; [
         nerd-fonts.jetbrains-mono
