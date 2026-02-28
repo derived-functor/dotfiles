@@ -11,7 +11,6 @@
         "modules-left" = [
           "clock"
           "hyprland/language"
-          "custom/theme"
           "custom/appmenu"
         ];
         "modules-center" = [
@@ -112,7 +111,7 @@
           "max-length" = 25;
         };
         "custom/theme" = {
-          "format" = "";
+          "format" = "  Theme";
           "on-click" = "~/.config/colors/menu_theme.sh";
           "tooltip" = false;
         };

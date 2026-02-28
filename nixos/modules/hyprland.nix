@@ -60,6 +60,14 @@
         rounding_power = 2;
         active_opacity = 1.00;
         inactive_opacity = 0.85;
+
+        blur =  {
+            enabled = true;
+            size = 8;
+            passes = 2;
+            new_optimizations = true;
+        };
+
         shadow = {
           enabled = true;
           range = 4;

@@ -21,17 +21,21 @@ vim.diagnostic.config({
 })
 vim.opt.winborder = "single"
 
-local system_to_nvim = {
-    gruvbox = "gruvbox",
-    ["catppuccin-mocha"] = "catppuccin-mocha",
-    nord = "nord",
-}
-
-local system_theme = get_system_theme()
-local nvim_colorscheme = system_to_nvim[system_theme] or "gruvbox"
-
-vim.o.background = "dark"
-pcall(vim.cmd, "colorscheme " .. nvim_colorscheme)
+-- local system_to_nvim = {
+--     gruvbox = "gruvbox",
+--     ["catppuccin-mocha"] = "catppuccin-mocha",
+--     nord = "nord",
+-- }
+--
+-- local system_theme = get_system_theme()
+-- local nvim_colorscheme = system_to_nvim[system_theme] or "gruvbox"
+--
+-- vim.o.background = "dark"
+-- pcall(vim.cmd, "colorscheme " .. nvim_colorscheme)
+require("catppuccin").setup({
+    transparent_background = true,
+})
+vim.cmd.colorscheme("catppuccin")
 
 require("telescope").setup({
     defaults = {
