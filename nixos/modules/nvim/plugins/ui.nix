@@ -102,10 +102,10 @@
             try_as_border = true;
           };
           draw = {
-            delay = 100;
+            delay = 65;
             animation.__raw = ''
               function(s, n)
-                return 20 -- скорость анимации в мс
+                return 12 -- скорость анимации в мс
               end
             '';
           };

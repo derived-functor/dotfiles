@@ -105,8 +105,8 @@
             "on-charging-100" = "notify-send -u normal 'Battery Full!'";
           };
           "format" = "{capacity}% {icon} | ";
-          "format-charging" = "󰂄 {capacity}% | ";
-          "format-plugged" = "󰚥 {capacity}% | ";
+          "format-charging" = "{capacity}% 󰂄 | ";
+          "format-plugged" = "{capacity}% 󰚥 | ";
           "format-icons" = [ "" "" "" "" "" ];
           "max-length" = 25;
         };
