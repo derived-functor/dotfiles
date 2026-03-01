@@ -171,12 +171,23 @@
               style = "single";
               padding = [ 0 1 ];
             };
+            hover = {
+              border = {
+                style = "single";
+              };
+            };
+            popup = {
+              border = {
+                style = "single";
+              };
+            };
+            confirm = {
+              border = {
+                style = "single";
+              };
+            };
           };
         };
-        # lsp.override = {
-        #   "vim.lsp.util.convert_input_to_markdown_lines" = true;
-        #   "vim.lsp.util.set_editing_highlight" = true;
-        #   "table.lsp.signature.enabled" = false; # Если мешает при вводе
       };
       presets = {
         bottom_search = true;

@@ -179,6 +179,7 @@ in
     "fastfetch/logo.png".source = ./modules/logo.png;
     "hypr/colors.conf".source = ./modules/colors-hyprland.conf;
     "swaync/style.css".source = ./modules/style-swaync.css;
+    "swaync/colors.css".source = ./modules/colors.css;
     "waybar/colors.css".source = ./modules/colors.css;
     "waybar/style.css".source = ./modules/style-waybar.css;
     "wlogout/colors.css".source = ./modules/colors.css;
@@ -189,10 +190,7 @@ in
   };
 
   home.file = {
-    # ".config/nvim".source = link "nvim/.config/nvim";
-    # ".config/btop".source = link "btop/.config/btop";
     ".config/colors".source = link "colors/.config/colors";
-    # ".config/fastfetch".source = link "fastfetch/.config/fastfetch";
     ".config/quickshell".source = link "quickshell/.config/quickshell";
 
     ".local/bin".source = link "scripts/.local/bin";

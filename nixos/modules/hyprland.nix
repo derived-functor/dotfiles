@@ -42,7 +42,7 @@
       device = [
         {
           name = "etps/2-elantech-trackpoint";
-          sensitivity = -0.5;
+          sensitivity = -0.1;
           accel_profile = "flat";
         }
         {
@@ -70,7 +70,7 @@
 
         blur = {
           enabled = true;
-          size = 5;
+          size = 6;
           passes = 1;
           new_optimizations = true;
         };
