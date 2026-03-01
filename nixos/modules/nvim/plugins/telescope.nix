@@ -12,6 +12,8 @@
           ".*cache"
         ];
         hidden = false;
+        border = true;
+        borderchars = [ "─" "│" "─" "│" "┌" "┐" "┘" "└" ];
       };
 
       pickers = {

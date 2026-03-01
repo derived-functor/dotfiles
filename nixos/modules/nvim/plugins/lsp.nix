@@ -35,7 +35,7 @@
           enable = true;
           installLanguageServer = false;
           settings.haskell = { formattingProvider = "ormolu"; checkProject = true; };
-          installGhc = false;
+          installGhc = true;
         };
       };
       keymaps = {

@@ -11,6 +11,7 @@ in
     ./modules/hyprland.nix
     ./modules/hypridle.nix
     ./modules/hyprlock.nix
+    ./modules/fastfetch.nix
     ./modules/kitty.nix
     ./modules/swaync.nix
     ./modules/waybar.nix
@@ -175,6 +176,7 @@ in
       set -gx LONGITUDE "37.62"
       set -gx headphones_mac "48:05:E2:F0:DD:58"
     '';
+    "fastfetch/logo.png".source = ./modules/logo.png;
     "hypr/colors.conf".source = ./modules/colors-hyprland.conf;
     "swaync/style.css".source = ./modules/style-swaync.css;
     "waybar/colors.css".source = ./modules/colors.css;
@@ -188,9 +190,9 @@ in
 
   home.file = {
     # ".config/nvim".source = link "nvim/.config/nvim";
-    ".config/btop".source = link "btop/.config/btop";
+    # ".config/btop".source = link "btop/.config/btop";
     ".config/colors".source = link "colors/.config/colors";
-    ".config/fastfetch".source = link "fastfetch/.config/fastfetch";
+    # ".config/fastfetch".source = link "fastfetch/.config/fastfetch";
     ".config/quickshell".source = link "quickshell/.config/quickshell";
 
     ".local/bin".source = link "scripts/.local/bin";

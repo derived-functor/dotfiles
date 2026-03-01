@@ -1,4 +1,4 @@
-{unstable, ...}:
+{ unstable, ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -39,10 +39,17 @@
         };
       };
 
-      device = {
-        name = "epic-mouse-v1";
-        sensitivity = -0.5;
-      };
+      device = [
+        {
+          name = "etps/2-elantech-trackpoint";
+          sensitivity = -0.5;
+          accel_profile = "flat";
+        }
+        {
+          name = "epic-mouse-v1";
+          sensitivity = -0.5;
+        }
+      ];
 
       general = {
         gaps_in = 4;
@@ -61,11 +68,11 @@
         active_opacity = 1.00;
         inactive_opacity = 0.85;
 
-        blur =  {
-            enabled = true;
-            size = 5;
-            passes = 1;
-            new_optimizations = true;
+        blur = {
+          enabled = true;
+          size = 5;
+          passes = 1;
+          new_optimizations = true;
         };
 
         shadow = {
