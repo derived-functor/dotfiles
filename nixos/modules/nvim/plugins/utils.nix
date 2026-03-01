@@ -3,35 +3,48 @@
   programs.nixvim = {
     extraPlugins = with pkgs.vimPlugins; [
       kitty-scrollback-nvim
+      # toggleterm-nvim
+      # typst-preview-nvim
     ];
     extraConfigLua = ''
-      require('kitty-scrollback').setup()
+            require("kitty-scrollback").setup()
+            --require("toggleterm").setup({
+      		--keys = {
+      		--	{ "<leader>td", "<cmd>ToggleTerm size=17 dir=. direction=horizontal<cr>", desc = "Open a horizontal terminal at the Desktop directory" }
+      		--},
+            --})
+
+            --require("typst-preview").setup({
+              --  lazy = false, -- or ft = 'typst'
+               --- version = '1.*',
+                --opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+            --})
     '';
     userCommands = {
       KittyScrollbackGenerateKittens = {
         command = "lua require('kitty-scrollback').generate_kittens()";
       };
     };
-    toggleterm = {
-      enable = true;
-      settings = {
-        size = 17;
-        direction = "horizontal";
-        open_mapping = "[[<c-t>]]";
-      };
 
-      typst-preview = {
-        enable = true;
-      };
-    };
     plugins = {
       leap.enable = true;
       neogit.enable = true;
-      toggleterm.enable = true;
+      # toggleterm.enable = true;
       dap = {
         enable = true;
-        extensions.dap-ui.enable = true;
-        extensions.dap-python.enable = true;
+      };
+      dap-ui.enable = true;
+      dap-python.enable = true;
+      typst-preview = {
+        enable = true;
+      };
+      toggleterm = {
+        enable = true;
+        settings = {
+          size = 17;
+          direction = "horizontal";
+          open_mapping = "[[<c-t>]]";
+        };
       };
     };
 

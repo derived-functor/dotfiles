@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   programs.nixvim = {
     colorschemes.catppuccin = {
@@ -23,62 +25,66 @@
     };
 
     diagnostics.float.border = "single";
+
   };
   programs.nixvim.plugins = {
     dashboard = {
       enable = true;
-      hideTabline = true;
-      hideStatusline = true;
-      theme = "doom";
-      config = {
-        header = [
-          ""
-          " _   _                 _           "
-          "| \\ | |                _           "
-          "|  \\| | ___  _____   ___ _ __ ___  "
-          "| . ` |/ _ \\/ _ \\ \\ / / | '_ ` _ \\ "
-          "| |\\  |  __/  _  \\ V /| | | | | | | "
-          "\\_| \\_/\\___|\\___/ \\_/ |_|_| |_| |_|"
-          ""
-          "   ℝ[x] / (x² + 1) ≅ ℂ "
-          ""
-        ];
-        center = [
-          {
-            icon = "  ";
-            desc = "Recently opened files    ";
-            action = "Telescope oldfiles";
-            key = "s";
-          }
-          {
-            icon = "󰭎  ";
-            desc = "Find File    ";
-            action = "Telescope find_files";
-            key = "f";
-          }
-          {
-            icon = "  ";
-            desc = "File Browser    ";
-            action = "Neotree toggle";
-            key = "e";
-          }
-          {
-            icon = "  ";
-            desc = "Find word    ";
-            action = "Telescope live_grep";
-            key = "b";
-          }
-          {
-            icon = "  ";
-            desc = "Open Neogit";
-            action = "Neogit";
-            key = "N";
-          }
-        ];
-        footer = [
-          ""
-          "Managed by NixOS — Declarative & Pure"
-        ];
+      settings = {
+        hideTabline = true;
+        hideStatusline = true;
+        theme = "doom";
+        config = {
+          vertical_center = true;
+          header = [
+            ""
+            " _   _                 _           "
+            "| \\ | |                _           "
+            "|  \\| | ___  _____   ___ _ __ ___  "
+            "| . ` |/ _ \\/ _ \\ \\ / / | '_ ` _ \\ "
+            " | |\\  |  __/  _  \\ V /| | | | | | | "
+            "\\_| \\_/\\___|\\___/ \\_/ |_|_| |_| |_|"
+            ""
+            "   ℝ[x] / (x² + 1) ≅ ℂ "
+            ""
+          ];
+          center = [
+            {
+              action = "Telescope oldfiles";
+              desc = "Recently opened files    ";
+              icon = "  ";
+              key = "s";
+            }
+            {
+              action = "Telescope find_files";
+              desc = "Find File    ";
+              icon = "󰭎  ";
+              key = "f";
+            }
+            {
+              action = "Neotree toggle";
+              desc = "File Browser    ";
+              icon = "  ";
+              key = "e";
+            }
+            {
+              action = "Telescope live_grep";
+              desc = "Find word    ";
+              icon = "  ";
+              key = "b";
+            }
+            {
+              action = "Neogit";
+              desc = "Open Neogit";
+              icon = "  ";
+              key = "N";
+            }
+          ];
+          footer = [
+            ""
+            "Managed by NixOS — Declarative & Pure"
+          ];
+        };
       };
     };
 
@@ -125,33 +131,53 @@
     };
     neo-tree = {
       enable = true;
-      sources = [ "filesystem" "buffers" "git_status" ];
-      window = {
-        width = 30;
-        mappings = {
-          "<leader>e" = "close_window";
+      settings = {
+        sources = [
+          "filesystem"
+          "buffers"
+          "git_status"
+        ];
+        window = {
+          width = 25;
+          position = "right";
         };
+        enable_git_status = true;
       };
-      enableGitStatus = true;
-    };
-
-    neodev = {
-      enable = true;
     };
 
     noice = {
       enable = true;
       settings = {
-        lsp.override = {
-          "vim.lsp.util.convert_input_to_markdown_lines" = true;
-          "vim.lsp.util.set_editing_highlight" = true;
-          "table.lsp.signature.enabled" = false; # Если мешает при вводе
+
+        cmdline = {
+          view = "cmdline_popup";
         };
-        presets = {
-          bottom_search = true;
-          command_palette = true;
-          long_message_to_split = true;
+
+        views = {
+          cmdline_popup = {
+            position = {
+              row = "50%";
+              col = "50%";
+            };
+            size = {
+              width = 60;
+              height = "auto";
+            };
+            border = {
+              style = "single";
+              padding = [ 0 1 ];
+            };
+          };
         };
+        # lsp.override = {
+        #   "vim.lsp.util.convert_input_to_markdown_lines" = true;
+        #   "vim.lsp.util.set_editing_highlight" = true;
+        #   "table.lsp.signature.enabled" = false; # Если мешает при вводе
+      };
+      presets = {
+        bottom_search = true;
+        command_palette = true;
+        long_message_to_split = true;
       };
     };
     notify = {

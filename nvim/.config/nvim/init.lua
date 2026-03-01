@@ -1,7 +1,1 @@
-require("config.lazy")
-require("config.python_setup")
-require("config.default_settings")
-require("config.theme_and_exterior")
-require("config.other")
-
-require("mason").setup()
+/nix/store/r1yl4m6xwz8rwv0y54z03v7nw2ynxjn8-home-manager-files/.config/nvim/init.lua

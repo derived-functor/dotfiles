@@ -38,11 +38,11 @@
     };
 
     autoCmd = [
-      {
-        event = [ "FileType" ];
-        pattern = [ "python" ];
-        callback.__raw = "function() vim.treesitter.start() end";
-      }
+      # {
+      #   event = [ "FileType" ];
+      #   pattern = [ "python" ];
+      #   callback.__raw = "function() vim.treesitter.start() end";
+      # }
       {
         event = [ "BufWritePost" ];
         callback.__raw = "function() require('lint').try_lint() end";

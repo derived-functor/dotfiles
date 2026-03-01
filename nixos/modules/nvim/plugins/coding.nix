@@ -4,12 +4,39 @@
 
   programs.nixvim = {
 
+    extraPlugins = with pkgs.vimPlugins; [
+      markdown-nvim
+      vim-repeat
+      nvim-lint
+    ];
+
     extraConfigLua = ''
-      require('pytest').setup({})
+      require('markdown').setup({
+      })
+
+      require("lint").linters_by_ft = {
+            python = { "ruff" },
+            nix = { "statix" },
+            haskell = { "hlint" }
+        }
     '';
+
+    extraPackages = with pkgs; [
+      ruff
+      black
+      nixpkgs-fmt
+      statix
+      hlint
+      nodePackages.prettier
+      python3Packages.debugpy
+      python3Packages.pytest
+      gcc
+      gnumake
+    ];
   };
+
   programs.nixvim.plugins = {
-    autopairs.enable = true;
+    nvim-autopairs.enable = true;
     comment.enable = true;
     nvim-bqf = {
       enable = true;
@@ -28,10 +55,15 @@
       modules = {
         comment = {
           options = {
-            custom_commentstring = ''
+            custom_commentstring.__raw = ''
               function()
-                return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
-              end
+                  local ok, ts_context = pcall(require, "ts_context_commentstring.internal")
+                  if ok then
+                    return ts_context.calculate_commentstring() or vim.bo.commentstring
+                  else
+                    return vim.bo.commentstring
+                  end
+                end
             '';
           };
         };
@@ -56,15 +88,6 @@
       };
     };
 
-    lint = {
-      enable = true;
-      lintersByFt = {
-        python = [ "mypy" "ruff" ];
-        nix = [ "statix" ];
-        haskell = [ "hlint" ];
-      };
-    };
-
     dap = {
       enable = true;
     };
@@ -79,24 +102,11 @@
 
     dap-python = {
       enable = true;
-      interpreter = "${pkgs.python3Packages.debugpy}/bin/python";
+      adapterPythonPath = "${pkgs.python3Packages.debugpy}/bin/python";
     };
 
     leap = {
       enable = true;
-    };
-
-    markdown-nvim = {
-      enable = true;
-      lazyLoad.settings.ft = "markdown";
-      settings = {
-        lists = {
-          indent_size = 2;
-        };
-        navigation = {
-          enabled = true;
-        };
-      };
     };
 
     render-markdown = {
@@ -104,7 +114,7 @@
     };
 
     todo-comments = {
-      enable = true;
+      enable = false;
       keymaps = {
         todoTelescope = {
           key = "<leader>ft";
@@ -113,20 +123,4 @@
       };
     };
   };
-
-  programs.nixvim.extraPlugins = with pkgs.vimPlugins; [
-    vim-repeat
-    pytest-nvim
-  ];
-
-  programs.nixvim.extraPackages = with pkgs; [
-    ruff
-    black
-    nixpkgs-fmt
-    statix
-    hlint
-    nodePackages.prettier
-    python3Packages.debugpy
-    python3Packages.pytest
-  ];
 }

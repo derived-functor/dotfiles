@@ -1,6 +1,10 @@
 { pkgs, ... }:
 {
   programs.nixvim.plugins = {
+
+    lazydev = {
+      enabee = true;
+    };
     lsp = {
       enable = true;
       inlayHints = true;
@@ -31,15 +35,21 @@
           enable = true;
           installLanguageServer = false;
           settings.haskell = { formattingProvider = "ormolu"; checkProject = true; };
+          installGhc = false;
         };
       };
       keymaps = {
         silent = true;
         lspBuf = {
-          "K" = "hover"; "gd" = "definition"; "gD" = "declaration";
-          "gi" = "implementation"; "go" = "type_definition";
-          "gr" = "references"; "gs" = "signature_help";
-          "<F2>" = "rename"; "<F4>" = "code_action";
+          "K" = "hover";
+          "gd" = "definition";
+          "gD" = "declaration";
+          "gi" = "implementation";
+          "go" = "type_definition";
+          "gr" = "references";
+          "gs" = "signature_help";
+          "<F2>" = "rename";
+          "<F4>" = "code_action";
         };
       };
       extra = [{
@@ -57,7 +67,7 @@
       enable = true;
       autoEnableSources = true;
       settings = {
-        sources = [ { name = "nvim_lsp"; } { name = "path"; } { name = "buffer"; } ];
+        sources = [{ name = "nvim_lsp"; } { name = "path"; } { name = "buffer"; }];
         mapping = {
           "<C-p>" = "cmp.mapping.select_prev_item()";
           "<C-n>" = "cmp.mapping.select_next_item()";
