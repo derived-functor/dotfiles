@@ -15,6 +15,7 @@ in
         ./modules/waybar.nix
         ./modules/wofi.nix
         ./modules/wlogout.nix
+        ./modules/nvim/default.nix
     ];
     home.username = "mreblan";
     home.homeDirectory = "/home/mreblan";
@@ -182,7 +183,7 @@ in
     };
 
     home.file = {
-        ".config/nvim".source = link "nvim/.config/nvim";
+        # ".config/nvim".source = link "nvim/.config/nvim";
         ".config/btop".source = link "btop/.config/btop";
         ".config/colors".source = link "colors/.config/colors";
         ".config/fastfetch".source = link "fastfetch/.config/fastfetch";

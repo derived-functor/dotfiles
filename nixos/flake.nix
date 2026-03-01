@@ -14,9 +14,20 @@
 			url = "github:nix-community/home-manager/release-25.11";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+        nixvim = {
+            url = "github:nix-community/nixvim";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
 	};
 
-	outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, zen-browser, ...}:
+	outputs = {
+    self, 
+    nixpkgs, 
+    nixpkgs-unstable, 
+    home-manager, 
+    zen-browser, 
+    nixvim,
+    ...}@inputs:
 		let
 			system = "x86_64-linux";
 			unstable = import nixpkgs-unstable {
@@ -26,7 +37,7 @@
 		in {
 			nixosConfigurations.x13 = nixpkgs.lib.nixosSystem {
 				inherit system;
-				specialArgs = { inherit unstable; };
+				specialArgs = { inherit unstable inputs; };
 				modules = [
             ./configuration.nix
 						home-manager.nixosModules.home-manager
@@ -36,7 +47,7 @@
 								useUserPackages = true;
 								users.mreblan = import ./home.nix;
 								backupFileExtension = "bak";
-								extraSpecialArgs = { inherit unstable; };
+								extraSpecialArgs = { inherit unstable inputs; };
                                 sharedModules = [ zen-browser.homeModules.twilight-official ];
 							};
 						}
