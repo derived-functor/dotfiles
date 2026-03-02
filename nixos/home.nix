@@ -80,7 +80,6 @@ in
     quickshell
     fastfetch
 
-    # neovim
     bat
     lsd
 
@@ -89,21 +88,19 @@ in
     wireplumber
 
     brightnessctl
+    upower
 
     telegram-desktop
     obsidian
 
-    nordic
-    nordzy-icon-theme
-    nordzy-cursor-theme
+    # nordic
+    # nordzy-icon-theme
+    # nordzy-cursor-theme
+    #
+    # gruvbox-dark-gtk
+    # gruvbox-plus-icons
+    # simp1e-cursors
 
-    gruvbox-dark-gtk
-    gruvbox-plus-icons
-    simp1e-cursors
-
-    # catppuccin-gtk
-    # catppuccin-papirus-folders
-    # catppuccin-cursors
   ] ++ (with unstable; [
     hyprpaper
   ]);
@@ -127,6 +124,7 @@ in
       name = "catppuccin-mocha-mauve-standard+default";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "mauve" ];
+        size = "standard";
         variant = "mocha";
       };
     };
@@ -163,7 +161,9 @@ in
     HYPRSHOT_DIR = "$HOME/screenshots";
     QS_NO_RELOAD_POPUP = "1";
     NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
     XDG_DATA_DIRS = "/run/current-system/sw/share:$HOME/.local/share:$XDG_DATA_DIRS";
+    GTK_THEME = "catppuccin-mocha-mauve-standard+default";
   };
 
   home.sessionPath = [
@@ -204,6 +204,12 @@ in
 
   programs.fish = {
     enable = true;
+
+    functions = {
+      fish_greeting = {
+        body = "";
+      };
+    };
 
     plugins = [
       {

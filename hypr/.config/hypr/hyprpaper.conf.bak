@@ -1,6 +1,0 @@
-wallpaper {
-    monitor =
-    path = /home/mreblan/wallpapers/wallpaper6
-    fit_mode = cover
-}
-splash = false

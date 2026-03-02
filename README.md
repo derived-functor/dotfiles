@@ -1,116 +1,37 @@
 # Dotfiles
 
-Personal dotfiles for my Arch Linux + Hyprland setup.
+NixOS configuration with Hyprland, managed via Home Manager.
 
 ![Desktop screenshot 1](img/img1.png)
 ![Desktop screenshot 2](img/img2.png)
 
-## Arch Linux packages
+## Structure
 
-Install these to use the dotfiles (official repos unless marked AUR):
+- `nixos/` — NixOS flake with all configs
+  - `flake.nix` — main entry point
+  - `home.nix` — Home Manager configuration
+  - `modules/` — NixOS/Home Manager modules (hyprland, kitty, waybar, etc.)
 
-### Core: Hyprland & session
-
-- `hyprland` – compositor
-- `hyprlock` – lock screen
-- `hyprshot` – screenshots (AUR: `hyprshot-git` or `hyprshot`)
-- `hyprpaper` – wallpaper
-- `hypridle` – idle/sleep/lock daemon
-
-### Bar, launcher, notifications
-
-- `waybar` – status bar
-- `wofi` – app launcher / dmenu
-- `wlogout` – logout screen (AUR: `wlogout`)
-- `swaync` – notification daemon
-- `libnotify` – `notify-send` (for hypridle, theme menu, etc.)
-- **Quickshell** – QML bar (AUR: `quickshell` or `quickshell-git`); autostart runs `qs -p ~/.config/quickshell`
-
-### Terminal & shell
-
-- `kitty` – terminal (uses `kitten icat` in fish)
-- `fish` – shell
-- `fastfetch` – login/info (optional; config uses `--logo`; put a logo at `~/.config/fastfetch/logo.png` or adjust)
-
-### Editor & CLI
-
-- `neovim` – editor (plugins managed by lazy.nvim; Mason installs LSP/formatters)
-- `ranger` – file manager (bound to Super+E in Hyprland)
-- `bat` – `cat` replacement (aliased as `cat` in fish)
-- `lsd` – `ls` replacement (aliased as `ls` / `ll` in fish)
-
-### Audio & media
-
-- `pipewire` + `wireplumber` – audio (keybinds use `wpctl`)
-- `pavucontrol` – volume GUI (Waybar pulseaudio click)
-- `playerctl` – media keys (play/pause/next/prev)
-
-### Display & power
-
-- `brightnessctl` – screen brightness (XF86MonBrightnessUp/Down)
-- `wlsunset` – night light / redshift for Wayland (autostart with fixed lat/lon; adjust for your location)
-
-### Applications (from keybinds / autostart)
-
-- **Browser:** `zen-browser` (AUR; or set `$browser` in `hypr/config/program_binding.conf`)
-- **Telegram:** `telegram-desktop` (bound to Super+T)
-- **Obsidian:** `obsidian` (AUR; bound to Super+O)
-- **Syncthing:** `syncthing` – autostart `syncthing serve --no-browser`
-
-### Fonts
-
-- **Kitty & Wofi:** `ttf-jetbrains-mono` or Nerd variant, e.g. `ttf-jetbrains-mono-nerd` (AUR) for “JetBrains Mono Nerd”
-- **Cursors (env in hypr):** e.g. `nordzy-cursor-theme` (AUR) if you use Nordzy (see `hypr/config/env_vars.conf`)
-
-### Optional / situational
-
-- **NVIDIA GPU:** `nvidia` or `nvidia-utils` – Waybar `custom/gpu` script uses `nvidia-smi`
-- **Python dev:** `python`, `uv` (or pip), `pytest` – fish alias `ttest`, nvim Python LSP/DAP/format (ruff via Mason)
-- **Docker:** `docker`, Docker Desktop or compat – fish uses `DOCKER_HOST` for `docker compose` (`cmps`)
-
-### Themes (colors/themes)
-
-Theme scripts in `colors/themes/` set GTK/icon/cursor env and expect these packages:
-
-| Theme                                        | AUR packages                                                                             | Official             |
-| -------------------------------------------- | ---------------------------------------------------------------------------------------- | -------------------- |
-| **Nord** (`nord.sh`)                         | `nordic-theme` `nordzy-icon-theme` `nordzy-cursors`                                      | —                    |
-| **Gruvbox** (`gruvbox.sh`)                   | `gruvbox-dark-gtk` `gruvbox-plus-icon-theme` `simp1e-cursors`                            | —                    |
-| **Catppuccin Mocha** (`catppuccin-mocha.sh`) | `catppuccin-gtk-theme-mocha` `papirus-folder-scatppuccin-git` `catppuccin-cursors-mocha` | `papirus-icon-theme` |
-
-Install only the theme(s) you use, or all three for the theme switcher menu.
-
-### One-liner (official repos only, no AUR)
+## Usage
 
 ```bash
-sudo pacman -S hyprland hyprlock hyprpaper hypridle waybar wofi swaync libnotify kitty fish fastfetch neovim ranger bat lsd pipewire wireplumber pavucontrol playerctl brightnessctl wlsunset syncthing telegram-desktop ttf-jetbrains-mono
+# Rebuild the system
+sudo nixos-rebuild switch --flake ~/dotfiles/nixos#x13
+
+# Rebuild home manager (if needed separately)
+home-manager switch --flake ~/dotfiles/nixos#mreblan@x13
 ```
 
-AUR packages (e.g. with `yay`). Core + fonts + all three themes:
+## Components
 
-```bash
-yay -S hyprshot wlogout quickshell zen-browser-bin obsidian ttf-jetbrains-mono-nerd \
-  nordic-theme nordzy-icon-theme nordzy-cursors \
-  gruvbox-dark-gtk gruvbox-plus-icon-theme xcursor-simp1e-gruvbox-dark \
-  catppuccin-gtk-theme-mocha papirus-folders-catppuccin-git catppuccin-cursors-mocha
-```
+- **WM:** Hyprland with hyprlock, hypridle, hyprpaper, hyprshot
+- **Bar:** Waybar
+- **Launcher:** Wofi
+- **Notifications:** SwayNC
+- **Terminal:** Kitty
+- **Shell:** Fish with bobthefish theme
+- **Editor:** NixVim
 
-For Catppuccin icons (Papirus) install from official repos:
+## Theme
 
-```bash
-sudo pacman -S papirus-icon-theme
-```
-
-To install only one theme, use the packages from the table above. Adjust `~/.local/bin/togglefloat.sh` and `~/.local/bin/random_wallpaper.fish` (or your own wrapper script) if you use those keybinds/autostart.
-
-## How to apply
-
-You can just use `stow` to make symlinks:
-
-```bash
-stow btop colors desktop-apps fastfetch fish gtk-3.0 hypr kitty nvim quickshell scripts swaync waybar wlogout wofi
-```
-
-## AI Alert
-
-Some parts were made by vibe coding, so be careful and understand what you're doing
+Catppuccin Mocha (configured in `home.nix`).

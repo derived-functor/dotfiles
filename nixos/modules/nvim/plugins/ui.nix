@@ -7,6 +7,16 @@
       settings = {
         flavour = "mocha";
         transparent_background = true;
+
+        custom_highlights = ''
+          function(colors)
+            return {
+              LineNr = { fg = colors.flamingo }, 
+              
+              CursorLineNr = { fg = colors.flamingo, style = { "bold" } },
+            }
+          end
+        '';
         integrations = {
           cmp = true;
           treesitter = true;
@@ -58,6 +68,12 @@
               desc = "Recently opened files    ";
               icon = "  ";
               key = "s";
+            }
+            {
+              action = "require('telescope.builtin').find_files({cwd = '~/dotfiles/nixos/modules/nvim'})";
+              desc = "Config";
+              icon = "  ";
+              key = "c";
             }
             {
               action = "Telescope find_files";

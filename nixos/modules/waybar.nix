@@ -12,12 +12,12 @@
           "clock"
           "hyprland/language"
           "custom/appmenu"
+          "tray"
         ];
         "modules-center" = [
           "hyprland/workspaces"
         ];
         "modules-right" = [
-          "tray"
           "pulseaudio"
           "battery"
           "cpu"

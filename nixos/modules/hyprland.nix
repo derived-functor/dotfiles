@@ -151,7 +151,7 @@
         "$mainMod Shift, S, movetoworkspacesilent, special"
         "$mainMod, S, togglespecialworkspace"
         ", PRINT, exec, hyprshot -m region"
-        "Shift, PRINT, exec, hyprshot -m output -m DP-1"
+        "Shift, PRINT, exec, hyprshot -m output -m eDP-1"
         "$mainMod, l, movefocus, r"
         "$mainMod, h, movefocus, l"
         "$mainMod, k, movefocus, u"

@@ -56,5 +56,16 @@
           { _module.args = { unstable = unstable; }; }
         ];
       };
+      homeConfigurations."mreblan" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        extraSpecialArgs = { inherit unstable inputs; };
+        modules = [
+          ./home.nix
+          inputs.zen-browser.homeModules.twilight-official
+        ];
+      };
     };
 }
