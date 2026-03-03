@@ -13,7 +13,7 @@
       listener = [
         {
           timeout = 180; # seconds
-          on-timeout = "notify-send 'AFK' && hyprlock";
+          on-timeout = "notify-send 'AFK'";
           on-resume = "notify-send 'Oh, hi Mark'";
         }
       ];

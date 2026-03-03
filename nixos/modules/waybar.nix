@@ -116,7 +116,7 @@
           "tooltip" = false;
         };
         "custom/appmenu" = {
-          "format" = "  Apps";
+          "format" = "  Apps";
           "on-click" = "wofi -show drun --style ~/.config/wofi/style.css";
           "tooltip" = false;
         };

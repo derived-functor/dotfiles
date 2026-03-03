@@ -66,6 +66,7 @@
   '';
 
   programs.fish.enable = true;
+  programs.dconf.enable = true;
 
   users.groups.uinput = { };
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -104,6 +105,8 @@
     bluez
     home-manager
     weylus
+    gsettings-desktop-schemas
+    gtk3
   ];
   environment.pathsToLink = [
     "/share/wayland-sessions"

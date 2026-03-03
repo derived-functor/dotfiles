@@ -1,6 +1,7 @@
 {
   description = "NixOS btw";
   inputs = {
+    # catppuccin.url = "github:catppuccin/nix";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -24,6 +25,7 @@
     { self
     , nixpkgs
     , nixpkgs-unstable
+      # , catppuccin
     , home-manager
     , zen-browser
     , nixvim
@@ -43,6 +45,7 @@
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager
+          # catppuccin.nixosModules.catppuccin
           {
             home-manager = {
               useGlobalPkgs = true;

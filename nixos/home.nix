@@ -6,7 +6,9 @@ let
   cssPath = "${dotfiles}/swaync/.config/swaync/style.css";
 in
 {
+
   imports = [
+    # inputs.catppuccin.homeModules.catppuccin
     inputs.nixvim.homeModules.nixvim
     ./modules/hyprland.nix
     ./modules/hypridle.nix
@@ -31,6 +33,8 @@ in
     git
     nwg-look
     glib
+    gsettings-desktop-schemas
+    gtk3
     gcc
 
     haskell.compiler.native-bignum.ghcHEAD
@@ -107,18 +111,15 @@ in
     hyprpaper
   ]);
 
+  # catppuccin.flavor = "mocha";
+  # catppuccin.accent = "mauve";
+  # catppuccin.cursors.enable = true;
+  # catppuccin.bat.enable = true;
+  # catppuccin.fzf.enable = true;
+  # catppuccin.gtk.icon.enable = true;
+
   programs.zen-browser.enable = true;
   programs.zen-browser.suppressXdgMigrationWarning = true;
-
-  dconf = {
-    enable = true;
-    settings = {
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
-        gtk-theme = "catppuccin-mocha-mauve-standard+default";
-      };
-    };
-  };
 
   gtk = {
     enable = true;
@@ -133,17 +134,33 @@ in
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.catppuccin-papirus-folders.override {
-        accent = "mauve";
         flavor = "mocha";
+        accent = "mauve";
       };
     };
     cursorTheme = {
       name = "catppuccin-mocha-mauve-cursors";
       package = pkgs.catppuccin-cursors.mochaMauve;
     };
+
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
+
+  dconf.enable = true;
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "kvantum";
+    style.name = "kvantum";
+  };
+
+  # catppuccin.kvantum.enable = true;
 
   programs.git = {
     enable = true;
@@ -164,8 +181,10 @@ in
     QS_NO_RELOAD_POPUP = "1";
     NIXOS_OZONE_WL = "1";
     MOZ_ENABLE_WAYLAND = "1";
-    XDG_DATA_DIRS = "/run/current-system/sw/share:$HOME/.local/share:$XDG_DATA_DIRS";
-    GTK_THEME = "catppuccin-mocha-mauve-standard+default";
+    # XDG_DATA_DIRS = "/run/current-system/sw/share:$HOME/.local/share:$XDG_DATA_DIRS";
+    ADW_DISABLE_PORTAL = "1";
+    # GTK_THEME = "catppuccin-mocha-mauve-standard+default";
+    GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-desktop-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas";
   };
 
   home.sessionPath = [

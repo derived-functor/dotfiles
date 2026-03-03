@@ -88,37 +88,19 @@
       animations = {
         enabled = "yes, please :)";
         bezier = [
-          "easeOutQuint, 0.23, 1, 0.32, 1"
-          "easeInOutCubic, 0.65, 0.05, 0.36, 1"
-          "linear, 0, 0, 1, 1"
-          "almostLinear, 0.5, 0.5, 0.75, 1.0"
-          "quick, 0.15, 0, 0.1, 1"
-          "smoothIn, 0.36, 0, 0.66, -0.56"
-          "smoothOut, 0.34, 1.56, 0.64, 1"
-          "overshot, 0.4, 0.8, 0.2, 1.2"
-          "floaty, 0.1, 0.78, 0.3, 1.25"
-          "mine, 0.59, 0.00, 0.42, 1.20"
-          "mine2, 0.48, -0.55, 0.71, 0.94"
-          "wind, 0.05, 0.1, 1, 1.05"
-          "winIn, -1.0, 0.1, 0.3, 1.3"
-          "winOut, 0.3, -0.3, 1, 1"
+          "fluent_decel, 0, 0.2, 0.4, 1"
+          "easeOutCirc, 0, 0.55, 0.45, 1"
+          "easeOutExpo, 0.16, 1, 0.3, 1"
         ];
         animation = [
-          "global, 1, 10, default"
-          "border, 1, 5.39, easeOutQuint"
-          "windows, 1, 7, floaty"
-          "windowsIn, 1, $speed, winIn"
-          "windowsOut, 1, $speed, winOut"
-          "windowsMove, 1, 3.7, quick"
-          "fadeIn, 1, 1.73, almostLinear"
-          "fadeOut, 1, 1.46, almostLinear"
-          "fade, 1, 5, smoothIn"
-          "layers, 1, 3.81, easeOutQuint"
-          "layersIn, 1, 4, easeOutQuint, fade"
-          "layersOut, 1, 1.5, linear, fade"
-          "fadeLayersIn, 1, 1.79, almostLinear"
-          "fadeLayersOut, 1, 1.39, almostLinear"
-          "workspaces, 1, 2, wind"
+          # name, on/off, speed, curve, [style]
+          "windows, 1, 3, fluent_decel, popin 60%"
+          "windowsIn, 1, 3, fluent_decel, popin 60%"
+          "windowsOut, 1, 3, fluent_decel, popin 60%"
+          "border, 1, 5, default"
+          "fade, 1, 3, default"
+          "workspaces, 1, 3.5, fluent_decel, slide"
+          "specialWorkspace, 1, 3, fluent_decel, slidevert"
         ];
       };
 
@@ -228,6 +210,12 @@
         "waybar"
         "hypridle"
         "qs -p ~/.config/quickshell"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+"
+        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+
+        "gsettings set org.gnome.desktop.interface gtk-theme 'catppuccin-mocha-mauve-standard+default'"
+        "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
       ];
     };
   };

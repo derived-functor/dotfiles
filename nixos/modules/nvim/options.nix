@@ -33,6 +33,12 @@
         action.__raw = "function() vim.diagnostic.open_float(nil, {focus = false}) end";
         options.desc = "Show diagnostic";
       }
+      {
+        mode = "n";
+        key = "<leader>p";
+        action = "<cmd>PasteImage<cr>";
+        options.desc = "Paste image from system clipboard";
+      }
     ];
 
     userCommands = {
