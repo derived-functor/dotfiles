@@ -8,11 +8,26 @@ local function get_system_theme()
     return name or "gruvbox"
 end
 
-local float_bg = "#434c5e"
+-- local float_bg = "#434c5e"
 local float_fg = "#d8dee9"
+local function set_telescope_transparency()
+    local float_bg = "none"
+    local float_fg = "none"
 
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = float_bg, fg = float_fg})
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = float_bg, fg = float_fg})
+
+
+    local groups = {
+        "NormalFloat", "FloatBorder",
+        "TelescopeNormal", "TelescopeBorder",
+        "TelescopePromptNormal", "TelescopeResultsNormal", "TelescopePreviewNormal",
+        "TelescopePromptBorder", "TelescopeResultsBorder", "TelescopePreviewBorder",
+        "TelescopePromptTitle", "TelescopeResultsTitle", "TelescopePreviewTitle",
+      }
+
+  for _, group in ipairs(groups) do
+    vim.api.nvim_set_hl(0, group, { bg = bg, fg = fg })
+  end
+end
 
 vim.diagnostic.config({
     float = {
@@ -30,13 +45,34 @@ local system_to_nvim = {
 local system_theme = get_system_theme()
 local nvim_colorscheme = system_to_nvim[system_theme] or "gruvbox"
 
+require("catppuccin").setup({
+    transparent_background = true,
+    custom_highlights = function(colors)
+        return {
+            LineNr = { fg = colors.flamingo },
+            CursorLineNr = { fg = colors.pink, style = { "bold" } },
+            LineNrAbove = { fg = colors.surface2 },
+            LineNrBelow = { fg = colors.surface2 },
+        }
+    end,
+})
+
 vim.o.background = "dark"
-pcall(vim.cmd, "colorscheme " .. nvim_colorscheme)
+-- pcall(vim.cmd, "colorscheme " .. nvim_colorscheme)
+vim.api.nvim_create_autocmd("ColorScheme", {
+    callback = set_telescope_transparency
+})
+
+vim.cmd("colorscheme " .. nvim_colorscheme)
+
+set_telescope_transparency()
 
 require("telescope").setup({
     defaults = {
         border = true,
         borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+        layout_strategy = "vertical",
+        winblend = 0,
     }
 })
 

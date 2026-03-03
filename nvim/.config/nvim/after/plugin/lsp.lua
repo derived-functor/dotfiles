@@ -48,8 +48,20 @@ vim.lsp.config("lua-ls", {
 })
 vim.lsp.enable("lua-ls")
 
+vim.lsp.config("bashls", {
+  cmd = { 'bash-language-server', 'start' },
+  filetypes = { 'bash', 'sh' }
+})
+vim.lsp.enable("bashls")
+
 vim.lsp.config("qmlls", {})
 vim.lsp.enable("qmlls")
+
+vim.lsp.config("docker-language-server", {
+    cmd = { "docker-language-server", "start", "--stdio" },
+    filetypes = { "dockerfile", "yaml" }
+})
+vim.lsp.enable("docker-language-server")
 
 
 vim.lsp.config("pyright", {

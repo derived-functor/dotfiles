@@ -3,12 +3,12 @@
 }
 
 window {
-  background-color: #2e3440;
+  background-color: #1e1e2e;
 }
 
 * {
   font-family: "Jetbrains Mono";
-  color: #e5e9f0;
+  color: #cdd6f4;
 }
 
 #scroll {
@@ -16,11 +16,11 @@ window {
 }
 
 #input {
-  background-color: #434c5e;
-  color: #e5e9f0;
+  background-color: #313244;
+  color: #cdd6f4;
   outline: none;
   box-shadow: none;
-  border: 0.5px solid #8fbcbb;
+  border: 0.5px solid #94e2d5;
   border-radius: 0rem;
   font-size: 1rem;
   padding: 0.5rem;
@@ -40,11 +40,11 @@ window {
 }
 
 #entry:selected {
-  background-color: #81a1c1;
+  background-color: #cba6f7;
   outline: none;
 }
 
 #text:selected {
-  color: #2e3440;
+  color: #1e1e2e;
 }
 

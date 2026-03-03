@@ -13,7 +13,8 @@ return {
                         "__init__%.py$",
                         ".git",
                         ".mypy-cache",
-                        "..*cache"
+                        "..*cache",
+                        ".venv"
                     }
                 },
                 pickers = {
@@ -36,10 +37,14 @@ return {
                 vim.keymap.set(mode, lhs, rhs, opts)
             end
 
-            map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { noremap = true, silent = true })
-            map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', { noremap = true, silent = true })
-            map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', { noremap = true, silent = true })
-            map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', { noremap = true, silent = true })
+            local default_params = { noremap = true, silent = true }
+            map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', default_params)
+            map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', default_params)
+            map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', default_params)
+            map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', default_params)
+            map("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", default_params)
+            map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", default_params)
+            map("n", "<leader>gco", "<cmd>Telescope git_bcommits<cr>", default_params)
         end,
     },
 }

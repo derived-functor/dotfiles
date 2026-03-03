@@ -3,7 +3,7 @@ vim.cmd("source ~/.config/nvim/google.vim")
 
 -- TreeSitter
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "python" },
+    pattern = { "python", "norg" },
     callback = function() vim.treesitter.start() end,
 })
 
@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     end,
 })
 
--- require("mypy").setup()
+require("mypy").setup()
 
 -- Debug
 local dap = require('dap')
@@ -74,9 +74,9 @@ dap.configurations.python = {
 }
 
 -- Pytest
--- require("pytest").setup{
---     add_args = "-s"
--- }
+require("pytest").setup{
+    add_args = "-s"
+}
 vim.keymap.set('n', '<leader>pr', function()
   local file = vim.fn.expand('%')
   vim.cmd('TermExec cmd="uv run ' .. file .. '"')

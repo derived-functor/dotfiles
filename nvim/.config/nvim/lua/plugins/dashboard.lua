@@ -25,6 +25,12 @@ return {
                         key = 's',
                     },
                     {
+                        icon = '  ',
+                        desc = 'Config    ',
+                        action = 'require("telescope.builtin").find_files({cwd = "~/dotfiles/nvim/.config/nvim/"})',
+                        key = 'c',
+                    },
+                    {
                         icon = '󰭎  ',
                         desc = 'Find  File    ',
                         action = 'Telescope find_files',
@@ -33,7 +39,7 @@ return {
                     {
                         icon = '  ',
                         desc = 'File Browser    ',
-                        action = 'Neotree',
+                        action = 'Neotree toggle',
                         key = 'e',
                     },
                     {

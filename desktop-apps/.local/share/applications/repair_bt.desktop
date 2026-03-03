@@ -2,7 +2,7 @@
 Type=Application
 Name=Repair Headphones
 Comment=Repair BT Headphones
-Exec=/home/mreblan/.local/scripts $headphones_mac
+Exec=/home/dboyarov/.local/scripts $headphones_mac
 Icon=bluetooth
 Terminal=false
 Categories=Settings;Utility;

@@ -40,7 +40,7 @@ Rectangle {
 
         command: [
             "bash",
-            "/home/mreblan/.local/bin/get_weather.sh"
+            "/home/dboyarov/.local/bin/get_weather.sh"
         ]
 
             stdout: SplitParser {

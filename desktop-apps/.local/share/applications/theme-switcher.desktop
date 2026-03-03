@@ -2,7 +2,7 @@
 Type=Application
 Name=Theme
 Comment=Switch system theme
-Exec=/home/mreblan/.config/colors/menu_theme.sh
+Exec=/home/dboyarov/.config/colors/menu_theme.sh
 Icon=preferences-desktop-theme
 Terminal=false
 Categories=Settings;Utility;
