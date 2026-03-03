@@ -3,9 +3,12 @@
   programs.nixvim.plugins.telescope = {
     enable = true;
 
+    extensions.neorg.enable = true;
+
     settings = {
       defaults = {
         layout_strategy = "vertical";
+        winblend = 0;
         file_ignore_patterns = [
           "^__init__\\.py$"
           "^.git/"

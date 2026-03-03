@@ -28,14 +28,20 @@
     };
 
     highlight = {
+      NormalFloat.bg = "none";
+      FloatBorder.bg = "none";
+
       TelescopeNormal.bg = "none";
       TelescopeBorder.bg = "none";
       TelescopePromptNormal.bg = "none";
       TelescopePromptBorder.bg = "none";
+      TelescopePromptTitle.bg = "none";
       TelescopeResultsNormal.bg = "none";
       TelescopeResultsBorder.bg = "none";
+      TelescopeResultsTitle.bg = "none";
       TelescopePreviewNormal.bg = "none";
       TelescopePreviewBorder.bg = "none";
+      TelescopePreviewTitle.bg = "none";
     };
 
     diagnostics.float.border = "single";
