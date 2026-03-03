@@ -10,6 +10,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "uinput" ];
+
 
   hardware.graphics = {
     enable = true;
@@ -32,6 +34,7 @@
   networking.hostName = "x13";
 
   networking.networkmanager.enable = true;
+  networking.firewall.allowedTCPPorts = [ 1701 9001 ];
 
   time.timeZone = "Europe/Moscow";
 
@@ -58,12 +61,17 @@
   services.tlp.enable = true;
   services.upower.enable = true;
 
+  services.udev.extraRules = ''
+    KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
+  '';
+
   programs.fish.enable = true;
 
+  users.groups.uinput = { };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mreblan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "video" "uinput" ];
     initialPassword = "changeme";
     home = "/home/mreblan";
     shell = pkgs.fish;
@@ -95,6 +103,7 @@
     # kdePackages.qtmultimedia
     bluez
     home-manager
+    weylus
   ];
   environment.pathsToLink = [
     "/share/wayland-sessions"

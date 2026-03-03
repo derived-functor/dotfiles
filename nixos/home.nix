@@ -92,6 +92,8 @@ in
 
     telegram-desktop
     obsidian
+    spotify
+    amnezia-vpn
 
     # nordic
     # nordzy-icon-theme

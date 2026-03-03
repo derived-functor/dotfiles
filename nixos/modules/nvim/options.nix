@@ -12,6 +12,9 @@
       clipboard = "unnamedplus";
       winborder = "single";
       signcolumn = "yes";
+
+      conceallevel = 2;
+      concealcursor = "nc";
     };
 
     keymaps = [
@@ -19,6 +22,11 @@
       { mode = "n"; key = "<leader>q"; action = ":q<CR>"; options.silent = true; }
       { mode = "n"; key = "<leader>wq"; action = ":wq<CR>"; options.silent = true; }
       { mode = "n"; key = "<leader>bd"; action = ":bd<CR>"; options.silent = true; }
+      {
+        mode = "n";
+        key = "<leader>fo";
+        action = "<Plug>(neorg.telescope.find_norg_files)";
+      }
       {
         mode = "n";
         key = "<leader>d";
@@ -46,6 +54,17 @@
       {
         event = [ "BufWritePost" ];
         callback.__raw = "function() require('lint').try_lint() end";
+      }
+      {
+        event = [ "FileType" ];
+        pattern = [ "nix" "norg" ];
+        callback.__raw = ''
+          function()
+              vim.bo.tabstop = 2
+              vim.bo.shiftwidth = 2
+              vim.bo.softtabstop = 2
+          end
+        '';
       }
     ];
   };

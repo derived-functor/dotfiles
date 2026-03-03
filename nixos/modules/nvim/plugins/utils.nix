@@ -49,7 +49,7 @@
     };
 
     keymaps = [
-      { mode = "n"; key = "<leader>e"; action = ":Neotree toggle<CR>"; }
+      { mode = "n"; key = "<leader>e"; action = ":Neotree<CR>"; }
       { mode = [ "n" "x" "o" ]; key = "s"; action = "<Plug>(leap)"; }
       { mode = "n"; key = "S"; action = "<Plug>(leap-from-window)"; }
       { mode = "n"; key = "<leader>gg"; action = "<cmd>Neogit<CR>"; }

@@ -7,5 +7,6 @@
     ./telescope.nix
     ./treesitter.nix
     ./lsp.nix
+    ./neorg.nix
   ];
 }
