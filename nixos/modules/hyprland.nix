@@ -198,9 +198,9 @@
 
       env = [
         "XCURSOR_SIZE,35"
-        "XCURSOR_THEME,Catppuccin Mocha Mauve"
+        "XCURSOR_THEME,catppuccin-mocha-mauve-cursors"
         "HYPRCURSOR_SIZE,35"
-        "HYPRCURSOR_THEME,Catppuccin Mocha Mauve"
+        "HYPRCURSOR_THEME,catppuccin-mocha-mauve-cursors"
       ];
 
       exec-once = [
@@ -210,12 +210,7 @@
         "waybar"
         "hypridle"
         "qs -p ~/.config/quickshell"
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-"
-        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-
-        "gsettings set org.gnome.desktop.interface gtk-theme 'catppuccin-mocha-mauve-standard+default'"
-        "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
+        "hyprctl setcursor catppuccin-mocha-mauve-cursors 35"
       ];
     };
   };

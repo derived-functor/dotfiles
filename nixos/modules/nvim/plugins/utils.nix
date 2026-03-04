@@ -46,17 +46,17 @@
           open_mapping = "[[<c-t>]]";
         };
       };
-			img-clip = {
-				enable = true;
-				settings = {
-					default = {
-						dir_path = "assets";
-						file_name = "%y-%m-%d-%h-%m-%s";
-						relative_to_current_file = false;
-						use_absolute_path = false;
-					};
-				};
-			};
+      img-clip = {
+        enable = true;
+        settings = {
+          default = {
+            dir_path = "assets";
+            file_name = "%y-%m-%d-%h-%m-%s";
+            relative_to_current_file = false;
+            use_absolute_path = false;
+          };
+        };
+      };
     };
 
     keymaps = [

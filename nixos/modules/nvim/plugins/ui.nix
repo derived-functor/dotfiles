@@ -155,6 +155,19 @@
         };
       };
     };
+
+    web-devicons = {
+      enable = true;
+
+      overrideByExtension = {
+        norg = {
+          icon = "󰎚";
+          color = "#7aa2f7";
+          name = "Neorg";
+        };
+      };
+    };
+
     neo-tree = {
       enable = true;
       settings = {
@@ -230,5 +243,4 @@
     };
   };
 
-  programs.nixvim.plugins.web-devicons.enable = true;
 }

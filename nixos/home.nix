@@ -8,7 +8,6 @@ in
 {
 
   imports = [
-    # inputs.catppuccin.homeModules.catppuccin
     inputs.nixvim.homeModules.nixvim
     ./modules/hyprland.nix
     ./modules/hypridle.nix
@@ -98,6 +97,9 @@ in
     obsidian
     spotify
     amnezia-vpn
+    texliveMedium
+    imagemagick
+    typst
 
     # nordic
     # nordzy-icon-theme
@@ -111,12 +113,14 @@ in
     hyprpaper
   ]);
 
-  # catppuccin.flavor = "mocha";
-  # catppuccin.accent = "mauve";
-  # catppuccin.cursors.enable = true;
-  # catppuccin.bat.enable = true;
-  # catppuccin.fzf.enable = true;
-  # catppuccin.gtk.icon.enable = true;
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    hyprcursor.enable = true;
+    package = pkgs.catppuccin-cursors.mochaMauve;
+    name = "catppuccin-mocha-mauve-cursors";
+    size = 35;
+  };
 
   programs.zen-browser.enable = true;
   programs.zen-browser.suppressXdgMigrationWarning = true;
@@ -138,10 +142,6 @@ in
         accent = "mauve";
       };
     };
-    cursorTheme = {
-      name = "catppuccin-mocha-mauve-cursors";
-      package = pkgs.catppuccin-cursors.mochaMauve;
-    };
 
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
@@ -159,8 +159,6 @@ in
     platformTheme.name = "kvantum";
     style.name = "kvantum";
   };
-
-  # catppuccin.kvantum.enable = true;
 
   programs.git = {
     enable = true;
@@ -181,9 +179,7 @@ in
     QS_NO_RELOAD_POPUP = "1";
     NIXOS_OZONE_WL = "1";
     MOZ_ENABLE_WAYLAND = "1";
-    # XDG_DATA_DIRS = "/run/current-system/sw/share:$HOME/.local/share:$XDG_DATA_DIRS";
     ADW_DISABLE_PORTAL = "1";
-    # GTK_THEME = "catppuccin-mocha-mauve-standard+default";
     GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-desktop-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas";
   };
 

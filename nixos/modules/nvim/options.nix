@@ -39,6 +39,28 @@
         action = "<cmd>PasteImage<cr>";
         options.desc = "Paste image from system clipboard";
       }
+      {
+        mode = "n";
+        key = "<leader>ni";
+        action.__raw = ''
+          function()
+            vim.cmd("Neorg workspace home")
+            vim.cmd("edit ~/notes/home/inbox/inbox.norg")
+          end
+        '';
+        options.desc = "Open inbox note";
+      }
+      {
+        mode = "n";
+        key = "<leader>jd";
+        action.__raw = ''
+          function()
+            vim.cmd("Neorg workspace home")
+            vim.cmd("Neorg journal today")
+          end
+        '';
+        options.desc = "Creates daily note";
+      }
     ];
 
     userCommands = {

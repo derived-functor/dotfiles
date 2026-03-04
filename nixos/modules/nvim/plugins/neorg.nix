@@ -2,7 +2,7 @@
 
 {
 
-programs.nixvim.extraPlugins = with pkgs.vimPlugins; [
+  programs.nixvim.extraPlugins = with pkgs.vimPlugins; [
     neorg-telescope
   ];
 
@@ -24,6 +24,14 @@ programs.nixvim.extraPlugins = with pkgs.vimPlugins; [
           };
           "core.defaults" = {
             __empty = null;
+          };
+          "core.journal" = {
+            config = {
+              strategy = "flat";
+            };
+          };
+          "core.completion" = {
+            config = { engine = "nvim-cmp"; };
           };
           "core.dirman" = {
             config = {
