@@ -11,5 +11,10 @@
     ./wlogout.nix
     ./nvim/default.nix
     ./systemd-units.nix
+    ./gtk.nix
+    ./qt.nix
+    ./git.nix
+    ./fish.nix
+    ./cursor.nix
   ];
 }

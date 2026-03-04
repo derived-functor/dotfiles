@@ -103,64 +103,8 @@ in
     hyprpaper
   ]);
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    hyprcursor.enable = true;
-    package = pkgs.catppuccin-cursors.mochaMauve;
-    name = "catppuccin-mocha-mauve-cursors";
-    size = 35;
-  };
-
   programs.zen-browser.enable = true;
   programs.zen-browser.suppressXdgMigrationWarning = true;
-
-  gtk = {
-    enable = true;
-    theme = {
-      name = "catppuccin-mocha-mauve-standard+default";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "mauve" ];
-        size = "standard";
-        variant = "mocha";
-      };
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "mocha";
-        accent = "mauve";
-      };
-    };
-
-    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
-    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
-  };
-
-  dconf.enable = true;
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "kvantum";
-    style.name = "kvantum";
-  };
-
-  programs.git = {
-    enable = true;
-    settings = {
-      user = {
-        name = "Boyarov Danil";
-        email = "boy4rov.da@gmail.com";
-      };
-      credential.helper = "store";
-    };
-    lfs.enable = true;
-  };
 
   home.sessionVariables = {
     GIT_EDITOR = "vim";
@@ -176,6 +120,19 @@ in
   home.sessionPath = [
     "$HOME/.local/bin"
   ];
+
+  home.file = {
+    ".config/colors".source = link "colors/.config/colors";
+    ".config/quickshell".source = link "quickshell/.config/quickshell";
+
+    ".local/bin".source = link "scripts/.local/bin";
+    "wallpapers".source = link "wallpapers/wallpapers";
+
+    ".local/share/applications" = {
+      source = link "desktop-apps/.local/share/applications";
+      recursive = true;
+    };
+  };
 
   xdg.configFile = {
     "fish/additional_vars.fish".text = ''
@@ -194,60 +151,5 @@ in
     "wlogout/icons".source = ./modules/icons;
     "wofi/style.css".source = ./modules/style-wofi.css;
     "kitty/colors/.conf".source = ./modules/colors-kitty.conf;
-  };
-
-  home.file = {
-    ".config/colors".source = link "colors/.config/colors";
-    ".config/quickshell".source = link "quickshell/.config/quickshell";
-
-    ".local/bin".source = link "scripts/.local/bin";
-    "wallpapers".source = link "wallpapers/wallpapers";
-
-    ".local/share/applications" = {
-      source = link "desktop-apps/.local/share/applications";
-      recursive = true;
-    };
-  };
-
-  programs.fish = {
-    enable = true;
-
-    functions = {
-      fish_greeting = {
-        body = "";
-      };
-    };
-
-    plugins = [
-      {
-        name = "agnoster";
-        src = pkgs.fetchFromGitHub {
-          owner = "oh-my-fish";
-          repo = "theme-bobthefish";
-          rev = "e3b4d4eafc23516e35f162686f08a42edf844e40";
-          sha256 = "cXOYvdn74H4rkMWSC7G6bT4wa9d3/3vRnKed2ixRnuA=";
-        };
-      }
-    ];
-
-    shellAliases = {
-      nv = "nvim";
-      py = "python";
-      cat = "bat";
-      c = "clearf";
-      icat = "kitten icat";
-      last_n = "ls -lAth | head -n";
-      ll = "lsd -lA";
-      ls = "lsd";
-      cmatrix = "cmatrix -u 3 -C $CMATRIX_COLOR";
-      rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/nixos#x13";
-    };
-    interactiveShellInit = ''
-      set -gx fish_greeting
-      set -g theme_display_nix_shell no
-      fastfetch
-      source $HOME/.config/fish/additional_vars.fish
-      source $HOME/.config/fish/conf.d/colors.fish
-    '';
   };
 }

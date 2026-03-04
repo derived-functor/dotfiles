@@ -5,7 +5,7 @@
     Unit.Description = "Auto-sync Neorg notes with Git";
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash /home/user/.local/bin/sync-notes.sh";
+      ExecStart = "${pkgs.bash}/bin/bash /home/mreblan/.local/bin/sync-notes.sh";
     };
   };
 

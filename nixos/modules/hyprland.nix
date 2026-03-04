@@ -6,13 +6,24 @@
     xwayland.enable = true;
     portalPackage = unstable.xdg-desktop-portal-hyprland;
     settings = {
-      monitor = ",prefered,auto,1";
+      monitor = [
+        "eDP-1,prefered,auto,1"
+        "HDMI-A-1,2560x1440@143.97,-2560x0,1"
+      ];
       source = "~/.config/hypr/colors.conf";
 
       "$mainMod" = "SUPER";
       "$RESIZE" = 60;
 
-      workspace = map (i: "${toString i}, monitor:eDP-1") (builtins.genList (i: i + 1) 10);
+      workspace = map
+        (i:
+          let
+            ws = i + 1;
+            targetMonitor = if ws <= 5 then "eDP-1" else "HDMI-A-1";
+          in
+          "${toString ws}, monitor:${targetMonitor}"
+        )
+        (builtins.genList (i: i) 10);
 
       windowrule = [
         "match:class ^$, match:title ^$, match:xwayland true, match:float true, match:fullscreen true, match:pin false, no_focus on"
