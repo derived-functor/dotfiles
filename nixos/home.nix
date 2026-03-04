@@ -3,22 +3,12 @@
 let
   dotfiles = "${config.home.homeDirectory}/dotfiles";
   link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
-  cssPath = "${dotfiles}/swaync/.config/swaync/style.css";
 in
 {
 
   imports = [
     inputs.nixvim.homeModules.nixvim
-    ./modules/hyprland.nix
-    ./modules/hypridle.nix
-    ./modules/hyprlock.nix
-    ./modules/fastfetch.nix
-    ./modules/kitty.nix
-    ./modules/swaync.nix
-    ./modules/waybar.nix
-    ./modules/wofi.nix
-    ./modules/wlogout.nix
-    ./modules/nvim/default.nix
+    ./modules/bootstrap.nix
   ];
   home.username = "mreblan";
   home.homeDirectory = "/home/mreblan";
