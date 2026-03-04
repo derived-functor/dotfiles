@@ -235,6 +235,7 @@
       settings = {
         background_colour = "#000000";
         timeout = 3000;
+        top_down = true;
       };
     };
 
