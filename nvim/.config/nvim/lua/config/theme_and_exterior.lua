@@ -92,5 +92,17 @@ require("cmp").setup({
 -- Other
 
 require("lualine").setup()
-require("indentmini").setup()
+-- require("indentmini").setup()
+require("mini.indentscope").setup({
+    symbol = "|",
+    options = {
+        try_as_border = true
+    },
+    draw = {
+        delay = 65,
+        animation = function(s, n)
+            return 12
+        end
+    }
+})
 require('todo-comments').setup{}

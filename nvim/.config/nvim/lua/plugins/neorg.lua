@@ -5,6 +5,7 @@ return {
     dependencies = {
         { "nvim-lua/plenary.nvim" },
         { "3rd/image.nvim" },
+        { "nvim-neorg/neorg-telescope" },
     },
     config = function()
         require("neorg").setup({
@@ -14,11 +15,11 @@ return {
                 ["core.dirman"] = {
                     config = {
                         workspaces = {
-                            notes = "~/notes/main",
+                            notes = "~/notes/home",
                             work = "~/notes/work",
                             gtd = "~/notes/gtd",
                         },
-                        default_workspace = "notes",
+                        default_workspace = "notes"
                     }
                 },
                 ["core.integrations.image"] = {},
@@ -30,6 +31,12 @@ return {
                         debounce_ms = 200,
                         min_length = 3,
                     }
+                },
+                ["core.integrations.telescope"] = {},
+                [ "core.journal" ] = {
+                    config = {
+                        strategy = "flat",
+                    },
                 },
             }
         })

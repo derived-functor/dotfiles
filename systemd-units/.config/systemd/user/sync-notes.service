@@ -1,0 +1,6 @@
+[Unit]
+Description=Auto-sync Neorg notes with Git
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/sync-notes.sh

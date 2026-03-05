@@ -35,6 +35,8 @@ require("neorg").setup({
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'nc'
 
+vim.keymap.set("n", "<leader>fo", "<Plug>(neorg.telescope.find_norg_files)")
+
 require("notify").setup{
 	top_down = false,
 	render = "minimal",
