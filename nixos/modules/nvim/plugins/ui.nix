@@ -11,8 +11,10 @@
         custom_highlights = ''
           function(colors)
             return {
+
+              FloatBorder = { fg = colors.blue, bg = "none" },
+
               LineNr = { fg = colors.flamingo }, 
-              
               CursorLineNr = { fg = colors.flamingo, style = { "bold" } },
             }
           end

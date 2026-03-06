@@ -94,6 +94,8 @@
     config.hyprland.default = [ "hyprland" "gtk" ];
   };
 
+  programs.nix-ld.enable = true;
+
   environment.systemPackages = with pkgs; [
     vim
     wget

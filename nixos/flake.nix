@@ -1,7 +1,6 @@
 {
   description = "NixOS btw";
   inputs = {
-    # catppuccin.url = "github:catppuccin/nix";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -19,16 +18,17 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur.url = "github:nix-community/NUR";
   };
 
   outputs =
     { self
     , nixpkgs
     , nixpkgs-unstable
-      # , catppuccin
     , home-manager
     , zen-browser
     , nixvim
+    , nur
     , ...
     }@inputs:
     let
@@ -37,6 +37,11 @@
         inherit system;
         config.allowUnfree = true;
       };
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [ nur.overlay ];
+      };
     in
     {
       nixosConfigurations.x13 = nixpkgs.lib.nixosSystem {
@@ -44,8 +49,10 @@
         specialArgs = { inherit unstable inputs; };
         modules = [
           ./configuration.nix
+          {
+            nixpkgs.overlays = [ nur.overlays.default ];
+          }
           home-manager.nixosModules.home-manager
-          # catppuccin.nixosModules.catppuccin
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -60,10 +67,7 @@
         ];
       };
       homeConfigurations."mreblan" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
+        inherit pkgs;
         extraSpecialArgs = { inherit unstable inputs; };
         modules = [
           ./home.nix

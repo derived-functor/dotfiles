@@ -20,6 +20,8 @@ in
     wget
     curl
     git
+    gitflow
+    pre-commit
     nwg-look
     glib
     gsettings-desktop-schemas
@@ -27,6 +29,8 @@ in
     gcc
 
     haskell.compiler.native-bignum.ghcHEAD
+
+    blanket
 
     nil
     nixpkgs-fmt
@@ -103,8 +107,8 @@ in
     hyprpaper
   ]);
 
-  programs.zen-browser.enable = true;
-  programs.zen-browser.suppressXdgMigrationWarning = true;
+  # programs.zen-browser.enable = true;
+  # programs.zen-browser.suppressXdgMigrationWarning = true;
 
   home.sessionVariables = {
     GIT_EDITOR = "vim";
@@ -140,16 +144,16 @@ in
       set -gx LONGITUDE "37.62"
       set -gx headphones_mac "48:05:E2:F0:DD:58"
     '';
-    "fastfetch/logo.png".source = ./modules/logo.png;
-    "hypr/colors.conf".source = ./modules/colors-hyprland.conf;
-    "swaync/style.css".source = ./modules/style-swaync.css;
-    "swaync/colors.css".source = ./modules/colors.css;
-    "waybar/colors.css".source = ./modules/colors.css;
-    "waybar/style.css".source = ./modules/style-waybar.css;
-    "wlogout/colors.css".source = ./modules/colors.css;
-    "wlogout/style.css".source = ./modules/style-wlogout.css;
-    "wlogout/icons".source = ./modules/icons;
-    "wofi/style.css".source = ./modules/style-wofi.css;
-    "kitty/colors/.conf".source = ./modules/colors-kitty.conf;
+    "fastfetch/logo.png".source = ./modules/assets/logo.png;
+    "hypr/colors.conf".source = ./modules/assets/colors-hyprland.conf;
+    "swaync/style.css".source = ./modules/assets/style-swaync.css;
+    "swaync/colors.css".source = ./modules/assets/colors.css;
+    "waybar/colors.css".source = ./modules/assets/colors.css;
+    "waybar/style.css".source = ./modules/assets/style-waybar.css;
+    "wlogout/colors.css".source = ./modules/assets/colors.css;
+    "wlogout/style.css".source = ./modules/assets/style-wlogout.css;
+    "wlogout/icons".source = ./modules/assets/icons;
+    "wofi/style.css".source = ./modules/assets/style-wofi.css;
+    "kitty/colors/.conf".source = ./modules/assets/colors-kitty.conf;
   };
 }

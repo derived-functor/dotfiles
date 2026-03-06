@@ -16,5 +16,6 @@
     ./git.nix
     ./fish.nix
     ./cursor.nix
+    ./librewolf.nix
   ];
 }

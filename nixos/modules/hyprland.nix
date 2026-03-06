@@ -33,7 +33,7 @@
       "$terminal" = "kitty";
       "$fileManager" = "thunar";
       "$menu" = "wofi --show drun --style ~/.config/wofi/style.css";
-      "$browser" = "zen-twilight";
+      "$browser" = "librewolf";
       "$telegram" = "Telegram";
       "$obsidian" = "obsidian";
 
