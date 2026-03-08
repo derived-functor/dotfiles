@@ -2,7 +2,7 @@
 Type=Application
 Name=NixOS Package Search
 Comment=Switch system theme
-Exec=BROWSER="librewolf" /home/mreblan/.local/bin/wofi-nixos-search
+Exec=/home/mreblan/.local/bin/wofi-nixos-search "librewolf"
 Icon=system-search
 Terminal=false
 Categories=Settings;Utility;

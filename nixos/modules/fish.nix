@@ -37,6 +37,7 @@
     interactiveShellInit = ''
       set -gx fish_greeting
       set -g theme_display_nix_shell no
+      set -gx MANPAGER nvim "nvim +Man!"
       fastfetch
       source $HOME/.config/fish/additional_vars.fish
       source $HOME/.config/fish/conf.d/colors.fish

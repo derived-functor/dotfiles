@@ -1,6 +1,6 @@
 #!/run/current-system/sw/bin/bash
 
-BROWSER=${BROWSER:-"zen-twilight"}
+BROWSER=${1:-"zen-twilight"}
 STABLE=${NIX_CHANNEL:-"25.11"}
 UNSTABLE="unstable"
 
