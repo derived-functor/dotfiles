@@ -128,7 +128,7 @@
         "$mainMod, Return, exec, $terminal"
         "$mainMod, Q, killactive"
         "$mainMod, M, exit"
-        "$mainMod, E, exec, kitty -e $fileManager"
+        "$mainMod, E, exec, $fileManager"
         "$mainMod, B, exec, $browser"
         "$mainMod, R, exec, $menu"
         "$mainMod Shift, L, exec, wlogout -b 2 -c 2"
