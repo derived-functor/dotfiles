@@ -44,7 +44,7 @@
       };
     in
     {
-      nixosConfigurations.x13 = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit unstable inputs; };
         modules = [

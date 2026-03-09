@@ -14,6 +14,15 @@ in
   home.homeDirectory = "/home/mreblan";
   home.stateVersion = "25.11";
 
+  home.activation = {
+      cloneDotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
+          DOTFILES_DIR="${config.home.homeDirectory}/dotfiles"
+          if [ ! -d "$DOTFILES_DIR" ]; then
+              $DRY_RUN_CMD ${pkgs.git}/bin/git clone -b nixos/desktop https://github.com/derived-functor/dotfiles.git "$DOTFILES_DIR"
+          fi
+      '';
+  };
+
   home.packages = with pkgs; [
     tree
     vim
@@ -83,9 +92,6 @@ in
     pavucontrol
     playerctl
     wireplumber
-
-    brightnessctl
-    upower
 
     telegram-desktop
     obsidian

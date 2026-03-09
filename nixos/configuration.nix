@@ -12,11 +12,28 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "uinput" ];
 
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    XDG_SESSION_TYPE = "wayland";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    NVD_BACKEND = "direct";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+  };
 
   hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+      enable = true;
+      enable32Bit = true;
   };
+  hardware.nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -31,7 +48,7 @@
     };
   };
 
-  networking.hostName = "x13";
+  networking.hostName = "desktop";
 
   networking.networkmanager.enable = true;
   networking.firewall.allowedTCPPorts = [ 1701 9001 ];
@@ -58,12 +75,11 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  services.tlp.enable = true;
-  services.upower.enable = true;
-
   services.udev.extraRules = ''
     KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
   '';
+
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   programs.fish.enable = true;
   programs.dconf.enable = true;
@@ -102,13 +118,12 @@
     curl
     git
     kitty
-    # sddm-astronaut
-    # kdePackages.qtmultimedia
     bluez
     home-manager
     weylus
     gsettings-desktop-schemas
     gtk3
+    cudatoolkit
   ];
   environment.pathsToLink = [
     "/share/wayland-sessions"
