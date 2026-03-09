@@ -19,9 +19,9 @@
         ];
         "modules-right" = [
           "pulseaudio"
-          "battery"
           "cpu"
           "temperature"
+          ""
           "memory"
           "network"
           "custom/exit"
@@ -46,7 +46,7 @@
           };
           "sort-by-number" = true;
           "persistent-workspaces" = {
-            "*" = 5; # 5 workspaces by default on every monitor
+            "*" = 10;
           };
         };
         "clock" = {
@@ -92,29 +92,6 @@
           };
           "on-click" = "pavucontrol";
         };
-        "battery" = {
-          "bat" = "BAT0";
-          "interval" = 2;
-          "states" = {
-            "warning" = 30;
-            "critical" = 15;
-          };
-          "events" = {
-            "on-discharging-warning" = "notify-send -u normal 'Low Battery'";
-            "on-discharging-critical" = "notify-send -u critical 'Very Low Battery'";
-            "on-charging-100" = "notify-send -u normal 'Battery Full!'";
-          };
-          "format" = "{icon}  {capacity}% | ";
-          "format-charging" = "󰂄  {capacity}% | ";
-          "format-plugged" = "󰚥  {capacity}% | ";
-          "format-icons" = [ "" "" "" "" "" ];
-          "max-length" = 25;
-        };
-        "custom/theme" = {
-          "format" = "  Theme";
-          "on-click" = "~/.config/colors/menu_theme.sh";
-          "tooltip" = false;
-        };
         "custom/appmenu" = {
           "format" = "  Apps";
           "on-click" = "wofi -show drun --style ~/.config/wofi/style.css";
@@ -124,6 +101,10 @@
           "format" = "Exit";
           "on-click" = "wlogout -c 2 -b 2";
           "tooltip" = false;
+        };
+        "custom/gpu" = {
+          exec = "~/.local/bin/gpu_mem.sh";
+          interval = 5;
         };
       }
     ];
