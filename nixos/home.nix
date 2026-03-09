@@ -81,7 +81,7 @@ in
     wofi
     wlogout
 
-    swaynotificationcenter
+    # swaynotificationcenter
     libnotify
     quickshell
     fastfetch
