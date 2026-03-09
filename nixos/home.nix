@@ -15,12 +15,12 @@ in
   home.stateVersion = "25.11";
 
   home.activation = {
-      cloneDotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
-          DOTFILES_DIR="${config.home.homeDirectory}/dotfiles"
-          if [ ! -d "$DOTFILES_DIR" ]; then
-              $DRY_RUN_CMD ${pkgs.git}/bin/git clone -b nixos/desktop https://github.com/derived-functor/dotfiles.git "$DOTFILES_DIR"
-          fi
-      '';
+    cloneDotfiles = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      DOTFILES_DIR="${config.home.homeDirectory}/dotfiles"
+      if [ ! -d "$DOTFILES_DIR" ]; then
+          $DRY_RUN_CMD ${pkgs.git}/bin/git clone -b nixos/desktop https://github.com/derived-functor/dotfiles.git "$DOTFILES_DIR"
+      fi
+    '';
   };
 
   home.packages = with pkgs; [
@@ -150,6 +150,7 @@ in
       set -gx LONGITUDE "37.62"
       set -gx headphones_mac "48:05:E2:F0:DD:58"
     '';
+    "fish/conf.d/colors.fish".source = ./modules/assets/colors.fish;
     "fastfetch/logo.png".source = ./modules/assets/logo.png;
     "hypr/colors.conf".source = ./modules/assets/colors-hyprland.conf;
     "swaync/style.css".source = ./modules/assets/style-swaync.css;
@@ -160,6 +161,6 @@ in
     "wlogout/style.css".source = ./modules/assets/style-wlogout.css;
     "wlogout/icons".source = ./modules/assets/icons;
     "wofi/style.css".source = ./modules/assets/style-wofi.css;
-    "kitty/colors/.conf".source = ./modules/assets/colors-kitty.conf;
+    "kitty/colors.conf".source = ./modules/assets/colors-kitty.conf;
   };
 }

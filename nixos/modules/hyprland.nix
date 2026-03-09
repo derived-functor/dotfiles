@@ -7,8 +7,7 @@
     portalPackage = unstable.xdg-desktop-portal-hyprland;
     settings = {
       monitor = [
-        "eDP-1,prefered,auto,1"
-        "HDMI-A-1,2560x1440@143.97,-2560x0,1"
+        "DP-1,prefered,auto,1"
       ];
       source = "~/.config/hypr/colors.conf";
 
@@ -215,7 +214,7 @@
       ];
 
       exec-once = [
-        "fish ~/scripts/random_wallpaper.sh >> ~/.hyprpaper.log"
+        "fish ~/.local/bin/random_wallpaper.fish >> ~/.hyprpaper.log"
         "wlsunset -l 55.75 -L 37.61"
         "hyprpaper -c ~/.config/hyprpaper.conf"
         "waybar"

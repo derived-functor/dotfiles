@@ -32,7 +32,7 @@
       ll = "lsd -lA";
       ls = "lsd";
       cmatrix = "cmatrix -u 3 -C $CMATRIX_COLOR";
-      rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/nixos#x13";
+      rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/nixos#desktop";
     };
     interactiveShellInit = ''
       set -gx fish_greeting
