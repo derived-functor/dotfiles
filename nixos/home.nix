@@ -119,6 +119,7 @@ in
   home.sessionVariables = {
     GIT_EDITOR = "vim";
 
+    GTK_THEME = "catppuccin-mocha-mauve-standard";
     HYPRSHOT_DIR = "$HOME/screenshots";
     QS_NO_RELOAD_POPUP = "1";
     NIXOS_OZONE_WL = "1";

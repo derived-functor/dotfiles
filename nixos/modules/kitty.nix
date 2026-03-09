@@ -1,4 +1,7 @@
-{ config, ... }:
+{ pkgs, config, ... }:
+let
+  kitty-scrollback-python = "${pkgs.vimPlugins.kitty-scrollback-nvim}/python/kitty_scrollback_nvim.py";
+in
 {
   programs.kitty = {
     enable = true;
@@ -18,12 +21,14 @@
       background_opacity = 0.75;
     };
     keybindings = {
-      "ctrl+shift+h" = "kitten ${config.home.homeDirectory}/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py";
-      "ctrl+shift+g" = "kitten ${config.home.homeDirectory}/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py --config ksb_builtin_last_cmd_output";
+      "ctrl+shift+h" = "kitty_scrollback_nvim";
+      "ctrl+shift+g" = "kitty_scrollback_nvim --config ksb_builtin_last_cmd_output";
     };
     extraConfig = ''
-      # mousebindings
-      mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output : kitten ${config.home.homeDirectory}/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py --config ksb_builtin_last_visited_cmd_output
+      action_alias kitty_scrollback_nvim kitten ${kitty-scrollback-python}
+
+      mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output
+
       # BEGIN_KITTY_THEME
       include colors.conf
       # END_KITTY_THEME

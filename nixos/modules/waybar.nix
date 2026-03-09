@@ -21,7 +21,7 @@
           "pulseaudio"
           "cpu"
           "temperature"
-          ""
+          "custom/gpu"
           "memory"
           "network"
           "custom/exit"
@@ -65,7 +65,7 @@
         };
         "temperature" = {
           "critical-threshold" = 80;
-          "hwmon-path" = "/sys/class/hwmon/hwmon5/temp1_input";
+          "hwmon-path" = "/sys/class/hwmon/hwmon1/temp1_input";
           "format" = "{icon}  {temperatureC}°C | ";
           "format-icons" = [ "" "" "" ];
         };

@@ -4,13 +4,21 @@
   gtk = {
     enable = true;
     theme = {
-      name = "catppuccin-mocha-mauve-standard+default";
+      name = "catppuccin-mocha-mauve-standard";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "mauve" ];
-        size = "standard";
         variant = "mocha";
+        size = "standard";
       };
     };
+    # theme = {
+    #   name = "catppuccin-mocha-mauve-standard+default";
+    #   package = pkgs.catppuccin-gtk.override {
+    #     accents = [ "mauve" ];
+    #     size = "standard";
+    #     variant = "mocha";
+    #   };
+    # };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.catppuccin-papirus-folders.override {
@@ -27,6 +35,7 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
+      gtk-theme = "catppuccin-mocha-mauve-standard";
     };
   };
 }
