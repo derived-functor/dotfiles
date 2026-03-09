@@ -7,6 +7,10 @@
   transition: 200ms;
 }
 
+.blank-window {
+    background: transparent;
+}
+
 trough highlight {
   background: @text;
 }

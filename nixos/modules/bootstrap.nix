@@ -5,7 +5,8 @@
     ./hyprlock.nix
     ./fastfetch.nix
     ./kitty.nix
-    ./swaync.nix
+    # ./swaync.nix
+    ./notification_center.nix
     ./waybar.nix
     ./wofi.nix
     ./wlogout.nix
