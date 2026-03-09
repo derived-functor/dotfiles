@@ -144,6 +144,7 @@ in
       set -gx LONGITUDE "37.62"
       set -gx headphones_mac "48:05:E2:F0:DD:58"
     '';
+    "fish/conf.d/colors.fish".source = ./modules/assets/colors.fish;
     "fastfetch/logo.png".source = ./modules/assets/logo.png;
     "hypr/colors.conf".source = ./modules/assets/colors-hyprland.conf;
     "swaync/style.css".source = ./modules/assets/style-swaync.css;
