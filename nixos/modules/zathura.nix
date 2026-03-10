@@ -5,8 +5,6 @@
     enable = true;
     package = pkgs.zathura;
 
-    extraPackages = [ pkgs.zathura-pdf-mupdf ];
-
     options = {
       selection-clipboard = "clipboard";
       scroll-step = 50;

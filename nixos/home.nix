@@ -37,7 +37,11 @@ in
     gtk3
     gimp
     gcc
+
     foliate
+    zathuraPkgs.zathura_pdf_mupdf
+    zathuraPkgs.zathura_ps
+    zathuraPkgs.zathura_djvu
 
     corefonts
 
@@ -125,7 +129,7 @@ in
       custom-background = "#1e1e2e";
       custom-text = "#cdd6f4";
 
-      font = "JetBrainsMono Nerd Font 12";
+      font = "JetBrainsMono Nerd Font 17";
 
       show-sidebar = false;
       sidebar-position = "left";
