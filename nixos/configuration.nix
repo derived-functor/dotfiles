@@ -10,7 +10,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelPackages = pkgs.linuxPackages_6_18;
-  boot.kernelModules = [ "uinput" ];
+  boot.kernelModules = [ "uinput" "i2c-dev" ];
 
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";
@@ -47,6 +47,7 @@
       };
     };
   };
+  hardware.i2c.enable = true;
 
   networking.hostName = "desktop";
 
@@ -88,7 +89,14 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mreblan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" "uinput" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "audio"
+      "video"
+      "uinput"
+      "i2c"
+    ];
     initialPassword = "changeme";
     home = "/home/mreblan";
     shell = pkgs.fish;
