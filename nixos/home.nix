@@ -35,7 +35,10 @@ in
     glib
     gsettings-desktop-schemas
     gtk3
+    gimp
     gcc
+
+    corefonts
 
     haskell.compiler.native-bignum.ghcHEAD
 
