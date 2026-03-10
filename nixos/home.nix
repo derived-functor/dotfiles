@@ -45,6 +45,8 @@ in
     nixpkgs-fmt
     nodejs
 
+    ffmpeg-full
+
     cmatrix
 
     xfce.thunar

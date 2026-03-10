@@ -1,4 +1,5 @@
-#! /bin/bash
+#! /run/current-system/sw/bin/bash
+
 set -e
 
 declare -A weather_codes

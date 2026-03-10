@@ -22,16 +22,16 @@
   };
 
   hardware.graphics = {
-      enable = true;
-      enable32Bit = true;
+    enable = true;
+    enable32Bit = true;
   };
   hardware.nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      open = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   hardware.bluetooth = {
@@ -120,6 +120,8 @@
     kitty
     bluez
     home-manager
+    ddcutil
+    ddcui
     weylus
     gsettings-desktop-schemas
     gtk3
@@ -140,7 +142,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 20d";
   };
 
   system.stateVersion = "25.11";

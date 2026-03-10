@@ -14,6 +14,7 @@
           "^.git/"
           ".mypy-cache"
           ".*cache"
+          ".venv"
         ];
         hidden = false;
         border = true;
