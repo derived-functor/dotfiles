@@ -37,6 +37,7 @@ in
     gtk3
     gimp
     gcc
+    foliate
 
     corefonts
 
@@ -99,7 +100,7 @@ in
     wireplumber
 
     telegram-desktop
-    obsidian
+    # obsidian
     spotify
     amnezia-vpn
     texliveMedium
@@ -117,6 +118,20 @@ in
   ] ++ (with unstable; [
     hyprpaper
   ]);
+
+  dconf.settings = {
+    "com/github/johnfactotum/foliate" = {
+      theme = "custom";
+      custom-background = "#1e1e2e";
+      custom-text = "#cdd6f4";
+
+      font = "JetBrainsMono Nerd Font 12";
+
+      show-sidebar = false;
+      sidebar-position = "left";
+      restore-session = true;
+    };
+  };
 
   # programs.zen-browser.enable = true;
   # programs.zen-browser.suppressXdgMigrationWarning = true;

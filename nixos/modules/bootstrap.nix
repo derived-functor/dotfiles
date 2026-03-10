@@ -18,5 +18,6 @@
     ./fish.nix
     ./cursor.nix
     ./librewolf.nix
+    ./zathura.nix
   ];
 }
