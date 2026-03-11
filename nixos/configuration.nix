@@ -1,4 +1,4 @@
-{ config, lib, pkgs, unstable, ... }:
+{ config, pkgs, unstable, ... }:
 
 {
   imports =
@@ -8,9 +8,29 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.kernelParams = [
+    "nvidia-drm.modeset=1"
+    "quiet"
+    "splash"
+    "boot.shell_on_fail"
+    "loglevel=3"
+    "rd.systemd.show_status=false"
+    "rd.udev.log_level=3"
+    "udev.log_priority=3"
+  ];
   boot.kernelPackages = pkgs.linuxPackages_6_18;
   boot.kernelModules = [ "uinput" "i2c-dev" ];
+  boot.consoleLogLevel = 3;
+  boot.initrd = {
+    verbose = false;
+    kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+  };
+
+  boot.plymouth = {
+    enable = true;
+    theme = "nixos-bgrt";
+    themePackages = [ pkgs.nixos-bgrt-plymouth ];
+  };
 
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";
