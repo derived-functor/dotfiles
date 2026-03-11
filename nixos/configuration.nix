@@ -165,7 +165,12 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    cores = 4;
+    max-jobs = 10;
+    http-connections = 50;
+  };
   nixpkgs.config.allowUnfree = true;
   nix.gc = {
     automatic = true;
