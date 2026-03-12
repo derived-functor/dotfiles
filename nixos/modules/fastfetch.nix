@@ -8,10 +8,10 @@
         type = "kitty";
         source = "/home/mreblan/.config/fastfetch/logo.png";
         width = 30;
-        padding = {
-          top = 5;
-          left = 2;
-        };
+        # padding = {
+        #   top = 5;
+        #   left = 2;
+        # };
       };
 
       key = {
