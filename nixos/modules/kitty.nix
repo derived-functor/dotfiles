@@ -10,7 +10,7 @@ in
       listen_on = "unix:/tmp/kitty";
       shell_integration = "enabled";
       font_family = "JetBrains Mono Nerd";
-      font_size = 15;
+      font_size = 17;
       disable_ligatures = "never";
       cursor_trail = 1;
       cursor_shape = "block";

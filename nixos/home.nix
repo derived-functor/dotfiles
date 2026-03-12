@@ -111,6 +111,8 @@ in
     imagemagick
     typst
 
+    bitwarden-desktop
+
     # nordic
     # nordzy-icon-theme
     # nordzy-cursor-theme
