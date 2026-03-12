@@ -176,7 +176,7 @@ in
       set -gx headphones_mac "48:05:E2:F0:DD:58"
     '';
     "fish/conf.d/colors.fish".source = ./modules/assets/colors.fish;
-    "fastfetch/logo.png".source = ./modules/assets/logo.png;
+    "fastfetch/logo.png".source = ./modules/assets/nixos-logo.png;
     "hypr/colors.conf".source = ./modules/assets/colors-hyprland.conf;
     "swaync/style.css".source = ./modules/assets/style-swaync.css;
     "swaync/colors.css".source = ./modules/assets/colors.css;
