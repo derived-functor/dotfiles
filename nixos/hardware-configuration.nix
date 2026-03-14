@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "uas" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -16,6 +16,7 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/985d5a02-3adb-4aae-a2d4-a15141cb36c1";
       fsType = "btrfs";
+      options = [ "subvol=@" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/boot" =
@@ -24,9 +25,28 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/985d5a02-3adb-4aae-a2d4-a15141cb36c1";
+      fsType = "btrfs";
+      options = [ "subvol=@nix" "compress=zstd" "noatime"  ];
+    };
+
+  fileSystems."/persist" =
+    { device = "/dev/disk/by-uuid/985d5a02-3adb-4aae-a2d4-a15141cb36c1";
+      fsType = "btrfs";
+      options = [ "subvol=@persist" "compress=zstd" "noatime"  ];
+    };
+
+  fileSystems."/.snapshots" =
+    { device = "/dev/disk/by-uuid/985d5a02-3adb-4aae-a2d4-a15141cb36c1";
+      fsType = "btrfs";
+      options = [ "subvol=@snapshots" "compress=zstd" "noatime" ];
+    };
+
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/eed3b2b3-2bdf-42ec-b506-d44b3380f148";
       fsType = "btrfs";
+      options = [ "subvol=@home" "compress=zstd" "noatime"  ];
     };
 
   swapDevices = [ ];

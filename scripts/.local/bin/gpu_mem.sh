@@ -3,4 +3,4 @@ IFS=', ' read -r USED TOTAL <<< $(nvidia-smi --query-gpu=memory.used,memory.tota
 
 PERCENT=$((USED * 100 / TOTAL))
 
-echo "󰢮  GPU: ${PERCENT}% | "
+echo "󰢮  ${PERCENT}% | "

@@ -14,6 +14,7 @@
     grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
       pkgs.tree-sitter-grammars.tree-sitter-norg
       pkgs.tree-sitter-grammars.tree-sitter-norg-meta
+      typst
       python
       latex
       nix

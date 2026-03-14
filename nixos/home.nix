@@ -144,6 +144,7 @@ in
 
   home.sessionVariables = {
     GIT_EDITOR = "vim";
+    MANPAGER = lib.mkForce "nvim +Man!";
 
     GTK_THEME = "catppuccin-mocha-mauve-standard";
     HYPRSHOT_DIR = "$HOME/screenshots";
@@ -176,6 +177,7 @@ in
       set -gx LATITUDE "55.75"
       set -gx LONGITUDE "37.62"
       set -gx headphones_mac "48:05:E2:F0:DD:58"
+      set -gx MANPAGER "nvim +Man!"
     '';
     "fish/conf.d/colors.fish".source = ./modules/assets/colors.fish;
     "fastfetch/logo.png".source = ./modules/assets/nixos-logo.png;
