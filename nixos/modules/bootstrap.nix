@@ -1,6 +1,7 @@
 {
   imports = [
     ./hyprland.nix
+    ./niri.nix
     ./swayidle.nix
     # ./hypridle.nix
     # ./hyprlock.nix

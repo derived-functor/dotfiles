@@ -1,13 +1,6 @@
 {
   description = "NixOS btw";
   inputs = {
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
     nixpkgs.url = "nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager = {
@@ -19,6 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
+    niri.url = "github:sodiboo/niri-flake";
   };
 
   outputs =
@@ -26,9 +20,9 @@
     , nixpkgs
     , nixpkgs-unstable
     , home-manager
-    , zen-browser
     , nixvim
     , nur
+    , niri
     , ...
     }@inputs:
     let
@@ -49,6 +43,7 @@
         specialArgs = { inherit unstable inputs; };
         modules = [
           ./configuration.nix
+          niri.nixosModules.niri
           {
             nixpkgs.overlays = [ nur.overlays.default ];
           }
@@ -60,7 +55,7 @@
               users.mreblan = import ./home.nix;
               backupFileExtension = "bak";
               extraSpecialArgs = { inherit unstable inputs; };
-              sharedModules = [ zen-browser.homeModules.twilight-official ];
+              sharedModules = [ ];
             };
           }
           { _module.args = { unstable = unstable; }; }
@@ -71,7 +66,6 @@
         extraSpecialArgs = { inherit unstable inputs; };
         modules = [
           ./home.nix
-          inputs.zen-browser.homeModules.twilight-official
         ];
       };
     };

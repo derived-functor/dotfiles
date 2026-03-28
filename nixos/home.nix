@@ -149,6 +149,14 @@ in
     };
   };
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.catppuccin-cursors.mochaMauve;
+    name = "catppuccin-mocha-mauve-cursors";
+    size = 35;
+  };
+
   # programs.zen-browser.enable = true;
   # programs.zen-browser.suppressXdgMigrationWarning = true;
   services.swww.enable = true;
@@ -164,6 +172,9 @@ in
     MOZ_ENABLE_WAYLAND = "1";
     ADW_DISABLE_PORTAL = "1";
     GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-desktop-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas";
+
+    XCURSOR_SIZE = "35";
+    XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
   };
 
   home.sessionPath = [

@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, ... }:
+{ config, pkgs, inputs, unstable, ... }:
 
 {
   imports =
@@ -132,6 +132,8 @@
   };
 
   programs.firefox.enable = true;
+  programs.niri.enable = true;
+  programs.niri.package = inputs.niri.packages.${pkgs.system}.niri;
   programs.hyprland = {
     enable = true;
     withUWSM = true;

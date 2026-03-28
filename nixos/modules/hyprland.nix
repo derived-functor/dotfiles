@@ -222,7 +222,7 @@
         # "hyprpaper -c ~/.config/hyprpaper.conf"
         "mako"
         "waybar"
-        "hypridle"
+        # "hypridle"
         "qs -p ~/.config/quickshell"
         "hyprctl setcursor catppuccin-mocha-mauve-cursors 35"
       ];
