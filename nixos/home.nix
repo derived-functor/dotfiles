@@ -38,7 +38,10 @@ in
     gimp
     gcc
 
-    foliate
+    ollama
+
+    localsend
+    calibre
     zathuraPkgs.zathura_pdf_mupdf
     zathuraPkgs.zathura_ps
     zathuraPkgs.zathura_djvu
@@ -141,6 +144,7 @@ in
 
   # programs.zen-browser.enable = true;
   # programs.zen-browser.suppressXdgMigrationWarning = true;
+  # services.swww.enable = true;
 
   home.sessionVariables = {
     GIT_EDITOR = "vim";

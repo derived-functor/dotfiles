@@ -93,6 +93,7 @@
     pulse.enable = true;
     alsa.enable = true;
     jack.enable = true;
+
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -103,6 +104,11 @@
   '';
 
   services.xserver.videoDrivers = [ "nvidia" ];
+
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+  };
 
   programs.fish.enable = true;
   programs.dconf.enable = true;

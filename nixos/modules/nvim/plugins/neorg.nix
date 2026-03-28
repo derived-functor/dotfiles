@@ -51,6 +51,7 @@
             };
           };
           "core.integrations.telescope" = { __empty = null; };
+          "core.pivot" = { __empty = null; };
         };
       };
       # --- ---

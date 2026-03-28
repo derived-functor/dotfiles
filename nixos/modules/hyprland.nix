@@ -212,7 +212,8 @@
       exec-once = [
         "fish ~/.local/bin/random_wallpaper.fish >> ~/.hyprpaper.log"
         "wlsunset -l 55.75 -L 37.61"
-        "hyprpaper -c ~/.config/hyprpaper.conf"
+        # "hyprpaper -c ~/.config/hyprpaper.conf"
+        "swww-daemon"
         "mako"
         "waybar"
         "hypridle"
