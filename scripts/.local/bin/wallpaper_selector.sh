@@ -18,7 +18,7 @@ function make_thumbnail() {
 
 function make_menu() {
     for img in $WALLPAPER_DIR/*; do
-        
+
         thumbnail="$CACHE_DIR/$(basename $img)"
 
         if [[ ! -f "$thumbnail" ]] || [[ "$img" -nt "$thumbnail" ]]; then
@@ -49,6 +49,8 @@ if [[ -n "$selected" ]]; then
 
     if [[ -n "$original_path" ]]; then
         echo $original_path
-        change_wallpapers.sh "$original_path"
+        # change_wallpapers.sh "$original_path"
+        # change-wallpapers-swww.sh "$original_path"
+        swww img "$original_path"
     fi
 fi

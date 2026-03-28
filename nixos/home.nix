@@ -38,6 +38,12 @@ in
     gimp
     gcc
 
+    grim
+    slurp
+    grimblast
+    wl-clipboard
+    libnotify
+
     ollama
 
     localsend
@@ -69,7 +75,7 @@ in
     luarocks
     imagemagick
     gettext
-    wl-clipboard-rs
+    # wl-clipboard-rs
 
     ripgrep
     fzf
@@ -85,7 +91,7 @@ in
 
     gh
 
-    hyprlock
+    # hyprlock
     hypridle
     hyprshot
     hyprsunset
@@ -144,7 +150,7 @@ in
 
   # programs.zen-browser.enable = true;
   # programs.zen-browser.suppressXdgMigrationWarning = true;
-  # services.swww.enable = true;
+  services.swww.enable = true;
 
   home.sessionVariables = {
     GIT_EDITOR = "vim";

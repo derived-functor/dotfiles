@@ -120,7 +120,7 @@
       };
 
       misc = {
-        force_default_wallpaper = 1;
+        force_default_wallpaper = 0;
         disable_hyprland_logo = true;
       };
 
@@ -138,7 +138,11 @@
         "$mainMod, W, exec, wallpaper_selector.sh"
         "$mainMod Shift, S, movetoworkspacesilent, special"
         "$mainMod, S, togglespecialworkspace"
-        ", PRINT, exec, hyprshot -m region"
+        # ", PRINT, exec, hyprshot -m region"
+        ", PRINT, exec, grimblast --notify copysave area"
+        "Shift, PRINT, exec, grimblast --notify copysave screen"
+        "$mainMod, PRINT, exec, grimblast --notify copysave active"
+
         "Shift, PRINT, exec, hyprshot -m output -m eDP-1"
         "$mainMod, l, movefocus, r"
         "$mainMod, h, movefocus, l"
@@ -207,11 +211,12 @@
         "XCURSOR_THEME,catppuccin-mocha-mauve-cursors"
         "HYPRCURSOR_SIZE,35"
         "HYPRCURSOR_THEME,catppuccin-mocha-mauve-cursors"
+        "GRIMBLAST_SCREENSHOT_DIRECTORY,$HOME/screenshots"
       ];
 
       exec-once = [
         "swww-daemon"
-        "sleep 0.5 && fish ~/.local/bin/random_wallpaper.fish >> ~/.swww.log"
+        "sleep 0.5 && fish ~/.local/bin/random_wallpaper-swww.fish >> ~/.swww.log"
         # "fish ~/.local/bin/random_wallpaper.fish >> ~/.hyprpaper.log"
         "wlsunset -l 55.75 -L 37.61"
         # "hyprpaper -c ~/.config/hyprpaper.conf"

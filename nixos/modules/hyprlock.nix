@@ -2,8 +2,7 @@
   programs.hyprlock = {
     enable = true;
     settings = {
-      general = {
-      };
+      general = { };
       background = [
         {
           monitor = "";
@@ -29,9 +28,9 @@
           dots_size = 0.3;
           dots_spacing = 0.4;
           dots_center = true;
-          outer_color = "rgb(49, 50, 68)";    # Surface0
-          inner_color = "rgb(69, 71, 90)";    # Surface1
-          font_color = "rgb(205, 214, 244)";  # Text
+          outer_color = "rgb(49, 50, 68)"; # Surface0
+          inner_color = "rgb(69, 71, 90)"; # Surface1
+          font_color = "rgb(205, 214, 244)"; # Text
           placeholder_text = ''<i><span foreground="##a6adc8">Enter password</span></i>'';
           rounding = 6;
           check_color = "rgb(166, 227, 161)";
