@@ -30,6 +30,7 @@ in
 
       indicator-x-position = "center";
       indicator-y-position = "center";
+      scaling = "fill";
 
       inside-color = "${surface1}aa";
       inside-ver-color = "${surface1}";

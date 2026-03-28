@@ -4,7 +4,7 @@
     layout = [
       {
         label = "lock";
-        action = "swaylock -f";
+        action = "waylock";
         text = "Lock";
         keybind = "l";
       }

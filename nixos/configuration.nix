@@ -87,7 +87,7 @@
       waylandsessions = "/run/current-system/sw/share/wayland-sessions";
     };
   };
-  security.pam.services.swaylock = { };
+  security.pam.services.waylock = { };
 
   services.pipewire = {
     enable = true;

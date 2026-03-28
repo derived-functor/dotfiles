@@ -1,9 +1,10 @@
 {
   imports = [
     ./hyprland.nix
-    ./hypridle.nix
+    ./swayidle.nix
+    # ./hypridle.nix
     # ./hyprlock.nix
-    ./swaylock.nix
+    # ./swaylock.nix
     ./fastfetch.nix
     ./kitty.nix
     # ./swaync.nix

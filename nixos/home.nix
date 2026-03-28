@@ -91,6 +91,7 @@ in
 
     gh
 
+    waylock
     # hyprlock
     hypridle
     hyprshot
