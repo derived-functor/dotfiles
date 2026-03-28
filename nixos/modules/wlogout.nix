@@ -4,13 +4,13 @@
     layout = [
       {
         label = "lock";
-        action = "waylock";
+        action = "hyprlock";
         text = "Lock";
         keybind = "l";
       }
       {
         label = "logout";
-        action = "hyprctl dispatch exit";
+        action = "niri msg action quit";
         text = "Logout";
         keybind = "e";
       }

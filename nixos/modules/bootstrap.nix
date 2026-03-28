@@ -4,7 +4,7 @@
     ./niri.nix
     ./swayidle.nix
     # ./hypridle.nix
-    # ./hyprlock.nix
+    ./hyprlock.nix
     # ./swaylock.nix
     ./fastfetch.nix
     ./kitty.nix

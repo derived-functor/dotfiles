@@ -1,3 +1,12 @@
+{ pkgs, ... }:
+
+let
+  get-lang = pkgs.writeShellScript "get-niri-lang" ''
+    ${pkgs.niri}/bin/niri msg --json keyboard-layouts | \
+    ${pkgs.jq}/bin/jq -r '.names[.current_idx]' | \
+    ${pkgs.gnused}/bin/sed 's/English (US)/EN/;s/Russian/RU/'
+  '';
+in
 {
   programs.waybar = {
     enable = true;
@@ -10,13 +19,11 @@
         "height" = 38;
         "modules-left" = [
           "clock"
-          "hyprland/language"
           "custom/appmenu"
+          "custom/language"
           "tray"
         ];
-        "modules-center" = [
-          "hyprland/workspaces"
-        ];
+        "modules-center" = [ "niri/workspaces" ];
         "modules-right" = [
           "pulseaudio"
           "cpu"
@@ -30,24 +37,17 @@
           "icon-size" = 21;
           "spacing" = 10;
         };
-        "hyprland/window" = {
+        "niri/workspaces" = {
+          "format" = "{icon}";
+          "format-icons" = {
+            "default" = "○";
+            "active" = "●";
+          };
+        };
+        "niri/window" = {
           "format" = "{}";
           "max-length" = 35;
-          "rewrite" = {
-            "" = "Hyprland";
-          };
           "separate-outputs" = true;
-        };
-        "hyprland/workspaces" = {
-          "format" = "{icon}";
-          "on-click" = "activate";
-          "format-icons" = {
-            "active" = " ";
-          };
-          "sort-by-number" = true;
-          "persistent-workspaces" = {
-            "*" = 10;
-          };
         };
         "clock" = {
           "format" = "{:%d.%m.%Y | %I:%M %p}";
@@ -105,6 +105,13 @@
         "custom/gpu" = {
           exec = "~/.local/bin/gpu_mem.sh";
           interval = 5;
+        };
+        "custom/language" = {
+          "exec" = "${get-lang}";
+          "interval" = 1;
+          "format" = "  {}";
+          "on-click" = "${pkgs.niri}/bin/niri msg action switch-layout next";
+          "tooltip" = false;
         };
       }
     ];

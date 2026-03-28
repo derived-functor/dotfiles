@@ -43,7 +43,7 @@
         specialArgs = { inherit unstable inputs; };
         modules = [
           ./configuration.nix
-          niri.nixosModules.niri
+          # niri.nixosModules.niri
           {
             nixpkgs.overlays = [ nur.overlays.default ];
           }

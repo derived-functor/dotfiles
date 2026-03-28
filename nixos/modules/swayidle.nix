@@ -4,7 +4,7 @@
     systemdTarget = "hyprland-session.target";
 
     events = [
-      { event = "lock"; command = "waylock -init-color 0x1e1e2e -input-color 0x313244 -fail-color 0xf38ba8"; }
+      { event = "lock"; command = "hyprlock"; }
 
       { event = "unlock"; command = "${pkgs.libnotify}/bin/notify-send 'Unlocked!'"; }
 

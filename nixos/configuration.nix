@@ -132,10 +132,12 @@
   };
 
   programs.firefox.enable = true;
-  programs.niri.enable = true;
-  programs.niri.package = inputs.niri.packages.${pkgs.system}.niri;
-  programs.hyprland = {
+  programs.niri = {
     enable = true;
+    # package = inputs.niri.packages.${pkgs.system}.niri;
+  };
+  programs.hyprland = {
+    enable = false;
     withUWSM = true;
     package = unstable.hyprland;
     xwayland.enable = true;

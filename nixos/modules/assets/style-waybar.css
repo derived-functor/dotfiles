@@ -54,7 +54,7 @@ window#waybar {
 #memory      { color: @aqua;   padding: 0 8px; }
 #temperature { color: @yellow; padding: 0 8px; }
 #tray        { color: @text;   padding: 0 8px; }
-#language    { color: @yellow; padding: 0 8px; }
+#custom-language    { color: @yellow; padding: 0 8px; }
 #bluetooth   { padding: 0 8px; }
 
 #battery.charging, #battery.plugged { color: @green; }

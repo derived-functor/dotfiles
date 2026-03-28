@@ -1,7 +1,7 @@
 { unstable, ... }:
 {
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = false;
     package = unstable.hyprland;
     xwayland.enable = true;
     portalPackage = unstable.xdg-desktop-portal-hyprland;
