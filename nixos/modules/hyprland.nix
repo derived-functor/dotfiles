@@ -210,10 +210,11 @@
       ];
 
       exec-once = [
-        "fish ~/.local/bin/random_wallpaper.fish >> ~/.hyprpaper.log"
+        "swww-daemon"
+        "sleep 0.5 && fish ~/.local/bin/random_wallpaper.fish >> ~/.swww.log"
+        # "fish ~/.local/bin/random_wallpaper.fish >> ~/.hyprpaper.log"
         "wlsunset -l 55.75 -L 37.61"
         # "hyprpaper -c ~/.config/hyprpaper.conf"
-        "swww-daemon"
         "mako"
         "waybar"
         "hypridle"
