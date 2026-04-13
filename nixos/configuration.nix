@@ -55,6 +55,7 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
+  hardware.keyboard.qmk.enable = true;
 
   hardware.bluetooth = {
     enable = true;
@@ -125,6 +126,7 @@
       "video"
       "uinput"
       "i2c"
+      "plugdev"
     ];
     initialPassword = "changeme";
     home = "/home/mreblan";
@@ -132,6 +134,11 @@
   };
 
   programs.firefox.enable = true;
+  programs.weylus = {
+    enable = true;
+    openFirewall = true;
+    users = [ "mreblan" ];
+  };
   programs.niri = {
     enable = true;
     # package = inputs.niri.packages.${pkgs.system}.niri;
@@ -146,9 +153,23 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = [ "gtk" ];
-    config.hyprland.default = [ "hyprland" "gtk" ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config = {
+      common = {
+        default = [ "gtk" ];
+        # Явно указываем, что для захвата экрана использовать gnome
+        "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
+      };
+      niri = {
+        default = [ "gnome" "gtk" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
+      };
+    };
   };
 
   programs.nix-ld.enable = true;
@@ -163,10 +184,12 @@
     home-manager
     ddcutil
     ddcui
-    weylus
+    xdg-desktop-portal-wlr
+    pipewire
     gsettings-desktop-schemas
     gtk3
     cudatoolkit
+    wayland-utils
   ];
   environment.pathsToLink = [
     "/share/wayland-sessions"
@@ -180,7 +203,7 @@
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
-    cores = 4;
+    cores = 10;
     max-jobs = 10;
     http-connections = 50;
   };

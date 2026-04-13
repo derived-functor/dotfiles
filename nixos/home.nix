@@ -23,6 +23,14 @@ in
     '';
   };
 
+  programs.obs-studio = {
+    enable = true;
+
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-pipewire-audio-capture
+    ];
+  };
+
   home.packages = with pkgs; [
     tree
     vim
@@ -38,6 +46,9 @@ in
     gimp
     gcc
 
+    libreoffice
+    audacity
+
     grim
     slurp
     grimblast
@@ -46,6 +57,12 @@ in
 
     ollama
     opencode
+    vlc
+
+    rqbit
+
+    # Pomodoro timer
+    pom
 
     localsend
     calibre
@@ -94,9 +111,10 @@ in
 
     waylock
     # hyprlock
-    hypridle
-    hyprshot
-    hyprsunset
+    # hypridle
+    # hyprshot
+    # hyprsunset
+    wlsunset
 
     waybar
     wofi
@@ -115,7 +133,7 @@ in
     wireplumber
 
     telegram-desktop
-    # obsidian
+    obsidian
     spotify
     amnezia-vpn
     texliveMedium
@@ -165,6 +183,9 @@ in
     MOZ_ENABLE_WAYLAND = "1";
     ADW_DISABLE_PORTAL = "1";
     GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-desktop-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas";
+
+    QT_QPA_PLATFORM = "wayland";
+    OBS_USE_EGL = "1";
 
     XCURSOR_SIZE = "45";
     XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";

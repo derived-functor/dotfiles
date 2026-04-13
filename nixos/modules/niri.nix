@@ -41,7 +41,7 @@ in
       };
 
       layout = {
-        gaps = 4;
+        gaps = 10;
         struts = { left = 0; right = 0; top = 0; bottom = 0; };
         default-column-width = { proportion = 0.5; };
         focus-ring.enable = true;
@@ -56,7 +56,7 @@ in
         "Mod+M".action = maximize-column;
         "Mod+E".action = spawn fileManager;
         "Mod+B".action = spawn browser;
-        "Mod+R".action = spawn menu;
+        "Mod+R".action = spawn-sh menu;
         "Mod+T".action = spawn telegram;
         "Mod+O".action = spawn notes;
 
@@ -91,9 +91,9 @@ in
         "Mod+Alt+1".action = move-window-to-workspace-down;
         "Mod+Alt+2".action = move-window-to-workspace-up;
 
-        "Print".action = spawn-sh "grim -g \"$(slurp)\" -";
-        "Mod+Print".action = spawn-sh "grim -";
-        "Alt+Print".action = spawn-sh "grim -g \"$(slurp -w)\" -";
+        "Print".action = spawn-sh "grim -g \"$(slurp)\" - | tee \"$HOME/screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png\" | wl-copy";
+        "Mod+Print".action = spawn-sh "grim - | tee \"$HOME/screenshots/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png\" | wl-copy";
+        "Alt+Print".action = spawn-sh "grim -g \"$(slurp -w)\" - | tee \"$HOME/screenshots/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png\" | wl-copy";
 
         "XF86AudioRaiseVolume".action = spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "5%+";
         "XF86AudioLowerVolume".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-";

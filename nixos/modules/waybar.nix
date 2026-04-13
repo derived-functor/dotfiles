@@ -19,8 +19,8 @@ in
         "height" = 38;
         "modules-left" = [
           "clock"
-          "custom/appmenu"
           "custom/language"
+          "custom/appmenu"
           "tray"
         ];
         "modules-center" = [ "niri/workspaces" ];

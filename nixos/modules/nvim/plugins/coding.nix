@@ -75,7 +75,7 @@
       enable = true;
       settings = {
         formatters_by_ft = {
-          python = [ "ruff_format" "black" ];
+          python = [ "ruff_format" "ruff_fix" "ruff_organize_imports" ];
           nix = [ "nixpkgs_fmt" ];
           markdown = [ "prettier" ];
           "_" = [ "trim_whitespace" ];
